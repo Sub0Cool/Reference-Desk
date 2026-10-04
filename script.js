@@ -180,7 +180,6 @@ const lookupResult = document.querySelector("#lookup-result");
 const lookupIcon = document.querySelector("#lookup-icon");
 const lookupStatus = document.querySelector("#lookup-status");
 const lookupSummary = document.querySelector("#lookup-summary");
-const showWhereButton = document.querySelector("#show-where");
 const lookupDetails = document.querySelector("#lookup-details");
 
 const SECTION_29805_EFFECTS = [
@@ -285,7 +284,6 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   lookupResult.hidden = false;
   lookupResult.dataset.kind = kind;
   lookupDetails.hidden = true;
-  showWhereButton.textContent = "Show where in § 29805";
 
   const display = formatQuery(query);
 
@@ -308,7 +306,6 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   }
 
   const detailRules = matchingRules.length ? matchingRules : relatedRules;
-  showWhereButton.hidden = detailRules.length === 0;
 
   lookupDetails.replaceChildren();
   detailRules.forEach((rule) => {
@@ -335,6 +332,8 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
     item.append(label, cite, explanation, link);
     lookupDetails.append(item);
   });
+
+  lookupDetails.hidden = detailRules.length === 0;
 }
 
 function lookupSection29805(rawValue) {
@@ -348,7 +347,6 @@ function lookupSection29805(rawValue) {
     lookupIcon.textContent = "?";
     lookupStatus.textContent = "Enter a code section or common offense name";
     lookupSummary.textContent = "Try 242, PC 242, battery, criminal threats, or 368(b).";
-    showWhereButton.hidden = true;
     lookupDetails.hidden = true;
     return;
   }
@@ -382,15 +380,6 @@ lookupForm.addEventListener("submit", (event) => {
   event.preventDefault();
   lookupSection29805(codeLookup.value);
 });
-
-showWhereButton.addEventListener("click", () => {
-  const willShow = lookupDetails.hidden;
-  lookupDetails.hidden = !willShow;
-  showWhereButton.textContent = willShow
-    ? "Hide statutory location"
-    : "Show where in § 29805";
-});
-
 
 const exposureForm = document.querySelector("#exposure-form");
 const exposureLookup = document.querySelector("#exposure-lookup");
