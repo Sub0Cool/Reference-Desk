@@ -315,13 +315,24 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
     const item = document.createElement("div");
     item.className = "lookup-detail-item";
 
+    const label = document.createElement("span");
+    label.className = "lookup-detail-label";
+    label.textContent = "Statutory location";
+
     const cite = document.createElement("strong");
     cite.textContent = rule.citation;
 
     const explanation = document.createElement("p");
     explanation.textContent = rule.effect;
 
-    item.append(cite, explanation);
+    const link = document.createElement("a");
+    link.className = "lookup-detail-link";
+    link.href = "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=29805.";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "View Penal Code § 29805 on California Legislative Information →";
+
+    item.append(label, cite, explanation, link);
     lookupDetails.append(item);
   });
 }
