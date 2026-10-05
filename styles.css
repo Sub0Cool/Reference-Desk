@@ -2378,6 +2378,7 @@ h1 {
 .lookup-button,
 .add-button,
 .bac-submit-button {
+  color: #ffffff;
   background: var(--microharmon-blue);
   border-color: var(--microharmon-blue);
 }
