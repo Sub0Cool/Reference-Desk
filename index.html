@@ -269,23 +269,19 @@
                       </div>
                     </div>
 
-                    <p id="exposure-note" class="exposure-note"></p>
                     <a id="exposure-source" class="statute-link" target="_blank" rel="noopener noreferrer">
                       View governing statute
                     </a>
-                  </div>
 
-                  <aside class="legal-note">
-                    <strong>Scope:</strong> This is a quick misdemeanor jail-exposure reference, not a
-                    complete sentencing calculation. Priors, enhancements, multiple counts, mandatory
-                    minimums, probation conditions, alternative felony punishment, and other statutes may
-                    change the result. Entries marked “varies” need additional facts or a subdivision.
-                    Statutory data checked against California Legislative Information in October 2026.
-                  </aside>
+                    <details class="charge-detail-toggle">
+                      <summary>Notes</summary>
+                      <p id="exposure-note" class="exposure-note"></p>
+                    </details>
+                  </div>
                 </section>
 
                 <section class="charge-result-group" aria-labelledby="charge-probation-heading">
-                  <h3 id="charge-probation-heading">Probation Eligibility & Terms</h3>
+                  <h3 id="charge-probation-heading">Probation</h3>
                   <div id="probation-result" class="probation-result" hidden aria-live="polite">
                     <div class="probation-heading">
                       <div>
@@ -297,7 +293,7 @@
 
                     <div class="probation-grid">
                       <div class="probation-stat">
-                        <span>Probation</span>
+                        <span>Eligibility</span>
                         <strong id="probation-status">—</strong>
                       </div>
                       <div class="probation-stat">
@@ -311,23 +307,17 @@
                       </div>
                     </div>
 
-                    <div id="probation-terms-wrap" class="probation-terms-wrap">
-                      <p class="probation-terms-title">Mandatory / notable terms</p>
-                      <ul id="probation-terms" class="probation-terms"></ul>
-                    </div>
-
-                    <p id="probation-note" class="probation-note"></p>
                     <div id="probation-links" class="probation-links"></div>
-                  </div>
 
-                  <aside class="legal-note">
-                    <strong>Scope:</strong> This is a quick-reference aid, not a complete probation
-                    eligibility analysis. General misdemeanor probation authority is in Penal Code
-                    § 1203a, but offense-specific statutes, priors, enhancements, victim relationship,
-                    and case facts can change eligibility or required terms. Maximum penal fines shown
-                    are base statutory fines and exclude penalty assessments, restitution, program fees,
-                    and other add-ons. Verify the governing statutes before relying on the result.
-                  </aside>
+                    <details class="charge-detail-toggle">
+                      <summary>Terms & notes</summary>
+                      <div id="probation-terms-wrap" class="probation-terms-wrap">
+                        <p class="probation-terms-title">Mandatory / notable terms</p>
+                        <ul id="probation-terms" class="probation-terms"></ul>
+                      </div>
+                      <p id="probation-note" class="probation-note"></p>
+                    </details>
+                  </div>
                 </section>
 
                 <section class="charge-result-group" aria-labelledby="charge-firearms-heading">
@@ -341,25 +331,41 @@
                       </div>
                     </div>
 
-                    <div id="lookup-details" class="lookup-details" hidden></div>
+                    <details class="charge-detail-toggle charge-29805-details">
+                      <summary>Statutory details</summary>
+                      <div id="lookup-details" class="lookup-details" hidden></div>
+                    </details>
                   </div>
 
-                  <p class="lookup-source">
-                    Based on the California Legislative Information text of Penal Code § 29805,
-                    effective January 1, 2026. A “not listed” result means only that the entered
-                    offense was not found in § 29805; other firearm prohibitions may still apply.
+                  <p class="lookup-source charge-source-compact">
                     <a
                       href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=29805."
                       target="_blank"
                       rel="noopener noreferrer"
-                    >View the official statute</a>.
+                    >View Penal Code § 29805</a>
                   </p>
                 </section>
               </div>
-            </section>
-          </div>
-        </section>
 
+              <details class="charge-scope-note">
+                <summary>Scope & limitations</summary>
+                <div>
+                  <p>
+                    Exposure results are a quick misdemeanor jail reference, not a complete sentencing calculation.
+                    Priors, enhancements, multiple counts, mandatory minimums, probation conditions, alternative felony
+                    punishment, and other statutes may change the result.
+                  </p>
+                  <p>
+                    Probation results are a quick-reference aid. Offense-specific statutes, priors, enhancements,
+                    victim relationship, and case facts can change eligibility or required terms. Maximum penal fines
+                    exclude penalty assessments, restitution, program fees, and other add-ons.
+                  </p>
+                  <p>
+                    A § 29805 “not listed” result means only that the entered offense was not found in that statute;
+                    other firearm prohibitions may still apply. Statutory data should be verified before use.
+                  </p>
+                </div>
+              </details>
         <section class="tool-panel tool-view" id="tool-bac" data-tool-view="bac" hidden>
           <div class="tool-panel-body">
             <section class="bac-card" aria-labelledby="bac-title">
