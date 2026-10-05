@@ -762,6 +762,36 @@ h1 {
 }
 
 
+.charge-results {
+  display: grid;
+  gap: 24px;
+  margin-top: 26px;
+}
+
+.charge-result-group {
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.charge-result-group:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.charge-result-group h3 {
+  margin: 0;
+  color: var(--green-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.charge-result-group .exposure-result,
+.charge-result-group .probation-result,
+.charge-result-group .lookup-result {
+  margin-top: 12px;
+}
+
 .exposure-card {
   margin-top: 28px;
   padding: clamp(22px, 4vw, 30px);
