@@ -2265,3 +2265,228 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+
+
+/* MicroHarmon theme experiment */
+:root {
+  --ink: #101114;
+  --muted: #5e6673;
+  --green: #083da9;
+  --green-dark: #101114;
+  --mint: #e8eefb;
+  --mint-light: #f4f6fa;
+  --line: #cfd5df;
+  --paper: #ffffff;
+  --background: #eef1f5;
+  --error: #a72935;
+  --shadow: 0 22px 54px rgba(10, 18, 32, 0.12);
+  --microharmon-blue: #083da9;
+  --microharmon-black: #101114;
+  --display-font: Eurostile, "Microgramma D Extended", "Arial Black", "Arial Narrow Bold", Arial, sans-serif;
+  --body-font: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--body-font);
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(8, 61, 169, 0.08), transparent 28rem),
+    linear-gradient(180deg, #ffffff 0%, #eef1f5 100%);
+}
+
+.counter-card {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid #c9ced7;
+  border-radius: 12px;
+  backdrop-filter: none;
+}
+
+h1,
+h2,
+h3,
+.tool-tile strong,
+.tool-summary h2,
+.active-tool-heading h2,
+.charge-result-group h3,
+.custody-card h2,
+.lookup-card h2,
+.exposure-card h2,
+.probation-card h2,
+.bac-card h2 {
+  font-family: var(--display-font);
+  color: var(--microharmon-black);
+  letter-spacing: -0.025em;
+}
+
+h1 {
+  font-weight: 900;
+}
+
+.eyebrow,
+.tool-tile-kicker {
+  color: var(--microharmon-blue);
+  font-family: var(--display-font);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.reference-mark {
+  color: var(--microharmon-blue);
+  background: #eef3ff;
+  border: 1px solid #c5d2ef;
+  border-radius: 8px;
+}
+
+.tool-tile,
+.tool-panel,
+.custody-card,
+.lookup-card,
+.exposure-card,
+.probation-result,
+.exposure-result,
+.lookup-result,
+.charge-result-group,
+.range-row,
+.total-card,
+.future-date-card,
+.bac-card {
+  border-radius: 8px;
+}
+
+.tool-tile {
+  background: #ffffff;
+  border-color: #d1d6df;
+}
+
+.tool-tile:hover,
+.tool-tile:focus-visible {
+  border-color: var(--microharmon-blue);
+  box-shadow: 0 8px 22px rgba(8, 61, 169, 0.10);
+}
+
+.tool-tile.is-active {
+  background: #f7f9fd;
+  border-color: var(--microharmon-blue);
+  box-shadow: inset 0 0 0 1px var(--microharmon-blue);
+}
+
+.tool-tile-icon {
+  color: var(--microharmon-blue);
+  background: #e9effc;
+  border-radius: 6px;
+}
+
+.lookup-button,
+.add-button,
+.bac-submit-button {
+  color: #ffffff;
+  background: var(--microharmon-blue);
+  border-color: var(--microharmon-blue);
+}
+
+.lookup-button:hover,
+.lookup-button:focus-visible,
+.add-button:hover,
+.add-button:focus-visible,
+.bac-submit-button:hover,
+.bac-submit-button:focus-visible {
+  background: #062f83;
+  border-color: #062f83;
+}
+
+.total-card {
+  background: linear-gradient(135deg, #101114 0%, #083da9 100%);
+  box-shadow: 0 14px 30px rgba(8, 61, 169, 0.18);
+}
+
+.charge-result-group {
+  border-color: #cbd2de;
+  border-top: 3px solid var(--microharmon-blue);
+}
+
+.charge-result-group:first-child {
+  border-top: 3px solid var(--microharmon-blue);
+}
+
+.charge-result-group h3 {
+  font-size: 1.13rem;
+  font-weight: 900;
+  letter-spacing: 0.01em;
+}
+
+.exposure-code,
+.range-days,
+.credit-stat output,
+.exposure-stat strong,
+.probation-stat strong {
+  color: var(--microharmon-black);
+}
+
+.exposure-badge,
+.lookup-result[data-kind="yes"] .lookup-icon {
+  color: #06357f;
+  background: #e4ecfb;
+}
+
+.statute-link,
+.probation-links a,
+.probation-fine-source,
+.lookup-source a,
+.lookup-detail-link,
+.charge-detail-toggle summary,
+.charge-scope-note summary,
+.method-dialog-source a,
+.legal-note a {
+  color: var(--microharmon-blue);
+}
+
+input,
+select {
+  border-color: #cbd1da;
+  border-radius: 5px !important;
+}
+
+input:focus,
+select:focus,
+.lookup-controls input:focus {
+  border-color: var(--microharmon-blue);
+  box-shadow: 0 0 0 3px rgba(8, 61, 169, 0.12);
+}
+
+.master-reset-button {
+  border-radius: 5px;
+}
+
+.microharmon-footer {
+  display: grid;
+  place-items: center;
+  margin-top: 34px;
+  padding-top: 26px;
+  border-top: 2px solid var(--microharmon-blue);
+}
+
+.microharmon-footer img {
+  display: block;
+  width: min(390px, 76vw);
+  height: auto;
+  mix-blend-mode: multiply;
+}
+
+.microharmon-footer p {
+  margin: 11px 0 0;
+  color: #606774;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 640px) {
+  .microharmon-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+  }
+
+  .microharmon-footer img {
+    width: min(320px, 90vw);
+  }
+}
