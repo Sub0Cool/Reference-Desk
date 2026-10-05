@@ -1747,3 +1747,70 @@ maximumForm.addEventListener("submit", (event) => {
 });
 
 setBacMode("retrograde");
+
+
+// Master reset
+const masterResetButton = document.querySelector("#master-reset");
+
+function resetAllReferenceDeskTools() {
+  document.querySelectorAll("form").forEach((form) => form.reset());
+
+  // Dates & § 4019
+  rangesContainer.replaceChildren();
+  addRange();
+  fourDayThreshold.checked = true;
+  calculateTotals();
+
+  // Future Date Calculator
+  futureDateResult.hidden = true;
+  futureDateError.hidden = true;
+  futureDateOutput.textContent = "—";
+  futureDateSummary.textContent = "";
+
+  // § 29805
+  lookupResult.hidden = true;
+  lookupDetails.hidden = true;
+  lookupDetails.replaceChildren();
+  lookupIcon.textContent = "";
+  lookupStatus.textContent = "";
+  lookupSummary.textContent = "";
+
+  // Maximum Exposure
+  exposureResult.hidden = true;
+
+  // Eligibility & Terms
+  probationResult.hidden = true;
+  probationTerms.replaceChildren();
+  probationLinks.replaceChildren();
+
+  // Retrograde BAC
+  retroReadingRows.replaceChildren();
+  appendRetroReading();
+  retroDrinkRows.replaceChildren();
+  retroResult.hidden = true;
+  retroReadingResults.replaceChildren();
+  retroMultiComparison.hidden = true;
+  retroDrinkingComparison.hidden = true;
+  retroLaySummary.hidden = true;
+  retroWarning.hidden = true;
+  retroCalculation.replaceChildren();
+
+  // Theoretical Maximum BAC
+  drinkRows.replaceChildren();
+  appendDrinkRow(drinkRows);
+  maximumResult.hidden = true;
+  maximumComparison.hidden = true;
+  maximumLaySummary.hidden = true;
+  maximumWarning.hidden = true;
+  maximumCalculation.replaceChildren();
+
+  if (methodDialog && methodDialog.open) methodDialog.close();
+}
+
+masterResetButton.addEventListener("click", () => {
+  const confirmed = window.confirm(
+    "Clear all fields and results in every Reference Desk tool?"
+  );
+  if (!confirmed) return;
+  resetAllReferenceDeskTools();
+});
