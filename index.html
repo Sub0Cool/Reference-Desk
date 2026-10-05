@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="California criminal-law quick-reference tools for custody credits, misdemeanor exposure, probation, and Penal Code section 29805."
+      content="California criminal-law quick-reference tools for custody credits, charge information, and Penal Code section 29805."
     />
     <title>Reference Desk</title>
     <link rel="stylesheet" href="styles.css" />
@@ -61,38 +61,14 @@
             <span class="tool-tile-arrow" aria-hidden="true">→</span>
           </button>
 
-          <button class="tool-tile" type="button" data-tool-target="exposure" aria-pressed="false">
+          <button class="tool-tile" type="button" data-tool-target="charges" aria-pressed="false">
             <span class="tool-tile-icon" aria-hidden="true">
               <svg viewBox="0 0 32 32"><path d="M16 5v22M9 9h14M8 9l-4 8h8L8 9ZM24 9l-4 8h8l-4-8ZM11 27h10"></path></svg>
             </span>
             <span class="tool-tile-copy">
-              <span class="tool-tile-kicker">Sentencing</span>
-              <strong>Maximum Exposure</strong>
-              <small>Look up misdemeanor jail exposure and governing authority.</small>
-            </span>
-            <span class="tool-tile-arrow" aria-hidden="true">→</span>
-          </button>
-
-          <button class="tool-tile" type="button" data-tool-target="probation" aria-pressed="false">
-            <span class="tool-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><rect x="7" y="5" width="18" height="23" rx="3"></rect><path d="M12 5.5h8M11 13l2 2 4-5M11 21l2 2 4-5M19 13h3M19 21h3"></path></svg>
-            </span>
-            <span class="tool-tile-copy">
-              <span class="tool-tile-kicker">Probation</span>
-              <strong>Eligibility & Terms</strong>
-              <small>Review general eligibility and offense-specific mandatory terms.</small>
-            </span>
-            <span class="tool-tile-arrow" aria-hidden="true">→</span>
-          </button>
-
-          <button class="tool-tile" type="button" data-tool-target="firearms" aria-pressed="false">
-            <span class="tool-tile-icon" aria-hidden="true">
-              <svg viewBox="0 0 32 32"><path d="M16 4l10 4v7c0 6-4 10-10 13C10 25 6 21 6 15V8l10-4Z"></path><path d="M12 16l3 3 6-7"></path></svg>
-            </span>
-            <span class="tool-tile-copy">
-              <span class="tool-tile-kicker">Firearms</span>
-              <strong>Penal Code § 29805</strong>
-              <small>Check whether an offense appears in the current § 29805 list.</small>
+              <span class="tool-tile-kicker">Charges</span>
+              <strong>Charge Lookup</strong>
+              <small>See exposure, probation terms, and Penal Code § 29805 information in one search.</small>
             </span>
             <span class="tool-tile-arrow" aria-hidden="true">→</span>
           </button>
@@ -246,183 +222,150 @@
           </div>
         </section>
 
-        <section class="tool-panel tool-view" id="tool-firearms" data-tool-view="firearms" hidden>
+        <section class="tool-panel tool-view" id="tool-charges" data-tool-view="charges" hidden>
           <div class="tool-panel-body">
-            <section class="lookup-card" aria-labelledby="lookup-title">
-          <p class="eyebrow">California firearm prohibition lookup</p>
-          <h2 id="lookup-title">Penal Code § 29805</h2>
-          <p class="lookup-intro">
-            Enter a Penal Code section to see whether it appears in the current text of § 29805.
-            Flexible formats and common offense names are accepted, including <strong>242</strong>, <strong>PC 242</strong>,
-            <strong>battery</strong>, <strong>criminal threats</strong>, and subdivision-specific entries such as
-            <strong>368(b)</strong>.
-          </p>
-
-          <form id="lookup-form" class="lookup-form">
-            <label for="code-lookup">Code section</label>
-            <div class="lookup-controls">
-              <input
-                id="code-lookup"
-                type="text"
-                autocomplete="off"
-                placeholder="e.g., PC 242, battery, or 368(b)"
-              />
-              <button type="submit" class="lookup-button">Check § 29805</button>
-            </div>
-          </form>
-
-          <div id="lookup-result" class="lookup-result" hidden aria-live="polite">
-            <div class="lookup-status-row">
-              <span id="lookup-icon" class="lookup-icon" aria-hidden="true"></span>
-              <div>
-                <p id="lookup-status" class="lookup-status"></p>
-                <p id="lookup-summary" class="lookup-summary"></p>
-              </div>
-            </div>
-
-            <div id="lookup-details" class="lookup-details" hidden></div>
-          </div>
-
-          <p class="lookup-source">
-            Based on the California Legislative Information text of Penal Code § 29805,
-            effective January 1, 2026. A “not listed” result means only that the entered
-            offense was not found in § 29805; other firearm prohibitions may still apply.
-            <a
-              href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=29805."
-              target="_blank"
-              rel="noopener noreferrer"
-            >View the official statute</a>.
-          </p>
-            </section>
-          </div>
-        </section>
-
-        <section class="tool-panel tool-view" id="tool-exposure" data-tool-view="exposure" hidden>
-          <div class="tool-panel-body">
-            <section class="exposure-card" aria-labelledby="exposure-title">
-          <p class="eyebrow">California misdemeanor sentencing</p>
-          <h2 id="exposure-title">Maximum Exposure Lookup</h2>
-          <p class="exposure-intro">
-            Enter a Penal Code, Vehicle Code, or Health and Safety Code section.
-            Flexible formats and common names work — for example <strong>PC 242</strong>,
-            <strong>battery</strong>, <strong>hit and run</strong>, or <strong>drug paraphernalia</strong>.
-          </p>
-
-          <form id="exposure-form" class="lookup-form">
-            <label for="exposure-lookup">Offense</label>
-            <div class="lookup-controls">
-              <input
-                id="exposure-lookup"
-                type="text"
-                autocomplete="off"
-                placeholder="e.g., PC 242, battery, or hit and run"
-              />
-              <button type="submit" class="lookup-button">Check exposure</button>
-            </div>
-          </form>
-
-          <div id="exposure-result" class="exposure-result" hidden aria-live="polite">
-            <div class="exposure-heading">
-              <div>
-                <p id="exposure-code" class="exposure-code"></p>
-                <p id="exposure-name" class="exposure-name"></p>
-              </div>
-              <span id="exposure-badge" class="exposure-badge"></span>
-            </div>
-
-            <div class="exposure-grid">
-              <div class="exposure-stat">
-                <span>Misdemeanor jail exposure</span>
-                <strong id="exposure-jail">—</strong>
-              </div>
-              <div class="exposure-stat">
-                <span>Statutory basis</span>
-                <strong id="exposure-basis">—</strong>
-              </div>
-            </div>
-
-            <p id="exposure-note" class="exposure-note"></p>
-            <a id="exposure-source" class="statute-link" target="_blank" rel="noopener noreferrer">
-              View governing statute
-            </a>
-          </div>
-
-          <aside class="legal-note">
-            <strong>Scope:</strong> This is a quick misdemeanor jail-exposure reference, not a
-            complete sentencing calculation. Priors, enhancements, multiple counts, mandatory
-            minimums, probation conditions, alternative felony punishment, and other statutes may
-            change the result. Entries marked “varies” need additional facts or a subdivision.
-            Statutory data checked against California Legislative Information in October 2026.
-          </aside>
-            </section>
-          </div>
-        </section>
-
-        <section class="tool-panel tool-view" id="tool-probation" data-tool-view="probation" hidden>
-          <div class="tool-panel-body">
-            <section class="probation-card" aria-labelledby="probation-title">
-              <p class="eyebrow">California misdemeanor probation</p>
-              <h2 id="probation-title">Probation Lookup</h2>
-              <p class="probation-intro">
-                Search by code section or common offense name. The result distinguishes general
-                probation eligibility from mandatory conditions that apply if probation is granted.
+            <section class="exposure-card" aria-labelledby="charge-title">
+              <p class="eyebrow">California charge reference</p>
+              <h2 id="charge-title">Charge Lookup</h2>
+              <p class="exposure-intro">
+                Enter a Penal Code, Vehicle Code, Health and Safety Code, or supported Welfare and
+                Institutions Code section or common offense name. One search returns the charge information
+                currently loaded in Reference Desk.
               </p>
 
-              <form id="probation-form" class="lookup-form">
-                <label for="probation-lookup">Offense</label>
+              <form id="charge-form" class="lookup-form">
+                <label for="charge-lookup">Offense</label>
                 <div class="lookup-controls">
                   <input
-                    id="probation-lookup"
+                    id="charge-lookup"
                     type="text"
                     autocomplete="off"
-                    placeholder="e.g., PC 243(e)(1), domestic battery, or DUI"
+                    placeholder="e.g., PC 243(e)(1), battery, VC 23103, or 368(b)"
                   />
-                  <button type="submit" class="lookup-button">Check probation</button>
+                  <button type="submit" class="lookup-button">Look up charge</button>
                 </div>
               </form>
 
-              <div id="probation-result" class="probation-result" hidden aria-live="polite">
-                <div class="probation-heading">
-                  <div>
-                    <p id="probation-code" class="exposure-code"></p>
-                    <p id="probation-name" class="exposure-name"></p>
-                  </div>
-                  <span id="probation-badge" class="exposure-badge"></span>
-                </div>
+              <div id="charge-results" class="charge-results" hidden>
+                <section class="charge-result-group" aria-labelledby="charge-exposure-heading">
+                  <h3 id="charge-exposure-heading">Maximum Exposure</h3>
+                  <div id="exposure-result" class="exposure-result" hidden aria-live="polite">
+                    <div class="exposure-heading">
+                      <div>
+                        <p id="exposure-code" class="exposure-code"></p>
+                        <p id="exposure-name" class="exposure-name"></p>
+                      </div>
+                      <span id="exposure-badge" class="exposure-badge"></span>
+                    </div>
 
-                <div class="probation-grid">
-                  <div class="probation-stat">
-                    <span>Probation</span>
-                    <strong id="probation-status">—</strong>
-                  </div>
-                  <div class="probation-stat">
-                    <span>Term</span>
-                    <strong id="probation-term">—</strong>
-                  </div>
-                  <div class="probation-stat">
-                    <span>Maximum penal fine</span>
-                    <strong id="probation-max-fine">—</strong>
-                    <a id="probation-fine-source" class="probation-fine-source" href="#" target="_blank" rel="noopener noreferrer" hidden>View fine authority</a>
-                  </div>
-                </div>
+                    <div class="exposure-grid">
+                      <div class="exposure-stat">
+                        <span>Misdemeanor jail exposure</span>
+                        <strong id="exposure-jail">—</strong>
+                      </div>
+                      <div class="exposure-stat">
+                        <span>Statutory basis</span>
+                        <strong id="exposure-basis">—</strong>
+                      </div>
+                    </div>
 
-                <div id="probation-terms-wrap" class="probation-terms-wrap">
-                  <p class="probation-terms-title">Mandatory / notable terms</p>
-                  <ul id="probation-terms" class="probation-terms"></ul>
-                </div>
+                    <a id="exposure-source" class="statute-link" target="_blank" rel="noopener noreferrer">
+                      View governing statute
+                    </a>
 
-                <p id="probation-note" class="probation-note"></p>
-                <div id="probation-links" class="probation-links"></div>
+                    <details class="charge-detail-toggle">
+                      <summary>Notes</summary>
+                      <p id="exposure-note" class="exposure-note"></p>
+                    </details>
+                  </div>
+                </section>
+
+                <section class="charge-result-group" aria-labelledby="charge-probation-heading">
+                  <h3 id="charge-probation-heading">Probation</h3>
+                  <div id="probation-result" class="probation-result" hidden aria-live="polite">
+                    <div class="probation-heading">
+                      <div>
+                        <p id="probation-code" class="exposure-code"></p>
+                        <p id="probation-name" class="exposure-name"></p>
+                      </div>
+                      <span id="probation-badge" class="exposure-badge"></span>
+                    </div>
+
+                    <div class="probation-grid">
+                      <div class="probation-stat">
+                        <span>Eligibility</span>
+                        <strong id="probation-status">—</strong>
+                      </div>
+                      <div class="probation-stat">
+                        <span>Term</span>
+                        <strong id="probation-term">—</strong>
+                      </div>
+                      <div class="probation-stat">
+                        <span>Maximum penal fine</span>
+                        <strong id="probation-max-fine">—</strong>
+                        <a id="probation-fine-source" class="probation-fine-source" href="#" target="_blank" rel="noopener noreferrer" hidden>View fine authority</a>
+                      </div>
+                    </div>
+
+                    <div id="probation-links" class="probation-links"></div>
+
+                    <details class="charge-detail-toggle">
+                      <summary>Terms & notes</summary>
+                      <div id="probation-terms-wrap" class="probation-terms-wrap">
+                        <p class="probation-terms-title">Mandatory / notable terms</p>
+                        <ul id="probation-terms" class="probation-terms"></ul>
+                      </div>
+                      <p id="probation-note" class="probation-note"></p>
+                    </details>
+                  </div>
+                </section>
+
+                <section class="charge-result-group" aria-labelledby="charge-firearms-heading">
+                  <h3 id="charge-firearms-heading">Penal Code § 29805</h3>
+                  <div id="lookup-result" class="lookup-result" hidden aria-live="polite">
+                    <div class="lookup-status-row">
+                      <span id="lookup-icon" class="lookup-icon" aria-hidden="true"></span>
+                      <div>
+                        <p id="lookup-status" class="lookup-status"></p>
+                        <p id="lookup-summary" class="lookup-summary"></p>
+                      </div>
+                    </div>
+
+                    <details class="charge-detail-toggle charge-29805-details">
+                      <summary>Statutory details</summary>
+                      <div id="lookup-details" class="lookup-details" hidden></div>
+                    </details>
+                  </div>
+
+                  <p class="lookup-source charge-source-compact">
+                    <a
+                      href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=PEN&sectionNum=29805."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >View Penal Code § 29805</a>
+                  </p>
+                </section>
               </div>
 
-              <aside class="legal-note">
-                <strong>Scope:</strong> This is a quick-reference aid, not a complete probation
-                eligibility analysis. General misdemeanor probation authority is in Penal Code
-                § 1203a, but offense-specific statutes, priors, enhancements, victim relationship,
-                and case facts can change eligibility or required terms. Maximum penal fines shown
-                are base statutory fines and exclude penalty assessments, restitution, program fees,
-                and other add-ons. Verify the governing statutes before relying on the result.
-              </aside>
+              <details class="charge-scope-note">
+                <summary>Scope & limitations</summary>
+                <div>
+                  <p>
+                    Exposure results are a quick misdemeanor jail reference, not a complete sentencing calculation.
+                    Priors, enhancements, multiple counts, mandatory minimums, probation conditions, alternative felony
+                    punishment, and other statutes may change the result.
+                  </p>
+                  <p>
+                    Probation results are a quick-reference aid. Offense-specific statutes, priors, enhancements,
+                    victim relationship, and case facts can change eligibility or required terms. Maximum penal fines
+                    exclude penalty assessments, restitution, program fees, and other add-ons.
+                  </p>
+                  <p>
+                    A § 29805 “not listed” result means only that the entered offense was not found in that statute;
+                    other firearm prohibitions may still apply. Statutory data should be verified before use.
+                  </p>
+                </div>
+              </details>
             </section>
           </div>
         </section>

@@ -174,13 +174,15 @@ addRange();
 calculateTotals();
 
 
-const lookupForm = document.querySelector("#lookup-form");
-const codeLookup = document.querySelector("#code-lookup");
+const chargeForm = document.querySelector("#charge-form");
+const chargeLookup = document.querySelector("#charge-lookup");
+const chargeResults = document.querySelector("#charge-results");
 const lookupResult = document.querySelector("#lookup-result");
 const lookupIcon = document.querySelector("#lookup-icon");
 const lookupStatus = document.querySelector("#lookup-status");
 const lookupSummary = document.querySelector("#lookup-summary");
 const lookupDetails = document.querySelector("#lookup-details");
+const lookupDetailsToggle = document.querySelector(".charge-29805-details");
 
 const SECTION_29805_EFFECTS = [
   "10-year prohibition following the misdemeanor conviction.",
@@ -284,6 +286,7 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   lookupResult.hidden = false;
   lookupResult.dataset.kind = kind;
   lookupDetails.hidden = true;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
 
   const display = formatQuery(query);
 
@@ -334,9 +337,27 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   });
 
   lookupDetails.hidden = detailRules.length === 0;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = detailRules.length === 0;
 }
 
 function lookupSection29805(rawValue) {
+  const apparentAlias = resolveCommonNameAlias(rawValue);
+  const apparentQuery = normalizeExposureInput(rawValue);
+  const apparentCode = apparentAlias?.code || apparentQuery?.code;
+
+  if (apparentCode === "VC" || apparentCode === "HS") {
+    lookupResult.hidden = false;
+    lookupResult.dataset.kind = "no";
+    lookupIcon.textContent = "×";
+    lookupStatus.textContent = "Not listed in Penal Code § 29805";
+    lookupSummary.textContent =
+      "This offense is not identified by the current § 29805 lookup. This does not rule out another firearm prohibition.";
+    lookupDetails.replaceChildren();
+    lookupDetails.hidden = true;
+    if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
+    return;
+  }
+
   const query =
     normalizeCodeInput(rawValue) ||
     resolveCommonNameToCode(rawValue, { allowedCodes: ["PC", "WIC"] });
@@ -348,6 +369,7 @@ function lookupSection29805(rawValue) {
     lookupStatus.textContent = "Enter a code section or common offense name";
     lookupSummary.textContent = "Try 242, PC 242, battery, criminal threats, or 368(b).";
     lookupDetails.hidden = true;
+    if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
     return;
   }
 
@@ -376,13 +398,6 @@ function lookupSection29805(rawValue) {
   }
 }
 
-lookupForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  lookupSection29805(codeLookup.value);
-});
-
-const exposureForm = document.querySelector("#exposure-form");
-const exposureLookup = document.querySelector("#exposure-lookup");
 const exposureResult = document.querySelector("#exposure-result");
 const exposureCode = document.querySelector("#exposure-code");
 const exposureName = document.querySelector("#exposure-name");
@@ -569,6 +584,7 @@ function normalizeExposureInput(value) {
   let code = "PC";
   if (/\b(vc|vehicle\s+code)\b/.test(text)) code = "VC";
   if (/\b(hs|hsc|health\s*(and|&)\s*safety(?:\s+code)?)\b/.test(text)) code = "HS";
+  if (/\b(wic|w&i|welfare\s*(and|&)\s*institutions?)\b/.test(text)) code = "WIC";
   if (/\b(pc|penal\s+code)\b/.test(text)) code = "PC";
 
   text = text
@@ -576,7 +592,8 @@ function normalizeExposureInput(value) {
     .replace(/penal\s+code/g, " ")
     .replace(/vehicle\s+code/g, " ")
     .replace(/health\s*(and|&)\s*safety(?:\s+code)?/g, " ")
-    .replace(/\b(pc|vc|hs|hsc)\b/g, " ")
+    .replace(/welfare\s*(and|&)\s*institutions?\s+code/g, " ")
+    .replace(/\b(pc|vc|hs|hsc|wic|w&i)\b/g, " ")
     .replace(/\b(section|sec\.?|code)\b/g, " ")
     .replace(/§/g, " ")
     .replace(/,/g, " ")
@@ -641,35 +658,11 @@ function renderExposure(entry, query) {
   exposureSource.hidden = false;
 }
 
-exposureForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const query = normalizeExposureInput(exposureLookup.value);
-  if (query) {
-    renderExposure(findExposureEntry(query), query);
-    return;
-  }
-
-  const commonNameEntry = resolveCommonNameToExposure(exposureLookup.value);
-  if (commonNameEntry) {
-    renderExposure(commonNameEntry, {
-      code: commonNameEntry.code,
-      section: commonNameEntry.section,
-    });
-    return;
-  }
-
-  renderExposure(null, null);
-});
-
-
 COMMON_OFFENSE_ALIASES.push(
   { terms:["dui","driving under the influence","drunk driving"], code:"VC", section:"23152" },
   { terms:["child endangerment","child abuse"], code:"PC", section:"273a" }
 );
 
-const probationForm = document.querySelector("#probation-form");
-const probationLookup = document.querySelector("#probation-lookup");
 const probationResult = document.querySelector("#probation-result");
 const probationCode = document.querySelector("#probation-code");
 const probationName = document.querySelector("#probation-name");
@@ -814,17 +807,40 @@ function renderProbation(rule, query) {
   probationNote.textContent =
     "This does not mean probation is unavailable. The offense simply is not yet covered by this quick-reference table.";
 }
-probationForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  const query = normalizeProbationQuery(probationLookup.value);
+function renderChargeLookup(rawValue) {
+  if (chargeResults) chargeResults.hidden = false;
 
-  if (!query) {
-    renderProbation(null, null);
-    return;
+  const exposureQuery = normalizeExposureInput(rawValue);
+  if (exposureQuery) {
+    renderExposure(findExposureEntry(exposureQuery), exposureQuery);
+  } else {
+    const commonNameEntry = resolveCommonNameToExposure(rawValue);
+    if (commonNameEntry) {
+      renderExposure(commonNameEntry, {
+        code: commonNameEntry.code,
+        section: commonNameEntry.section,
+      });
+    } else {
+      renderExposure(null, null);
+    }
   }
 
-  renderProbation(findProbationRule(query), query);
-});
+  const probationQuery = normalizeProbationQuery(rawValue);
+  if (probationQuery) {
+    renderProbation(findProbationRule(probationQuery), probationQuery);
+  } else {
+    renderProbation(null, null);
+  }
+
+  lookupSection29805(rawValue);
+}
+
+if (chargeForm) {
+  chargeForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    renderChargeLookup(chargeLookup.value);
+  });
+}
 
 
 // Future Date Calculator
@@ -927,9 +943,7 @@ const activeToolTitle = document.querySelector("#active-tool-title");
 const toolTitles = {
   dates: "Dates & Penal Code § 4019 Credits",
   "future-date": "Future Date Calculator",
-  exposure: "Maximum Exposure Lookup",
-  probation: "Probation Eligibility & Mandatory Terms",
-  firearms: "Penal Code § 29805 Check",
+  charges: "Charge Lookup",
   bac: "Blood Alcohol Estimator",
 };
 
@@ -1767,19 +1781,17 @@ function resetAllReferenceDeskTools() {
   futureDateOutput.textContent = "—";
   futureDateSummary.textContent = "";
 
-  // § 29805
+  // Charge Lookup
+  if (chargeResults) chargeResults.hidden = true;
+  exposureResult.hidden = true;
+  probationResult.hidden = true;
   lookupResult.hidden = true;
   lookupDetails.hidden = true;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
   lookupDetails.replaceChildren();
   lookupIcon.textContent = "";
   lookupStatus.textContent = "";
   lookupSummary.textContent = "";
-
-  // Maximum Exposure
-  exposureResult.hidden = true;
-
-  // Eligibility & Terms
-  probationResult.hidden = true;
   probationTerms.replaceChildren();
   probationLinks.replaceChildren();
 

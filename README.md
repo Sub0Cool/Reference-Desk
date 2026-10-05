@@ -1,9 +1,9 @@
 # Reference Desk
 
 A small, dependency-free browser toolkit for California criminal-law workflow.
-It includes inclusive date counting, Penal Code § 4019 custody credits, a Penal
-Code § 29805 firearm-prohibition lookup, and a growing misdemeanor exposure
-reference.
+It includes inclusive date counting, Penal Code § 4019 custody credits, a unified
+charge lookup for misdemeanor exposure, probation information, and Penal Code
+§ 29805 firearm-prohibition checks, plus blood alcohol estimation tools.
 
 ## Use it locally
 
@@ -45,49 +45,29 @@ otherwise qualify for presentence credit. The result should be independently
 verified before use in a case.
 
 
-## California Penal Code § 29805 lookup
+## Unified charge lookup
 
-The app also includes a local lookup for offenses listed in the current text of
-Penal Code § 29805. The input is deliberately forgiving: examples such as
-`242`, `PC 242`, `Penal Code section 242`, `§ 242`, and `368(b)`
-are normalized before lookup.
+Reference Desk combines the former Maximum Exposure, Probation Eligibility &
+Terms, and Penal Code § 29805 tools into one charge-centered lookup. Enter a code
+section or supported common offense name once and the app returns all currently
+loaded information for that charge.
 
-The lookup is subdivision-aware where § 29805 lists only part of a statute. It
-also displays the specific § 29805 subdivision and any conviction-date or factual
-condition reflected in the statute. A "not listed" result means only that the
-entered offense was not found in § 29805; it is not a determination that no
-other firearm prohibition applies.
+The unified result preserves the existing behavior of each source tool:
 
-Statutory source: California Legislative Information, Penal Code § 29805,
-current text effective January 1, 2026.
+- **Maximum Exposure** reports the misdemeanor county-jail exposure and the
+  statutory provision supplying the punishment, with a direct link to the
+  governing statute.
+- **Probation Eligibility & Terms** reports general eligibility, offense-specific
+  mandatory or notable terms, maximum penal-fine information when loaded, and
+  links to the governing authorities.
+- **Penal Code § 29805** remains subdivision-aware and reports whether the offense
+  is listed, conditional, or requires more subdivision information, with a direct
+  link to § 29805.
 
+Where exposure or probation consequences depend on a subdivision, prior
+conviction, injury, victim relationship, value threshold, or other fact, the tool
+continues to use cautious results such as **Varies**, **Generally eligible**, or
+**More information needed** rather than inventing a definitive answer.
 
-## California misdemeanor exposure lookup
-
-The app includes a starter lookup table for commonly encountered California
-misdemeanors across the Penal Code, Vehicle Code, and Health and Safety Code.
-Input is flexible: examples include `PC 242`, `242`, `VC 20002`, and
-`HS 11350`.
-
-The lookup reports the maximum misdemeanor county-jail exposure and the
-statutory provision supplying the punishment. Where exposure depends on a
-subdivision, prior conviction, injury, value threshold, or other fact, the tool
-returns **Varies** rather than inventing a single answer. The table is designed
-to be expanded over time.
-
-This is a quick-reference tool, not a complete sentencing calculator. It does
-not automatically add enhancements, consecutive counts, probation conditions,
-or alternative felony punishment.
-
-
-## Probation eligibility and mandatory terms
-
-A separate probation lookup provides a quick-reference answer for common charges.
-It distinguishes general misdemeanor probation eligibility from offense-specific
-mandatory conditions. The initial special-rule set includes domestic battery,
-corporal injury, specified protective-order violations, child endangerment, and DUI.
-
-For other offenses already in the misdemeanor-exposure table, the tool provides
-a conservative general-probation result under Penal Code § 1203a and warns when
-no offense-specific rule has yet been loaded. The probation table is intended to
-grow over time and should not replace review of the governing sentencing statutes.
+The consolidation does not add new substantive legal rules to the underlying
+offense or § 29805 datasets.
