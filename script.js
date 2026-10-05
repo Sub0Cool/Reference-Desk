@@ -176,11 +176,13 @@ calculateTotals();
 
 const chargeForm = document.querySelector("#charge-form");
 const chargeLookup = document.querySelector("#charge-lookup");
+const chargeResults = document.querySelector("#charge-results");
 const lookupResult = document.querySelector("#lookup-result");
 const lookupIcon = document.querySelector("#lookup-icon");
 const lookupStatus = document.querySelector("#lookup-status");
 const lookupSummary = document.querySelector("#lookup-summary");
 const lookupDetails = document.querySelector("#lookup-details");
+const lookupDetailsToggle = document.querySelector(".charge-29805-details");
 
 const SECTION_29805_EFFECTS = [
   "10-year prohibition following the misdemeanor conviction.",
@@ -284,6 +286,7 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   lookupResult.hidden = false;
   lookupResult.dataset.kind = kind;
   lookupDetails.hidden = true;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
 
   const display = formatQuery(query);
 
@@ -334,6 +337,7 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   });
 
   lookupDetails.hidden = detailRules.length === 0;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = detailRules.length === 0;
 }
 
 function lookupSection29805(rawValue) {
@@ -350,6 +354,7 @@ function lookupSection29805(rawValue) {
       "This offense is not identified by the current § 29805 lookup. This does not rule out another firearm prohibition.";
     lookupDetails.replaceChildren();
     lookupDetails.hidden = true;
+    if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
     return;
   }
 
@@ -364,6 +369,7 @@ function lookupSection29805(rawValue) {
     lookupStatus.textContent = "Enter a code section or common offense name";
     lookupSummary.textContent = "Try 242, PC 242, battery, criminal threats, or 368(b).";
     lookupDetails.hidden = true;
+    if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
     return;
   }
 
@@ -802,6 +808,8 @@ function renderProbation(rule, query) {
     "This does not mean probation is unavailable. The offense simply is not yet covered by this quick-reference table.";
 }
 function renderChargeLookup(rawValue) {
+  if (chargeResults) chargeResults.hidden = false;
+
   const exposureQuery = normalizeExposureInput(rawValue);
   if (exposureQuery) {
     renderExposure(findExposureEntry(exposureQuery), exposureQuery);
@@ -1774,10 +1782,12 @@ function resetAllReferenceDeskTools() {
   futureDateSummary.textContent = "";
 
   // Charge Lookup
+  if (chargeResults) chargeResults.hidden = true;
   exposureResult.hidden = true;
   probationResult.hidden = true;
   lookupResult.hidden = true;
   lookupDetails.hidden = true;
+  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
   lookupDetails.replaceChildren();
   lookupIcon.textContent = "";
   lookupStatus.textContent = "";
