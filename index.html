@@ -247,6 +247,22 @@
               </form>
 
               <div id="charge-results" class="charge-results" hidden>
+                <section id="office-tier-result" class="office-tier-result" hidden aria-live="polite">
+                  <div class="office-tier-heading">
+                    <div>
+                      <p class="office-tier-kicker">Office policy — not statutory law</p>
+                      <h3>Tier Classification</h3>
+                      <p id="office-tier-query" class="office-tier-query"></p>
+                    </div>
+                    <strong id="office-tier-value" class="office-tier-value">—</strong>
+                  </div>
+                  <p id="office-tier-summary" class="office-tier-summary"></p>
+                  <details id="office-tier-details-wrap" class="office-tier-details-wrap" hidden>
+                    <summary>Show tier reasons / variants</summary>
+                    <div id="office-tier-details" class="office-tier-details"></div>
+                  </details>
+                </section>
+
                 <section class="charge-result-group" aria-labelledby="charge-exposure-heading">
                   <h3 id="charge-exposure-heading">Maximum Exposure</h3>
                   <div id="exposure-result" class="exposure-result" hidden aria-live="polite">
@@ -753,6 +769,10 @@
     <script src="data/bac-methods.js"></script>
     <script src="data/offenses.js"></script>
     <script src="data/section-29805.js"></script>
+    <script src="data/office-tiers-1.js"></script>
+    <script src="data/office-tiers-2.js"></script>
+    <script src="data/office-tiers-3.js"></script>
+    <script src="data/office-tiers-4.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

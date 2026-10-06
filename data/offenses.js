@@ -396,25 +396,25 @@ window.EXPEDITER_OFFENSE_DATA = [
     section: "11550",
     name: "Under the influence of a controlled substance",
     misdemeanorExposure: {
-      jail: "1 year",
+      jail: "0 days–1 year",
       basis: "HSC § 11550(a)",
       law: "HSC",
       source: "11550",
-      note: "The misdemeanor maximum is one year; the statute also contains a 90-day minimum subject to statutory exceptions and treatment provisions."
+      note: "Subdivision (a) has no statutory minimum county-jail term and authorizes up to one year. A qualifying repeat offense under subdivision (b)(1), when the defendant refuses an offered licensed drug rehabilitation program, carries a 180-day minimum subject to the statute's rehabilitation exception."
     },
     metadata: {
-      provenance: "Existing Reference Desk lookup data",
+      provenance: "Existing Reference Desk lookup data; conflict resolution reviewed October 2026",
       authorities: [
         {
           "type": "statute",
           "law": "HSC",
           "section": "11550",
-          "label": "HSC § 11550(a)"
+          "label": "HSC § 11550(a)-(c)"
         }
       ],
       verification: {
-        status: "not reverified during metadata migration",
-        checkedThrough: null
+        status: "reverified against current statutory text",
+        checkedThrough: "2026-10-06"
       }
     }
   },

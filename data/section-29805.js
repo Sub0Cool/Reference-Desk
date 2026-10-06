@@ -299,3 +299,37 @@ window.REFERENCE_DESK_29805_RULES = [
     "citation": "PC § 29805(h)"
   }
 ];
+
+
+/*
+ * Conflict-resolution overlay for charge rows where the office matrix flags
+ * § 29805 but the statute's trigger is expressed through a related conduct or
+ * punishment subdivision. These are intentionally warnings, not definitive
+ * statutory matches.
+ */
+window.REFERENCE_DESK_29805_REVIEW_WARNINGS = [
+  {
+    code: "PC",
+    section: "25400",
+    subdivisionAny: [["a", "1"], ["a", "2"], ["a", "3"]],
+    chargeLaw: "PEN",
+    chargeSource: "25400",
+    chargeLabel: "PC § 25400"
+  },
+  {
+    code: "PC",
+    section: "25850",
+    subdivisionAny: [["a"]],
+    chargeLaw: "PEN",
+    chargeSource: "25850",
+    chargeLabel: "PC § 25850"
+  },
+  {
+    code: "PC",
+    section: "26400",
+    subdivisionAny: [["b", "1"], ["b", "2"]],
+    chargeLaw: "PEN",
+    chargeSource: "26400",
+    chargeLabel: "PC § 26400"
+  }
+];

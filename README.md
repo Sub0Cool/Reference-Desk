@@ -71,3 +71,24 @@ continues to use cautious results such as **Varies**, **Generally eligible**, or
 
 The consolidation does not add new substantive legal rules to the underlying
 offense or § 29805 datasets.
+
+### Office-policy tiers
+
+The charge lookup also supports an office-policy tier overlay imported from the
+Reference Desk master matrix. Tier classifications are explicitly labeled as
+**office policy — not statutory law**.
+
+The tier dataset preserves each spreadsheet row separately. If the same code
+section has more than one tier because the charged form or circumstances differ,
+the result displays every applicable tier and exposes the spreadsheet offense
+descriptions as the reason for the variants.
+
+The tier import does **not** broadly overwrite the existing legal datasets.
+Conflicts identified during the spreadsheet comparison are resolved only when
+specifically reviewed. The October 2026 conflict-resolution pass preserves the
+existing Reference Desk values where directed, updates HSC § 11550(a) to reflect
+no statutory minimum for the ordinary offense, and uses a cautious "Most likely
+applies" § 29805 warning for specified firearm-charge rows that require checking
+both the charge statute and § 29805. New matrix charges may therefore have an
+office tier while their legal exposure or probation information remains marked as
+not yet loaded.
