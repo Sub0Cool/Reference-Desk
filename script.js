@@ -916,6 +916,12 @@ function renderExposure(entry, query) {
 }
 
 COMMON_OFFENSE_ALIASES.push(
+  { terms:["first dui","1st dui","dui first offense","dui 1st offense"], code:"VC", section:"23152", exposureSection:"23152(a)" },
+  { terms:["second dui","2nd dui","dui second offense","dui 2nd offense"], code:"VC", section:"23152", exposureSection:"23152(a)/23540" },
+  { terms:["third dui","3rd dui","dui third offense","dui 3rd offense"], code:"VC", section:"23152", exposureSection:"23152(a)/23546" },
+  { terms:["fourth dui","4th dui","dui fourth offense","dui 4th offense"], code:"VC", section:"23152", exposureSection:"23152(a)/23550" },
+  { terms:["dui injury","dui with injury","injury dui"], code:"VC", section:"23153", exposureSection:"23153(a)" },
+  { terms:["second injury dui","2nd injury dui","dui injury second offense"], code:"VC", section:"23153", exposureSection:"23153(a)/23560" },
   { terms:["dui","driving under the influence","drunk driving"], code:"VC", section:"23152" },
   { terms:["child endangerment","child abuse"], code:"PC", section:"273a" }
 );
