@@ -933,6 +933,60 @@ window.EXPEDITER_OFFENSE_DATA = [
   },
   {
     code: "PC",
+    section: "530.5(a)",
+    name: "Unauthorized use of personal identifying information",
+    misdemeanorExposure: {
+      jail: "1 year",
+      basis: "PC § 530.5(a)",
+      law: "PEN",
+      source: "530.5",
+      note: "A wobbler. The misdemeanor alternative is county jail not exceeding one year; felony punishment under PC § 1170(h) is also authorized."
+    },
+    metadata: {
+      provenance: "Added to Reference Desk after statute review",
+      authorities: [
+        {
+          "type": "statute",
+          "law": "PEN",
+          "section": "530.5",
+          "label": "PC § 530.5(a)"
+        }
+      ],
+      verification: {
+        status: "verified against current California statutory text",
+        checkedThrough: "2026-10-06"
+      }
+    }
+  },
+  {
+    code: "PC",
+    section: "530.5(c)(2)",
+    name: "Possession of personal identifying information with prior identity-theft conviction",
+    misdemeanorExposure: {
+      jail: "1 year",
+      basis: "PC § 530.5(c)(2)",
+      law: "PEN",
+      source: "530.5",
+      note: "A wobbler. The misdemeanor alternative is county jail not exceeding one year; felony punishment under PC § 1170(h) is also authorized."
+    },
+    metadata: {
+      provenance: "Added to Reference Desk after statute review",
+      authorities: [
+        {
+          "type": "statute",
+          "law": "PEN",
+          "section": "530.5",
+          "label": "PC § 530.5(c)(2)"
+        }
+      ],
+      verification: {
+        status: "verified against current California statutory text",
+        checkedThrough: "2026-10-06"
+      }
+    }
+  },
+  {
+    code: "PC",
     section: "530.5(e)",
     name: "Mail theft",
     misdemeanorExposure: {
