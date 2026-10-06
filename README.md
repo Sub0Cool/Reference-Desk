@@ -71,3 +71,20 @@ continues to use cautious results such as **Varies**, **Generally eligible**, or
 
 The consolidation does not add new substantive legal rules to the underlying
 offense or § 29805 datasets.
+
+### Office-policy tiers
+
+The charge lookup also supports an office-policy tier overlay imported from the
+Reference Desk master matrix. Tier classifications are explicitly labeled as
+**office policy — not statutory law**.
+
+The tier dataset preserves each spreadsheet row separately. If the same code
+section has more than one tier because the charged form or circumstances differ,
+the result displays every applicable tier and exposes the spreadsheet offense
+descriptions as the reason for the variants.
+
+The tier import does **not** overwrite the existing legal datasets. Spreadsheet
+custody ranges, fines, and § 29805 fields that disagree with existing Reference
+Desk information are held for review rather than silently replacing current
+rules. New matrix charges may therefore have an office tier while their legal
+exposure or probation information remains marked as not yet loaded.
