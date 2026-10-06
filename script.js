@@ -392,6 +392,8 @@ const SECTION_29805_RULES = (window.REFERENCE_DESK_29805_RULES || []).map((rule)
   effect: SECTION_29805_EFFECTS[rule.id],
 }));
 
+const SECTION_29805_REVIEW_WARNINGS = window.REFERENCE_DESK_29805_REVIEW_WARNINGS || [];
+
 function normalizeCodeInput(value) {
   let text = value.trim().toLowerCase();
   if (!text) return null;
@@ -460,11 +462,68 @@ function formatQuery(query) {
   return prefix + " § " + query.section + query.subdivisions.map((part) => "(" + part + ")").join("");
 }
 
+function find29805ReviewWarning(query) {
+  return SECTION_29805_REVIEW_WARNINGS.find((warning) => {
+    if (warning.code !== query.code || warning.section !== query.section) return false;
+    return warning.subdivisionAny.some((target) =>
+      startsWithSubdivision(query.subdivisions, target),
+    );
+  }) || null;
+}
+
+function renderLikely29805Warning(query, warning) {
+  lookupResult.hidden = false;
+  lookupResult.dataset.kind = "conditional";
+  lookupIcon.textContent = "!";
+  lookupStatus.textContent = "Most likely applies — verify both statutes";
+  lookupSummary.textContent =
+    "Most likely applies, check both " + formatQuery(query) + " and Penal Code § 29805 to verify.";
+
+  lookupDetails.replaceChildren();
+
+  const item = document.createElement("div");
+  item.className = "lookup-detail-item";
+
+  const label = document.createElement("span");
+  label.className = "lookup-detail-label";
+  label.textContent = "Verify against both authorities";
+
+  const explanation = document.createElement("p");
+  explanation.textContent =
+    "The office matrix flags this charge for § 29805, while the statute expresses the trigger through related conduct or punishment subdivisions.";
+
+  const chargeLink = document.createElement("a");
+  chargeLink.className = "lookup-detail-link";
+  chargeLink.href = legiUrl(warning.chargeLaw, warning.chargeSource);
+  chargeLink.target = "_blank";
+  chargeLink.rel = "noopener noreferrer";
+  chargeLink.textContent = "View " + warning.chargeLabel + " on California Legislative Information →";
+
+  const prohibitionLink = document.createElement("a");
+  prohibitionLink.className = "lookup-detail-link";
+  prohibitionLink.href = legiUrl("PEN", "29805");
+  prohibitionLink.target = "_blank";
+  prohibitionLink.rel = "noopener noreferrer";
+  prohibitionLink.textContent = "View Penal Code § 29805 on California Legislative Information →";
+
+  item.append(label, explanation, chargeLink, prohibitionLink);
+  lookupDetails.append(item);
+  lookupDetails.hidden = false;
+
+  if (lookupDetailsToggle) {
+    lookupDetailsToggle.hidden = false;
+    lookupDetailsToggle.open = true;
+  }
+}
+
 function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
   lookupResult.hidden = false;
   lookupResult.dataset.kind = kind;
   lookupDetails.hidden = true;
-  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
+  if (lookupDetailsToggle) {
+    lookupDetailsToggle.hidden = true;
+    lookupDetailsToggle.open = false;
+  }
 
   const display = formatQuery(query);
 
@@ -562,6 +621,12 @@ function lookupSection29805(rawValue) {
     lookupSummary.textContent = "Try 242, PC 242, battery, criminal threats, or 368(b).";
     lookupDetails.hidden = true;
     if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
+    return;
+  }
+
+  const reviewWarning = find29805ReviewWarning(query);
+  if (reviewWarning) {
+    renderLikely29805Warning(query, reviewWarning);
     return;
   }
 
@@ -1987,7 +2052,10 @@ function resetAllReferenceDeskTools() {
   probationResult.hidden = true;
   lookupResult.hidden = true;
   lookupDetails.hidden = true;
-  if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
+  if (lookupDetailsToggle) {
+    lookupDetailsToggle.hidden = true;
+    lookupDetailsToggle.open = false;
+  }
   lookupDetails.replaceChildren();
   lookupIcon.textContent = "";
   lookupStatus.textContent = "";
