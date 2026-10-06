@@ -177,6 +177,184 @@ calculateTotals();
 const chargeForm = document.querySelector("#charge-form");
 const chargeLookup = document.querySelector("#charge-lookup");
 const chargeResults = document.querySelector("#charge-results");
+const officeTierResult = document.querySelector("#office-tier-result");
+const officeTierQuery = document.querySelector("#office-tier-query");
+const officeTierValue = document.querySelector("#office-tier-value");
+const officeTierSummary = document.querySelector("#office-tier-summary");
+const officeTierDetailsWrap = document.querySelector("#office-tier-details-wrap");
+const officeTierDetails = document.querySelector("#office-tier-details");
+
+const OFFICE_TIER_DATA = window.REFERENCE_DESK_OFFICE_TIER_DATA || [];
+const OFFICE_TIER_ORDER = ["1", "1+", "2", "2+", "3"];
+
+function normalizeOfficeTierText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function normalizeOfficeTierInput(value) {
+  let text = String(value || "").trim().toLowerCase();
+  if (!text) return null;
+
+  let code = "PC";
+  if (/\b(vc|vehicle\s+code)\b/.test(text)) code = "VC";
+  else if (/\b(hs|hsc|health\s*(?:and|&)\s*safety(?:\s+code)?)\b/.test(text)) code = "HS";
+  else if (/\b(bp|bpc|business\s*(?:and|&)\s*professions(?:\s+code)?)\b/.test(text)) code = "BP";
+  else if (/\b(fg|f&g|fish\s*(?:and|&)\s*game(?:\s+code)?)\b/.test(text)) code = "FG";
+  else if (/\b(hn|harbors?\s*(?:and|&)\s*navigation(?:\s+code)?)\b/.test(text)) code = "HN";
+  else if (/\b(wic|w&i|welfare\s*(?:and|&)\s*institutions?)\b/.test(text)) code = "WIC";
+  else if (/\b(pc|penal\s+code)\b/.test(text)) code = "PC";
+
+  text = text
+    .replace(/california/g, " ")
+    .replace(/penal\s+code/g, " ")
+    .replace(/vehicle\s+code/g, " ")
+    .replace(/health\s*(?:and|&)\s*safety(?:\s+code)?/g, " ")
+    .replace(/business\s*(?:and|&)\s*professions(?:\s+code)?/g, " ")
+    .replace(/fish\s*(?:and|&)\s*game(?:\s+code)?/g, " ")
+    .replace(/harbors?\s*(?:and|&)\s*navigation(?:\s+code)?/g, " ")
+    .replace(/welfare\s*(?:and|&)\s*institutions?\s+code/g, " ")
+    .replace(/\b(pc|vc|hs|hsc|bp|bpc|fg|f&g|hn|wic|w&i)\b/g, " ")
+    .replace(/\b(section|sec\.?|code)\b/g, " ")
+    .replace(/§/g, " ")
+    .replace(/,/g, " ")
+    .trim();
+
+  const sectionMatch = text.match(/\d+(?:\.\d+)?[a-z]?(?:\([a-z0-9]+\))*(?:\/(?:\d+(?:\.\d+)?[a-z]?)?(?:\([a-z0-9]+\))*)*/i);
+  if (!sectionMatch) return null;
+
+  return { code, section: sectionMatch[0] };
+}
+
+function officeTierBase(section) {
+  return String(section || "").toLowerCase().split(/[(/]/)[0];
+}
+
+function resolveOfficeTierLookup(rawValue) {
+  let query = normalizeOfficeTierInput(rawValue);
+
+  if (!query) {
+    const alias = resolveCommonNameAlias(rawValue);
+    if (alias) {
+      query = {
+        code: alias.code,
+        section:
+          alias.exposureSection ||
+          alias.section + (alias.subdivisions || []).map((part) => "(" + part + ")").join(""),
+      };
+    }
+  }
+
+  if (!query) {
+    const titleNeedle = normalizeOfficeTierText(rawValue);
+    if (titleNeedle) {
+      const titleMatches = OFFICE_TIER_DATA.filter(
+        (entry) => normalizeOfficeTierText(entry.title) === titleNeedle,
+      );
+      if (titleMatches.length) {
+        return {
+          query: { code: titleMatches[0].code, section: titleMatches[0].section },
+          entries: titleMatches,
+        };
+      }
+    }
+    return { query: null, entries: [] };
+  }
+
+  const sectionLower = query.section.toLowerCase();
+  let entries = OFFICE_TIER_DATA.filter(
+    (entry) => entry.code === query.code && entry.section.toLowerCase() === sectionLower,
+  );
+
+  if (!entries.length) {
+    entries = OFFICE_TIER_DATA.filter((entry) => {
+      if (entry.code !== query.code) return false;
+      return entry.section
+        .toLowerCase()
+        .split("/")
+        .some((part) => part === sectionLower);
+    });
+  }
+
+  if (!entries.length) {
+    const base = officeTierBase(query.section);
+    entries = OFFICE_TIER_DATA.filter(
+      (entry) => entry.code === query.code && officeTierBase(entry.section) === base,
+    );
+  }
+
+  return { query, entries };
+}
+
+function renderOfficeTier(rawValue) {
+  officeTierResult.hidden = false;
+  officeTierDetails.replaceChildren();
+  officeTierDetailsWrap.hidden = true;
+  officeTierDetailsWrap.open = false;
+
+  const match = resolveOfficeTierLookup(rawValue);
+  const { query, entries } = match;
+
+  if (!entries.length) {
+    officeTierValue.textContent = "Not classified";
+    officeTierQuery.textContent = query
+      ? query.code + " § " + query.section
+      : "No office-policy match";
+    officeTierSummary.textContent =
+      "This charge is not currently classified in the imported office tier matrix.";
+    return match;
+  }
+
+  const tiers = [...new Set(entries.map((entry) => entry.tier))]
+    .sort((a, b) => OFFICE_TIER_ORDER.indexOf(a) - OFFICE_TIER_ORDER.indexOf(b));
+
+  officeTierValue.textContent =
+    tiers.length === 1 ? "Tier " + tiers[0] : "Tiers " + tiers.join(" / ");
+  officeTierQuery.textContent = query
+    ? query.code + " § " + query.section
+    : entries[0].code + " § " + entries[0].section;
+
+  if (entries.length === 1) {
+    officeTierSummary.textContent = entries[0].title;
+    return match;
+  }
+
+  officeTierSummary.textContent =
+    tiers.length === 1
+      ? entries.length + " matrix variants share this tier."
+      : "Tier varies by the charged form or circumstances. Expand below to see each matrix entry.";
+
+  officeTierDetailsWrap.hidden = false;
+  entries.forEach((entry) => {
+    const item = document.createElement("div");
+    item.className = "office-tier-detail";
+
+    const badge = document.createElement("span");
+    badge.className = "office-tier-pill";
+    badge.textContent = "Tier " + entry.tier;
+
+    const copy = document.createElement("div");
+
+    const cite = document.createElement("strong");
+    cite.textContent = entry.code + " § " + entry.section;
+
+    const title = document.createElement("p");
+    title.textContent = entry.title;
+
+    const level = document.createElement("small");
+    level.textContent =
+      entry.level === "W" ? "Wobbler" : entry.level === "M" ? "Misdemeanor" : entry.level;
+
+    copy.append(cite, title, level);
+    item.append(badge, copy);
+    officeTierDetails.append(item);
+  });
+
+  return match;
+}
 const lookupResult = document.querySelector("#lookup-result");
 const lookupIcon = document.querySelector("#lookup-icon");
 const lookupStatus = document.querySelector("#lookup-status");
@@ -341,6 +519,20 @@ function renderLookupResult(kind, query, matchingRules, relatedRules = []) {
 }
 
 function lookupSection29805(rawValue) {
+  const officePolicyQuery = resolveOfficeTierLookup(rawValue).query;
+  if (officePolicyQuery && !["PC", "WIC"].includes(officePolicyQuery.code)) {
+    lookupResult.hidden = false;
+    lookupResult.dataset.kind = "no";
+    lookupIcon.textContent = "×";
+    lookupStatus.textContent = "Not listed in Penal Code § 29805";
+    lookupSummary.textContent =
+      "This non-Penal-Code offense is not identified by the current § 29805 lookup. This does not rule out another firearm prohibition.";
+    lookupDetails.replaceChildren();
+    lookupDetails.hidden = true;
+    if (lookupDetailsToggle) lookupDetailsToggle.hidden = true;
+    return;
+  }
+
   const apparentAlias = resolveCommonNameAlias(rawValue);
   const apparentQuery = normalizeExposureInput(rawValue);
   const apparentCode = apparentAlias?.code || apparentQuery?.code;
@@ -810,7 +1002,8 @@ function renderProbation(rule, query) {
 function renderChargeLookup(rawValue) {
   if (chargeResults) chargeResults.hidden = false;
 
-  const exposureQuery = normalizeExposureInput(rawValue);
+  const officeTierMatch = renderOfficeTier(rawValue);
+  const exposureQuery = officeTierMatch.query || normalizeExposureInput(rawValue);
   if (exposureQuery) {
     renderExposure(findExposureEntry(exposureQuery), exposureQuery);
   } else {
@@ -825,7 +1018,7 @@ function renderChargeLookup(rawValue) {
     }
   }
 
-  const probationQuery = normalizeProbationQuery(rawValue);
+  const probationQuery = officeTierMatch.query || normalizeProbationQuery(rawValue);
   if (probationQuery) {
     renderProbation(findProbationRule(probationQuery), probationQuery);
   } else {
@@ -1783,6 +1976,13 @@ function resetAllReferenceDeskTools() {
 
   // Charge Lookup
   if (chargeResults) chargeResults.hidden = true;
+  officeTierResult.hidden = true;
+  officeTierQuery.textContent = "";
+  officeTierValue.textContent = "—";
+  officeTierSummary.textContent = "";
+  officeTierDetails.replaceChildren();
+  officeTierDetailsWrap.hidden = true;
+  officeTierDetailsWrap.open = false;
   exposureResult.hidden = true;
   probationResult.hidden = true;
   lookupResult.hidden = true;
