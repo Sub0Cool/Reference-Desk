@@ -83,8 +83,12 @@ section has more than one tier because the charged form or circumstances differ,
 the result displays every applicable tier and exposes the spreadsheet offense
 descriptions as the reason for the variants.
 
-The tier import does **not** overwrite the existing legal datasets. Spreadsheet
-custody ranges, fines, and § 29805 fields that disagree with existing Reference
-Desk information are held for review rather than silently replacing current
-rules. New matrix charges may therefore have an office tier while their legal
-exposure or probation information remains marked as not yet loaded.
+The tier import does **not** broadly overwrite the existing legal datasets.
+Conflicts identified during the spreadsheet comparison are resolved only when
+specifically reviewed. The October 2026 conflict-resolution pass preserves the
+existing Reference Desk values where directed, updates HSC § 11550(a) to reflect
+no statutory minimum for the ordinary offense, and uses a cautious "Most likely
+applies" § 29805 warning for specified firearm-charge rows that require checking
+both the charge statute and § 29805. New matrix charges may therefore have an
+office tier while their legal exposure or probation information remains marked as
+not yet loaded.
