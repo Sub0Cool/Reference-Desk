@@ -1634,6 +1634,13 @@ window.EXPEDITER_OFFENSE_DATA = [
     code: "VC",
     section: "23152",
     name: "Driving under the influence",
+    misdemeanorExposure: {
+      jail: "Varies",
+      basis: "VC §§ 23536, 23540, 23546, 23550 & 23550.5",
+      law: "VEH",
+      source: "23536",
+      note: "Misdemeanor exposure depends on prior DUI history and the applicable penalty section. Enter the charged subdivision together with the penalty section when known (for example, VC § 23152(a)/23540 for a second DUI)."
+    },
     probation: {
       order: 5,
       status: "Eligible",
@@ -1667,6 +1674,1357 @@ window.EXPEDITER_OFFENSE_DATA = [
       verification: {
         status: "not reverified during metadata migration",
         checkedThrough: null
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153",
+    "name": "Driving under the influence causing injury",
+    "misdemeanorExposure": {
+      "jail": "Varies",
+      "basis": "VC §§ 23554, 23560 & related repeat-offender provisions",
+      "law": "VEH",
+      "source": "23554",
+      "note": "Section 23153 is a wobbler. County-jail exposure depends on prior DUI history: a first injury DUI is ordinarily 90 days to one year (five-day minimum if probation is granted), while a qualifying second injury DUI is ordinarily 120 days to one year with a 30-day probation/program alternative. State-prison punishment is also authorized."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)/23550",
+    "name": "DUI - Commercial Vehicle (4th)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550",
+      "source": "23550",
+      "note": "A § 23152 offense with three qualifying priors within 10 years is a wobbler. The misdemeanor alternative is 180 days to one year in county jail; felony punishment is also authorized under PC § 1170(h). If probation is granted, VC § 23552 generally requires 180 days, with a possible 30-day minimum through the specified 30-month-program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550",
+          "label": "VC § 23550"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)/23550.5(a)",
+    "name": "DUI - Commercial Vehicle + Prior Injury/Felony DUI",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)/23550.5(b)",
+    "name": "DUI - Commercial Vehicle + Prior Felony DUI or Veh Manslaughter",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(e)/23550",
+    "name": "DUI - Passenger for Hire (4th)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550",
+      "source": "23550",
+      "note": "A § 23152 offense with three qualifying priors within 10 years is a wobbler. The misdemeanor alternative is 180 days to one year in county jail; felony punishment is also authorized under PC § 1170(h). If probation is granted, VC § 23552 generally requires 180 days, with a possible 30-day minimum through the specified 30-month-program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550",
+          "label": "VC § 23550"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(e)/23550.5(a)",
+    "name": "DUI - Passenger for Hire + Prior Felony DUI or Veh Manslaughter",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)",
+    "name": "DUI (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(b)",
+    "name": "DUI - .08 >= (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)",
+    "name": "DUI - Commercial Vehicle (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)/23540",
+    "name": "DUI - Commercial Vehicle (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(d)/23546",
+    "name": "DUI - Commercial Vehicle (3rd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23546",
+      "source": "23546",
+      "note": "Third DUI within 10 years: VC § 23546 provides 120 days to one year in county jail. If probation is granted, VC § 23548 ordinarily retains a 120-day minimum, but a 30-month DUI-program route may permit a 30-day minimum upon request and a showing of good cause."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23546",
+          "label": "VC § 23546"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(e)",
+    "name": "DUI - Passenger for Hire (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(e)/23540",
+    "name": "DUI - Passenger for Hire (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(e)/23546",
+    "name": "DUI - Passenger for Hire (3rd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23546",
+      "source": "23546",
+      "note": "Third DUI within 10 years: VC § 23546 provides 120 days to one year in county jail. If probation is granted, VC § 23548 ordinarily retains a 120-day minimum, but a 30-month DUI-program route may permit a 30-day minimum upon request and a showing of good cause."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23546",
+          "label": "VC § 23546"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)/23550",
+    "name": "DUI (4th)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550",
+      "source": "23550",
+      "note": "A § 23152 offense with three qualifying priors within 10 years is a wobbler. The misdemeanor alternative is 180 days to one year in county jail; felony punishment is also authorized under PC § 1170(h). If probation is granted, VC § 23552 generally requires 180 days, with a possible 30-day minimum through the specified 30-month-program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550",
+          "label": "VC § 23550"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)/23550.5",
+    "name": "DUI + Prior Injury/Felony DUI",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)/23550.5(a)",
+    "name": "DUI + Prior Felony DUI or Veh Manslaughter",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(b)/23550",
+    "name": "DUI - .08 >= (4th)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550",
+      "source": "23550",
+      "note": "A § 23152 offense with three qualifying priors within 10 years is a wobbler. The misdemeanor alternative is 180 days to one year in county jail; felony punishment is also authorized under PC § 1170(h). If probation is granted, VC § 23552 generally requires 180 days, with a possible 30-day minimum through the specified 30-month-program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550",
+          "label": "VC § 23550"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(b)/23550.5",
+    "name": "DUI - .08 >=  + Prior Felony DUI",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(f)/23550.5",
+    "name": "DUI - Drug + Prior Felony DUI or Veh Manslaughter",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(f)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(g)/23550",
+    "name": "DUI - Combined (4th)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550",
+      "source": "23550",
+      "note": "A § 23152 offense with three qualifying priors within 10 years is a wobbler. The misdemeanor alternative is 180 days to one year in county jail; felony punishment is also authorized under PC § 1170(h). If probation is granted, VC § 23552 generally requires 180 days, with a possible 30-day minimum through the specified 30-month-program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550",
+          "label": "VC § 23550"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(g)/23550.5",
+    "name": "DUI - Combined + Prior Felony DUI or Veh Manslaughter",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23550.5",
+      "source": "23550.5",
+      "note": "VC § 23550.5 applies when the current DUI follows a qualifying prior felony DUI or specified vehicular-manslaughter conviction. The offense may be punished in state prison or by up to one year in county jail; the statute states no county-jail minimum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23550.5",
+          "label": "VC § 23550.5"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(a)",
+    "name": "DUI - Injury",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(a)/23560",
+    "name": "DUI - Injury (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23560",
+      "source": "23560",
+      "note": "A § 23153 injury DUI with one qualifying prior within 10 years is punishable in state prison or by 120 days to one year in county jail. If probation is granted, VC § 23562 includes a program-based alternative with 30 days to one year in county jail."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(b)",
+    "name": "DUI - .08>= + Injury",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(f)",
+    "name": "DUI - Drug",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(f)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(f)/23560",
+    "name": "DUI - Drug + Injury (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23560",
+      "source": "23560",
+      "note": "A § 23153 injury DUI with one qualifying prior within 10 years is punishable in state prison or by 120 days to one year in county jail. If probation is granted, VC § 23562 includes a program-based alternative with 30 days to one year in county jail."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(f)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(g)",
+    "name": "DUI - Combined",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(g)/23560",
+    "name": "DUI - Combined + Injury (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23560",
+      "source": "23560",
+      "note": "A § 23153 injury DUI with one qualifying prior within 10 years is punishable in state prison or by 120 days to one year in county jail. If probation is granted, VC § 23562 includes a program-based alternative with 30 days to one year in county jail."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)/23540",
+    "name": "DUI (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(a)/23546",
+    "name": "DUI (3rd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23546",
+      "source": "23546",
+      "note": "Third DUI within 10 years: VC § 23546 provides 120 days to one year in county jail. If probation is granted, VC § 23548 ordinarily retains a 120-day minimum, but a 30-month DUI-program route may permit a 30-day minimum upon request and a showing of good cause."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(a)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23546",
+          "label": "VC § 23546"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(b)/23540",
+    "name": "DUI - .08 >= (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(b)/23546",
+    "name": "DUI - .08 >= (3rd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23546",
+      "source": "23546",
+      "note": "Third DUI within 10 years: VC § 23546 provides 120 days to one year in county jail. If probation is granted, VC § 23548 ordinarily retains a 120-day minimum, but a 30-month DUI-program route may permit a 30-day minimum upon request and a showing of good cause."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(b)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23546",
+          "label": "VC § 23546"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(f)",
+    "name": "DUI - Drug (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(f)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(f)/23540",
+    "name": "DUI - Drug (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(f)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(g)",
+    "name": "DUI - Combined (1st)",
+    "misdemeanorExposure": {
+      "jail": "6 months",
+      "basis": "VC §§ 23152 & 23536",
+      "source": "23536",
+      "note": "First-offense § 23152 punishment is 96 hours to six months in county jail under VC § 23536. If probation is granted, VC § 23538 makes jail discretionary and permits 48 hours to six months as a probation condition."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23536",
+          "label": "VC § 23536"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(g)/23540",
+    "name": "DUI - Combined (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23540",
+      "source": "23540",
+      "note": "Second DUI within 10 years: VC § 23540 provides 90 days to one year in county jail. If probation is granted, VC § 23542 provides alternative custody conditions that can be as low as 96 hours, depending on the probation/program route."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23540",
+          "label": "VC § 23540"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23152(g)/23546",
+    "name": "DUI - Combined (3rd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23152 & 23546",
+      "source": "23546",
+      "note": "Third DUI within 10 years: VC § 23546 provides 120 days to one year in county jail. If probation is granted, VC § 23548 ordinarily retains a 120-day minimum, but a 30-month DUI-program route may permit a 30-day minimum upon request and a showing of good cause."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23152",
+          "label": "VC § 23152(g)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23546",
+          "label": "VC § 23546"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(d)",
+    "name": "DUI - Commercial Vehicle + Injury",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(d)/23560",
+    "name": "DUI - Commercial Vehicle + Injury (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23560",
+      "source": "23560",
+      "note": "A § 23153 injury DUI with one qualifying prior within 10 years is punishable in state prison or by 120 days to one year in county jail. If probation is granted, VC § 23562 includes a program-based alternative with 30 days to one year in county jail."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(d)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(e)",
+    "name": "DUI - Passenger for Hire + Injury",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23554",
+      "source": "23554",
+      "note": "For a first § 23153 injury DUI, VC § 23554 authorizes state-prison punishment or 90 days to one year in county jail. If probation is granted, VC § 23556 reduces the county-jail minimum to five days. The misdemeanor alternative therefore has a one-year maximum."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23554",
+          "label": "VC § 23554"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
+      }
+    }
+  },
+  {
+    "code": "VC",
+    "section": "23153(e)/23560",
+    "name": "DUI - Passenger for Hire + Injury (2nd)",
+    "misdemeanorExposure": {
+      "jail": "1 year",
+      "basis": "VC §§ 23153 & 23560",
+      "source": "23560",
+      "note": "A § 23153 injury DUI with one qualifying prior within 10 years is punishable in state prison or by 120 days to one year in county jail. If probation is granted, VC § 23562 includes a program-based alternative with 30 days to one year in county jail."
+    },
+    "metadata": {
+      "provenance": "Added from Master Matrix after current-law review",
+      "authorities": [
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23153",
+          "label": "VC § 23153(e)"
+        },
+        {
+          "type": "statute",
+          "law": "VEH",
+          "section": "23560",
+          "label": "VC § 23560"
+        }
+      ],
+      "verification": {
+        "status": "verified against current California statutory text",
+        "checkedThrough": "2026-10-06"
       }
     }
   },
@@ -3035,6 +4393,258 @@ window.REFERENCE_DESK_MAX_PENAL_FINE_DATA = {
     "law": "PEN",
     "section": "672",
     "label": "PC § 672"
+  },
+  "VC 23152(d)/23550": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550",
+    "label": "VC § 23550(a)"
+  },
+  "VC 23152(d)/23550.5(a)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(d)/23550.5(b)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(e)/23550": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550",
+    "label": "VC § 23550(a)"
+  },
+  "VC 23152(e)/23550.5(a)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(a)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(b)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(d)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(d)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(d)/23546": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23546",
+    "label": "VC § 23546(a)"
+  },
+  "VC 23152(e)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(e)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(e)/23546": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23546",
+    "label": "VC § 23546(a)"
+  },
+  "VC 23152(a)/23550": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550",
+    "label": "VC § 23550(a)"
+  },
+  "VC 23152(a)/23550.5": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(a)/23550.5(a)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(b)/23550": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550",
+    "label": "VC § 23550(a)"
+  },
+  "VC 23152(b)/23550.5": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(f)/23550.5": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23152(g)/23550": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550",
+    "label": "VC § 23550(a)"
+  },
+  "VC 23152(g)/23550.5": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23550.5",
+    "label": "VC § 23550.5"
+  },
+  "VC 23153(a)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(a)/23560": {
+    "display": "$5,000",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC § 23560"
+  },
+  "VC 23153(b)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(f)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(f)/23560": {
+    "display": "$5,000",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC § 23560"
+  },
+  "VC 23153(g)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(g)/23560": {
+    "display": "$5,000",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC § 23560"
+  },
+  "VC 23152(a)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(a)/23546": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23546",
+    "label": "VC § 23546(a)"
+  },
+  "VC 23152(b)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(b)/23546": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23546",
+    "label": "VC § 23546(a)"
+  },
+  "VC 23152(f)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(f)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(g)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23536",
+    "label": "VC § 23536(a)"
+  },
+  "VC 23152(g)/23540": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23540",
+    "label": "VC § 23540(a)"
+  },
+  "VC 23152(g)/23546": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23546",
+    "label": "VC § 23546(a)"
+  },
+  "VC 23153(d)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(d)/23560": {
+    "display": "$5,000",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC § 23560"
+  },
+  "VC 23153(e)": {
+    "display": "$1,000",
+    "law": "VEH",
+    "section": "23554",
+    "label": "VC § 23554"
+  },
+  "VC 23153(e)/23560": {
+    "display": "$5,000",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC § 23560"
+  },
+  "VC 23153": {
+    "display": "Up to $5,000 depending on prior history",
+    "law": "VEH",
+    "section": "23560",
+    "label": "VC §§ 23554 & 23560"
   }
 };
 
