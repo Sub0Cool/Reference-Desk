@@ -176,6 +176,8 @@ calculateTotals();
 
 const chargeForm = document.querySelector("#charge-form");
 const chargeLookup = document.querySelector("#charge-lookup");
+const chargeSuggestions = document.querySelector("#charge-suggestions");
+const chargeSuggestionStatus = document.querySelector("#charge-suggestion-status");
 const chargeResults = document.querySelector("#charge-results");
 const officeTierResult = document.querySelector("#office-tier-result");
 const officeTierQuery = document.querySelector("#office-tier-query");
@@ -1066,6 +1068,324 @@ function renderProbation(rule, query) {
   probationNote.textContent =
     "This does not mean probation is unavailable. The offense simply is not yet covered by this quick-reference table.";
 }
+const CHARGE_AUTOCOMPLETE_MIN_CHARACTERS = 2;
+let visibleChargeSuggestions = [];
+let activeChargeSuggestionIndex = -1;
+
+function normalizeChargeSearchText(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, " and ")
+    .replace(/§/g, " ")
+    .replace(/[^a-z0-9.]+/g, " ")
+    .trim()
+    .replace(/\s+/g, " ");
+}
+
+function chargeSuggestionCitation(entry) {
+  return entry.code + " § " + entry.section;
+}
+
+function chargeSuggestionAliasTerms(entry) {
+  const sectionLower = String(entry.section || "").toLowerCase();
+  const base = officeTierBase(entry.section);
+  const terms = [];
+
+  COMMON_OFFENSE_ALIASES.forEach((alias) => {
+    if (alias.code !== entry.code) return;
+
+    const aliasSection =
+      alias.exposureSection ||
+      alias.section + (alias.subdivisions || []).map((part) => "(" + part + ")").join("");
+    const aliasSectionLower = String(aliasSection || "").toLowerCase();
+
+    const isMatch = alias.exposureSection
+      ? aliasSectionLower === sectionLower
+      : officeTierBase(aliasSection) === base;
+
+    if (isMatch) terms.push(...alias.terms);
+  });
+
+  if (/\bdui\b/i.test(entry.title)) {
+    terms.push("driving under the influence", "drunk driving", "drive", "driving");
+  } else if (/\bdriving\b/i.test(entry.title)) {
+    terms.push("drive");
+  }
+
+  return [...new Set(terms.map((term) => normalizeChargeSearchText(term)).filter(Boolean))];
+}
+
+function buildChargeSuggestionCatalog() {
+  const catalog = [];
+  const exactMatrixSections = new Set();
+  const identities = new Set();
+
+  OFFICE_TIER_DATA.forEach((entry) => {
+    const identity =
+      entry.code + "|" + String(entry.section).toLowerCase() + "|" + normalizeChargeSearchText(entry.title);
+    if (identities.has(identity)) return;
+    identities.add(identity);
+    exactMatrixSections.add(entry.code + "|" + String(entry.section).toLowerCase());
+
+    catalog.push({
+      code: entry.code,
+      section: entry.section,
+      title: entry.title,
+      tier: entry.tier || null,
+      level: entry.level || null,
+      source: "matrix",
+    });
+  });
+
+  (window.EXPEDITER_OFFENSE_DATA || []).forEach((offense) => {
+    const sectionKey = offense.code + "|" + String(offense.section).toLowerCase();
+    if (exactMatrixSections.has(sectionKey)) return;
+
+    const identity =
+      offense.code + "|" + String(offense.section).toLowerCase() + "|" + normalizeChargeSearchText(offense.name);
+    if (identities.has(identity)) return;
+    identities.add(identity);
+
+    catalog.push({
+      code: offense.code,
+      section: offense.section,
+      title: offense.name,
+      tier: null,
+      level: null,
+      source: "legal",
+    });
+  });
+
+  return catalog.map((entry) => {
+    const aliases = chargeSuggestionAliasTerms(entry);
+    const titleText = normalizeChargeSearchText(entry.title);
+    const citationText = normalizeChargeSearchText(entry.code + " " + entry.section);
+    const searchable = normalizeChargeSearchText(
+      [entry.title, entry.code, entry.section, chargeSuggestionCitation(entry), ...aliases].join(" "),
+    );
+
+    return {
+      ...entry,
+      aliases,
+      titleText,
+      citationText,
+      searchable,
+      words: [...new Set(searchable.split(" ").filter(Boolean))],
+    };
+  });
+}
+
+const CHARGE_SUGGESTION_CATALOG = buildChargeSuggestionCatalog();
+
+function scoreChargeSuggestion(entry, rawQuery) {
+  const query = normalizeChargeSearchText(rawQuery);
+  if (query.length < CHARGE_AUTOCOMPLETE_MIN_CHARACTERS) return null;
+
+  const queryWords = query.split(" ").filter(Boolean);
+  const exactAlias = entry.aliases.includes(query);
+  const aliasStarts = entry.aliases.some((alias) => alias.startsWith(query));
+  const allWordsMatch = queryWords.every((queryWord) =>
+    entry.words.some((word) => word === queryWord || word.startsWith(queryWord)),
+  );
+
+  if (entry.citationText === query) return 0;
+  if (entry.titleText === query) return 1;
+  if (exactAlias) return 2;
+  if (entry.citationText.startsWith(query)) return 5;
+  if (entry.titleText.startsWith(query)) return 6;
+  if (aliasStarts) return 7;
+  if (allWordsMatch) return 10;
+  if (entry.searchable.includes(query)) return 20;
+
+  return null;
+}
+
+function getChargeSuggestions(rawQuery) {
+  return CHARGE_SUGGESTION_CATALOG
+    .map((entry) => ({ entry, score: scoreChargeSuggestion(entry, rawQuery) }))
+    .filter((item) => item.score !== null)
+    .sort((a, b) => {
+      if (a.score !== b.score) return a.score - b.score;
+
+      const titleCompare = a.entry.title.localeCompare(b.entry.title);
+      if (titleCompare !== 0) return titleCompare;
+
+      const codeCompare = a.entry.code.localeCompare(b.entry.code);
+      if (codeCompare !== 0) return codeCompare;
+
+      return a.entry.section.localeCompare(b.entry.section, undefined, { numeric: true });
+    })
+    .map((item) => item.entry);
+}
+
+function closeChargeSuggestions() {
+  if (!chargeSuggestions || !chargeLookup) return;
+
+  chargeSuggestions.hidden = true;
+  chargeSuggestions.replaceChildren();
+  visibleChargeSuggestions = [];
+  activeChargeSuggestionIndex = -1;
+  chargeLookup.setAttribute("aria-expanded", "false");
+  chargeLookup.setAttribute("aria-activedescendant", "");
+  if (chargeSuggestionStatus) chargeSuggestionStatus.textContent = "";
+}
+
+function setActiveChargeSuggestion(index) {
+  if (!chargeSuggestions || visibleChargeSuggestions.length === 0) return;
+
+  const options = [...chargeSuggestions.querySelectorAll('[role="option"]')];
+  if (!options.length) return;
+
+  const nextIndex = ((index % options.length) + options.length) % options.length;
+  activeChargeSuggestionIndex = nextIndex;
+
+  options.forEach((option, optionIndex) => {
+    const isActive = optionIndex === nextIndex;
+    option.setAttribute("aria-selected", isActive ? "true" : "false");
+    option.classList.toggle("is-active", isActive);
+  });
+
+  const activeOption = options[nextIndex];
+  chargeLookup.setAttribute("aria-activedescendant", activeOption.id);
+  activeOption.scrollIntoView({ block: "nearest" });
+}
+
+function selectChargeSuggestion(index) {
+  const entry = visibleChargeSuggestions[index];
+  if (!entry || !chargeLookup) return;
+
+  const lookupValue = entry.code + " " + entry.section;
+  chargeLookup.value = lookupValue;
+  closeChargeSuggestions();
+  renderChargeLookup(lookupValue);
+  chargeLookup.focus();
+}
+
+function renderChargeSuggestions(rawQuery) {
+  if (!chargeSuggestions || !chargeLookup) return;
+
+  const normalized = normalizeChargeSearchText(rawQuery);
+  if (normalized.length < CHARGE_AUTOCOMPLETE_MIN_CHARACTERS) {
+    closeChargeSuggestions();
+    return;
+  }
+
+  visibleChargeSuggestions = getChargeSuggestions(rawQuery);
+  activeChargeSuggestionIndex = -1;
+  chargeSuggestions.replaceChildren();
+
+  if (visibleChargeSuggestions.length === 0) {
+    closeChargeSuggestions();
+    if (chargeSuggestionStatus) chargeSuggestionStatus.textContent = "No matching charges.";
+    return;
+  }
+
+  const fragment = document.createDocumentFragment();
+
+  visibleChargeSuggestions.forEach((entry, index) => {
+    const option = document.createElement("div");
+    option.id = "charge-suggestion-" + index;
+    option.className = "charge-suggestion-option";
+    option.setAttribute("role", "option");
+    option.setAttribute("aria-selected", "false");
+    option.dataset.suggestionIndex = String(index);
+
+    const copy = document.createElement("div");
+    copy.className = "charge-suggestion-copy";
+
+    const title = document.createElement("strong");
+    title.className = "charge-suggestion-title";
+    title.textContent = entry.title;
+
+    const meta = document.createElement("div");
+    meta.className = "charge-suggestion-meta";
+
+    const citation = document.createElement("span");
+    citation.textContent = chargeSuggestionCitation(entry);
+    meta.append(citation);
+
+    if (entry.tier) {
+      const tier = document.createElement("span");
+      tier.className = "charge-suggestion-tier";
+      tier.textContent = "Tier " + entry.tier;
+      meta.append(tier);
+    }
+
+    copy.append(title, meta);
+    option.append(copy);
+    fragment.append(option);
+  });
+
+  chargeSuggestions.append(fragment);
+  chargeSuggestions.hidden = false;
+  chargeLookup.setAttribute("aria-expanded", "true");
+  chargeLookup.setAttribute("aria-activedescendant", "");
+
+  if (chargeSuggestionStatus) {
+    const count = visibleChargeSuggestions.length;
+    chargeSuggestionStatus.textContent =
+      count + (count === 1 ? " matching charge." : " matching charges.");
+  }
+}
+
+if (chargeLookup && chargeSuggestions) {
+  chargeLookup.addEventListener("input", () => {
+    renderChargeSuggestions(chargeLookup.value);
+  });
+
+  chargeLookup.addEventListener("focus", () => {
+    renderChargeSuggestions(chargeLookup.value);
+  });
+
+  chargeLookup.addEventListener("keydown", (event) => {
+    if (chargeSuggestions.hidden) return;
+
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveChargeSuggestion(activeChargeSuggestionIndex + 1);
+      return;
+    }
+
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveChargeSuggestion(
+        activeChargeSuggestionIndex < 0
+          ? visibleChargeSuggestions.length - 1
+          : activeChargeSuggestionIndex - 1,
+      );
+      return;
+    }
+
+    if (event.key === "Enter" && activeChargeSuggestionIndex >= 0) {
+      event.preventDefault();
+      selectChargeSuggestion(activeChargeSuggestionIndex);
+      return;
+    }
+
+    if (event.key === "Escape") {
+      event.preventDefault();
+      closeChargeSuggestions();
+    }
+  });
+
+  chargeSuggestions.addEventListener("mousedown", (event) => {
+    event.preventDefault();
+  });
+
+  chargeSuggestions.addEventListener("click", (event) => {
+    const option = event.target.closest("[data-suggestion-index]");
+    if (!option) return;
+
+    selectChargeSuggestion(Number(option.dataset.suggestionIndex));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!event.target.closest(".charge-autocomplete")) {
+      closeChargeSuggestions();
+    }
+  });
+}
+
 function renderChargeLookup(rawValue) {
   if (chargeResults) chargeResults.hidden = false;
 
@@ -1098,6 +1418,7 @@ function renderChargeLookup(rawValue) {
 if (chargeForm) {
   chargeForm.addEventListener("submit", (event) => {
     event.preventDefault();
+    closeChargeSuggestions();
     renderChargeLookup(chargeLookup.value);
   });
 }
@@ -2042,6 +2363,7 @@ function resetAllReferenceDeskTools() {
   futureDateSummary.textContent = "";
 
   // Charge Lookup
+  closeChargeSuggestions();
   if (chargeResults) chargeResults.hidden = true;
   officeTierResult.hidden = true;
   officeTierQuery.textContent = "";

@@ -72,6 +72,20 @@ continues to use cautious results such as **Varies**, **Generally eligible**, or
 The consolidation does not add new substantive legal rules to the underlying
 offense or § 29805 datasets.
 
+### Charge typeahead
+
+The Charge Lookup provides live autocomplete suggestions after the user enters
+at least two characters. Suggestions search the imported office-matrix titles,
+code sections, loaded legal-offense names, and common-language aliases. Results
+narrow continuously as additional text is entered.
+
+The typeahead is intentionally forgiving about common phrasing. For example,
+typing **Drive** surfaces DUI and other driving-related charges, while entries
+such as **2nd DUI** resolve directly to the corresponding second-offense DUI
+record. Suggestions show the charge title, citation, and office tier when one is
+available. Users can click a result or navigate the list with the arrow keys and
+press Enter.
+
 ### Office-policy tiers
 
 The charge lookup also supports an office-policy tier overlay imported from the

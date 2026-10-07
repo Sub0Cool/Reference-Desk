@@ -236,12 +236,27 @@
               <form id="charge-form" class="lookup-form">
                 <label for="charge-lookup">Offense</label>
                 <div class="lookup-controls">
-                  <input
-                    id="charge-lookup"
-                    type="text"
-                    autocomplete="off"
-                    placeholder="e.g., PC 243(e)(1), battery, VC 23103, or 368(b)"
-                  />
+                  <div class="charge-autocomplete">
+                    <input
+                      id="charge-lookup"
+                      type="text"
+                      autocomplete="off"
+                      role="combobox"
+                      aria-autocomplete="list"
+                      aria-expanded="false"
+                      aria-controls="charge-suggestions"
+                      aria-activedescendant=""
+                      placeholder="e.g., PC 243(e)(1), battery, 2nd DUI, or driving suspended"
+                    />
+                    <div
+                      id="charge-suggestions"
+                      class="charge-suggestions"
+                      role="listbox"
+                      aria-label="Matching charges"
+                      hidden
+                    ></div>
+                    <p id="charge-suggestion-status" class="visually-hidden" aria-live="polite"></p>
+                  </div>
                   <button type="submit" class="lookup-button">Look up charge</button>
                 </div>
               </form>
