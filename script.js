@@ -234,19 +234,15 @@ function officeTierBase(section) {
 }
 
 function resolveOfficeTierLookup(rawValue) {
-  let query = normalizeOfficeTierInput(rawValue);
-
-  if (!query) {
-    const alias = resolveCommonNameAlias(rawValue);
-    if (alias) {
-      query = {
+  const alias = resolveCommonNameAlias(rawValue);
+  let query = alias
+    ? {
         code: alias.code,
         section:
           alias.exposureSection ||
           alias.section + (alias.subdivisions || []).map((part) => "(" + part + ")").join(""),
-      };
-    }
-  }
+      }
+    : normalizeOfficeTierInput(rawValue);
 
   if (!query) {
     const titleNeedle = normalizeOfficeTierText(rawValue);
