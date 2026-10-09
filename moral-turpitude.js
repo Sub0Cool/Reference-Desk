@@ -57,13 +57,12 @@ function render(o){
   copy.hidden=true;return;
  }
  section(result,"Felony-conviction analysis · Castro",entry.conviction);
- section(result,"Underlying-misconduct analysis · Wheeler",entry.misconduct);
  append("p",result,entry.caveat,"mt-caveat");
- append("p",result,"Evidence Code § 352 and applicable hearsay/foundation rules remain relevant. A misdemeanor conviction alone generally cannot establish the underlying misconduct for impeachment under Wheeler.","mt-caveat");
+ append("p",result,"Separate underlying conduct may support impeachment if independently shown to involve moral turpitude. A knowingly false statement, for example, may matter even when the charged offense does not qualify. Admissibility remains subject to Evidence Code § 352 and applicable proof rules; a misdemeanor conviction alone generally cannot prove the underlying misconduct under Wheeler.","mt-caveat");
  append("p",result,"Research snapshot: "+entry.reviewed+". Verify current law, statutory amendments, and subsequent judicial treatment before citing.","mt-review");
  authorityLinks(["castro","wheeler"],result);
  const fmt=(analysis)=>analysis.summary+" "+(analysis.authority||[]).map(id=>cases[id]?.name+" "+cases[id]?.citation).filter(Boolean).join("; ");
- copyText=[o.code+" § "+o.section+" — "+o.name,"Felony conviction: "+fmt(entry.conviction),"Underlying misconduct: "+fmt(entry.misconduct),entry.caveat,"Evidence Code § 352 applies. Under Wheeler, the fact of a misdemeanor conviction alone generally is not admissible to prove misconduct.","Research date: "+entry.reviewed].join("\n\n");
+ copyText=[o.code+" § "+o.section+" — "+o.name,"Felony conviction: "+fmt(entry.conviction),entry.caveat,"Evidence Code § 352 applies. Under Wheeler, the fact of a misdemeanor conviction alone generally is not admissible to prove misconduct.","Research date: "+entry.reviewed].join("\n\n");
  copy.hidden=false;
 }
 input.addEventListener("input",()=>{selected=null;result.hidden=true;copy.hidden=true;updateSuggestions();});
