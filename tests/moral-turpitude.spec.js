@@ -8,7 +8,8 @@ test('lookup supports known and unknown offenses without changing other tools', 
  await page.locator('#mt-form button[type=submit]').click();
  await expect(page.locator('#mt-result')).toContainText('Burglary');
  await expect(page.locator('#mt-result')).toContainText('Felony-conviction analysis');
- await expect(page.locator('#mt-result')).toContainText('Underlying-misconduct analysis');
+ await expect(page.locator('#mt-result')).not.toContainText('Underlying-misconduct analysis');
+ await expect(page.locator('#mt-result')).toContainText('Separate underlying conduct may support impeachment');
  await expect(page.locator('#mt-copy')).toBeVisible();
  await field.fill('PC 99999');
  await page.locator('#mt-form button[type=submit]').click();
