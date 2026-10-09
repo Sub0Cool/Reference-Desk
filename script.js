@@ -1525,6 +1525,7 @@ const toolTitles = {
   dates: "Dates & Penal Code § 4019 Credits",
   "future-date": "Future Date Calculator",
   charges: "Charge Lookup",
+  "moral-turpitude": "Moral Turpitude Lookup",
   bac: "Blood Alcohol Estimator",
 };
 
