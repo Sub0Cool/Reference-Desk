@@ -39,8 +39,22 @@ function append(tag,parent,content,cls){
  const n=document.createElement(tag);if(cls)n.className=cls;if(content!==undefined)n.textContent=content;parent.append(n);return n;
 }
 function authorityLinks(ids,parent){
- for(const id of ids||[]){const a=cases[id];if(!a)continue;const link=append("a",parent,a.name+" "+a.citation,"mt-authority");
- link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";}
+ for(const id of ids||[]){
+  const a=cases[id];if(!a)continue;
+  const line=append("div",parent,undefined,"mt-citation-row");
+  const citation=a.name+" "+a.citation;
+  const link=append("a",line,citation,"mt-authority");
+  link.href=a.url;link.target="_blank";link.rel="noopener noreferrer";
+  const button=append("button",line,"Copy Citation","mt-citation-copy");
+  button.type="button";button.setAttribute("aria-label","Copy citation for "+a.name);
+  button.addEventListener("click",async()=>{
+   try{
+    await navigator.clipboard.writeText(citation);
+    button.textContent="Copied!";
+    window.setTimeout(()=>{button.textContent="Copy Citation";},1600);
+   }catch{button.textContent="Copy unavailable";}
+  });
+ }
 }
 function section(parent,title,analysis){
  const block=append("section",parent,undefined,"mt-analysis");
