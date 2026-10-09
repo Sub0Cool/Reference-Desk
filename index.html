@@ -73,6 +73,18 @@
             <span class="tool-tile-arrow" aria-hidden="true">→</span>
           </button>
 
+          <button class="tool-tile" type="button" data-tool-target="moral-turpitude" aria-pressed="false">
+            <span class="tool-tile-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 5v22M9 9h14M8 9l-4 8h8L8 9ZM24 9l-4 8h8l-4-8ZM11 27h10"></path></svg>
+            </span>
+            <span class="tool-tile-copy">
+              <span class="tool-tile-kicker">Evidence</span>
+              <strong>Moral Turpitude Lookup</strong>
+              <small>California witness impeachment: convictions and misconduct.</small>
+            </span>
+            <span class="tool-tile-arrow" aria-hidden="true">→</span>
+          </button>
+
           <button class="tool-tile" type="button" data-tool-target="bac" aria-pressed="false">
             <span class="tool-tile-icon" aria-hidden="true">
               <svg viewBox="0 0 32 32"><path d="M12 5h8M14 5v7l-5 9a4 4 0 0 0 3.5 6h7a4 4 0 0 0 3.5-6l-5-9V5"></path><path d="M11 20h10"></path></svg>
@@ -397,6 +409,27 @@
                   </p>
                 </div>
               </details>
+            </section>
+          </div>
+        </section>
+
+        <section class="tool-panel tool-view" id="tool-moral-turpitude" data-tool-view="moral-turpitude" hidden>
+          <div class="tool-panel-body">
+            <section class="exposure-card" aria-labelledby="mt-title">
+              <p class="eyebrow">California criminal witness impeachment</p>
+              <h2 id="mt-title">Moral Turpitude Lookup</h2>
+              <p class="exposure-intro">Search a statute or offense name. Felony-conviction and underlying-misconduct analyses are displayed separately. Unreviewed offenses are never assumed to qualify or not qualify.</p>
+              <form id="mt-form" class="lookup-form">
+                <label for="mt-query">Offense or code section</label>
+                <div class="charge-autocomplete">
+                  <input id="mt-query" type="text" role="combobox" aria-autocomplete="list" aria-controls="mt-suggestions" aria-expanded="false" autocomplete="off" placeholder="e.g., PC 459, battery, assault" />
+                  <div id="mt-suggestions" class="mt-suggestions" role="listbox" hidden></div>
+                </div>
+                <button type="submit">Look up moral turpitude</button>
+              </form>
+              <div id="mt-result" class="mt-result" aria-live="polite" hidden></div>
+              <button id="mt-copy" type="button" hidden>Copy legal analysis</button>
+              <p class="mt-footnote">California criminal impeachment only. A researched classification is not an admissibility ruling. Evidence Code § 352, applicable hearsay rules, historical statutory text, and later cases must be considered.</p>
             </section>
           </div>
         </section>
@@ -788,6 +821,8 @@
     <script src="data/office-tiers-2.js"></script>
     <script src="data/office-tiers-3.js"></script>
     <script src="data/office-tiers-4.js"></script>
+    <script src="data/moral-turpitude.js"></script>
     <script src="script.js"></script>
+    <script src="moral-turpitude.js"></script>
   </body>
 </html>
