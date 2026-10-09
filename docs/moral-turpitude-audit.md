@@ -28,7 +28,7 @@
 ## Browser tests
 - The new Playwright Chromium regression tests cover lookup, suggestions, unknown queries, conditional results, and navigation.
 - GitHub Actions workflow included at .github/workflows/moral-turpitude-test.yml.
-- **Do not mark browser tests passed until a completed GitHub Actions run verifies them.**
+- **PASSED:** GitHub Actions run 37978349026, Chromium browser regression job successful on commit b85b32e2b4e68a5e0862a62f87d5691b7e819726 (25-entry dataset). Browser testing is limited to the scripted scenarios, not exhaustive manual usability testing.
 
 ## Release hold
-- PR #23 remains draft; do not merge until reviewing case treatment and browser check results.
+- PR #23 remains draft; browser regression passed. Full subsequent-history review remains an explicit prerequisite to a claim of comprehensive legal validation.
