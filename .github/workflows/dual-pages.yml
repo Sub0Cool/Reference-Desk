@@ -1,0 +1,86 @@
+name: Deploy production and testing sites
+
+on:
+  push:
+    branches:
+      - main
+      - testing
+  workflow_dispatch:
+    inputs:
+      preview_ref:
+        description: "Branch to preview at /testing/ (defaults to testing)"
+        required: false
+        type: string
+        default: testing
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout production (always main)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: production
+          persist-credentials: false
+
+      - name: Checkout testing branch or selected preview
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.preview_ref || 'testing' }}
+          path: preview
+          persist-credentials: false
+
+      - name: Assemble independent sites
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/testing
+          rsync -a --exclude='.git' --exclude='.github' --exclude='testing' production/ _site/
+          rsync -a --exclude='.git' --exclude='.github' preview/ _site/testing/
+          touch _site/.nojekyll
+          touch _site/testing/.nojekyll
+          python3 - <<'PY'
+          from pathlib import Path
+          from html import escape
+          index = Path("_site/testing/index.html")
+          if not index.exists():
+              raise SystemExit("Preview branch must contain index.html")
+          html = index.read_text()
+          banner = """<div role="status" style="position:sticky;top:0;z-index:99999;background:#083DA9;color:white;text-align:center;font:700 14px/1.5 Arial,sans-serif;padding:7px;">TEST VERSION — Not for production use</div>"""
+          if "<body" not in html.lower():
+              raise SystemExit("Preview is missing a body element")
+          import re
+          html, count = re.subn(r"(<body[^>]*>)", lambda match: match.group(1)+banner, html, count=1, flags=re.I)
+          if count != 1:
+              raise SystemExit("Could not inject TEST VERSION banner")
+          index.write_text(html)
+          PY
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload combined Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy both sites together
+        id: deploy
+        uses: actions/deploy-pages@v4
