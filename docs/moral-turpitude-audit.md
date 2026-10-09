@@ -32,3 +32,9 @@
 
 ## Release hold
 - PR #23 remains draft; browser regression passed. Full subsequent-history review remains an explicit prerequisite to a claim of comprehensive legal validation.
+
+## Follow-up audit — 2026-10-09
+- Confirmed **production** `main` and persistent `testing` branch have the original `index.html`; only `feature/moral-turpitude-lookup` contains the new tool. Preview requires selecting that feature branch through the dual-pages workflow's `preview_ref` input. No branch was merged or rewritten for this purpose.
+- Confirmed from full opinion text: *People v. Castro* (1985) 38 Cal.3d 301 (least adjudicated elements; possession vs. possession for sale); *People v. Thomas* (1988) 206 Cal.App.3d 689 (simple assault/battery vs. aggravated assault); *People v. Aguilar* (2016) 245 Cal.App.4th 1010 (§ 25400(a)(1) felony); *People v. Burton* (2015) 243 Cal.App.4th 129 (§ 273.5 and the relevant 2001/2005 statutory versions); *People v. Cudjo* (1993) 6 Cal.4th 585 (grand theft); and *People v. Bedolla* (2018) 28 Cal.App.5th 535 (juvenile adjudication under § 25850(a)).
+- Replaced an unreliable `People v. Maestas` link with the appellate opinion at `https://law.justia.com/cases/california/court-of-appeal/2005/a108030.html`.
+- The opinion checks are **not a formal positive citator**, do not establish exhaustive subsequent history, and do not constitute a final entry-by-entry audit of all 25 offense conclusions or all hyperlinks. Continue to hold PR #23 for substantive legal review.
