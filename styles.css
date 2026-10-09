@@ -2729,6 +2729,11 @@ select:focus,
 
 
 /* California moral-turpitude lookup */
+.mt-citation-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:8px 0}
+.mt-citation-row .mt-authority{margin:0}
+.mt-citation-copy{border:1px solid #bcc7d8;border-radius:5px;background:#fff;color:var(--microharmon-blue);padding:5px 9px;font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
+.mt-citation-copy:hover,.mt-citation-copy:focus-visible{background:#eef3ff}
+
 .mt-suggestions{position:relative;z-index:5;max-height:300px;overflow:auto;background:#fff;border:1px solid #bcc7d8;border-radius:7px;margin-top:4px;box-shadow:0 8px 20px #1011141c}
 .mt-suggestion{display:block;width:100%;padding:11px;text-align:left;color:var(--ink);background:white;border:0;border-bottom:1px solid #e1e5ed;cursor:pointer;font:inherit;font-size:.84rem}
 .mt-suggestion:hover,.mt-suggestion:focus{background:#eef3ff}
