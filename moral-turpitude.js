@@ -44,7 +44,7 @@ function authorityLinks(ids,parent){
 }
 function section(parent,title,analysis){
  const block=append("section",parent,undefined,"mt-analysis");
- append("h3",block,title);append("strong",block,analysis.status==="no"?"Not necessarily":analysis.status==="yes"?"Yes":analysis.status==="fact-dependent"?"Fact-dependent":"Not researched","mt-classification");
+ append("h3",block,title);append("strong",block,analysis.status==="no"?"Not necessarily":analysis.status==="yes"?"Yes":analysis.status==="fact-dependent"?"Fact-dependent":analysis.status==="conditional"?"Conditional":"Not researched","mt-classification");
  append("p",block,analysis.summary);
  authorityLinks(analysis.authority,block);
 }
