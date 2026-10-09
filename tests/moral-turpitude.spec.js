@@ -11,6 +11,10 @@ test('lookup supports known and unknown offenses without changing other tools', 
  await expect(page.locator('#mt-result')).not.toContainText('Underlying-misconduct analysis');
  await expect(page.locator('#mt-result')).toContainText('Separate underlying conduct may support impeachment');
  await expect(page.locator('#mt-copy')).toBeVisible();
+ const citationButtons=page.getByRole('button',{name:/Copy citation for/});
+ await expect(citationButtons.first()).toBeVisible();
+ await expect(page.locator('.mt-citation-row').first()).toContainText('Cal.');
+
  await field.fill('PC 99999');
  await page.locator('#mt-form button[type=submit]').click();
  await expect(page.locator('#mt-result')).toContainText('No exact match');
