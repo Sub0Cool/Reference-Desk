@@ -52,3 +52,13 @@ Scope: California criminal witness impeachment; review of the 25 records current
 - **Do not automatically change the 25 production classifications from this report alone.** The most urgent follow-up is PC §470(a), plus the historical subdivision mappings for PC §§243(c)(2), 245(a)(1), 245(a)(2), 245(a)(4), 25850(a), and 594.
 - No complete KeyCite/Shepard's negative treatment certification has been performed. Confirm each relied-upon authority in a citator before a court filing.
 - Make any substantive legal-data fixes in a **separate draft PR** or an audited commit on this branch after specific holdings and statute versions are resolved.
+
+## Corrections resolved on this audit branch
+- PC 470(a): amended to Yes, citing *People v. Flanagan* (1986) 185 Cal.App.3d 764, 771–772 and *People v. Cadogan* (2009) 173 Cal.App.4th 1502, 1514–1515. The latter concerns misdemeanor impeachment issues and is supplemental, not the basis of felony conviction classification. Opinion URL was replaced with a verified public text source.
+- PC 243(c)(2): changed from Conditional to Yes *for the injured-peace-officer felony alternative*. *Lindsay* (1989) 209 Cal.App.3d 849, 855–859 involved former § 243(c), whose injury-to-peace-officer elements correspond to the later § 243(c)(2). The 2025 published statutory text shows § 243(c)(2) is the peace officer variation of the injury offense specified in § 243(c)(1); verify the 2026 operative text if using in court.
+- PC 25850(a): changed from Conditional to Yes because *Bedolla* (2018) 28 Cal.App.5th 535 expressly held this statute involved moral turpitude under the least adjudicated elements test. The case involved a **juvenile adjudication**; the caveat expressly preserves that procedural distinction.
+- PC 245(a)(1)/(a)(4): *Thomas* and *Elwell* are the substantive impeachment authorities. The 2011 amendment split the old § 245(a)(1) into the current weapon and force-likely-GBI alternatives; **do not treat People v. Cota (2020) G056850 as unquestioned current binding law**, because the opinion had review granted April 22, 2020. The statutory amendment and published operative provisions support the renumbering independently.
+- PC 245(a)(2): strong analogy to deadly-weapon assault, but the displayed *Thomas* holding is historical and should not be characterized as a modern subdivision-specific adjudication.
+
+## Remaining formal verification limits
+A negative KeyCite/Shepard's history check is still **not complete**; no automated check of every post-decision citing opinion or subsequent amendment was performed. This work is a targeted public-primary-source audit, not formal citator clearance for a pleading.
