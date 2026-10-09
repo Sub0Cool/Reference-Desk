@@ -72,7 +72,7 @@ window.REFERENCE_DESK_MT_AUTHORITIES = {
   aguilar:{name:"People v. Aguilar",citation:"(2016) 245 Cal.App.4th 1010, 1017–1019",url:"https://law.justia.com/cases/california/court-of-appeal/2016/b263075.html"},
   lindsay:{name:"People v. Lindsay",citation:"(1989) 209 Cal.App.3d 849, 855–859",url:"https://law.justia.com/cases/california/court-of-appeal/3d/209/849.html"},
   turner:{name:"People v. Turner",citation:"(1990) 50 Cal.3d 668, 705",url:"https://scocal.stanford.edu/opinion/people-v-turner-30968/"},
-  maestas:{name:"People v. Maestas",citation:"(2005) 132 Cal.App.4th 1552, 1556–1558",url:"https://openjurist.org/132/calapp4th/1552/people-v-maestas-2252765"},
+  maestas:{name:"People v. Maestas",citation:"(2005) 132 Cal.App.4th 1552, 1556–1558",url:"https://law.justia.com/cases/california/court-of-appeal/2005/a108030.html"},
   cloyd:{name:"People v. Cloyd",citation:"(1997) 54 Cal.App.4th 1402, 1409",url:"https://law.justia.com/cases/california/court-of-appeal/4th/54/1402.html"},
   campbell:{name:"People v. Campbell",citation:"(1994) 23 Cal.App.4th 1488, 1492–1496",url:"https://law.justia.com/cases/california/court-of-appeal/4th/23/1488.html"},
 };
