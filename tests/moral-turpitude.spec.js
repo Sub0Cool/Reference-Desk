@@ -1,0 +1,36 @@
+const { test, expect } = require('@playwright/test');
+test('lookup supports known and unknown offenses without changing other tools', async ({page}) => {
+ const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ await page.goto('http://127.0.0.1:8000/');
+ await page.getByRole('button',{name:/Moral Turpitude Lookup/}).click();
+ const field=page.locator('#mt-query');
+ await field.fill('PC 459');
+ await page.locator('#mt-form button[type=submit]').click();
+ await expect(page.locator('#mt-result')).toContainText('Burglary');
+ await expect(page.locator('#mt-result')).toContainText('Felony-conviction analysis');
+ await expect(page.locator('#mt-result')).not.toContainText('Underlying-misconduct analysis');
+ await expect(page.locator('#mt-result')).toContainText('Separate underlying conduct may support impeachment');
+ await expect(page.locator('#mt-copy')).toBeVisible();
+ const citationButtons=page.getByRole('button',{name:/Copy citation for/});
+ await expect(citationButtons.first()).toBeVisible();
+ await expect(page.locator('.mt-citation-row').first()).toContainText('Cal.');
+
+ await field.fill('PC 99999');
+ await page.locator('#mt-form button[type=submit]').click();
+ await expect(page.locator('#mt-result')).toContainText('No exact match');
+ await field.fill('battery');
+ await expect(page.locator('#mt-suggestions')).toBeVisible();
+ await page.locator('#mt-suggestions button').first().click();
+ await expect(page.locator('#mt-result')).toBeVisible();
+ expect(errors).toEqual([]);
+});
+test('conditional research result and tool navigation', async ({page}) => {
+ await page.goto('http://127.0.0.1:8000/');
+ await page.locator('[data-tool-target="moral-turpitude"]').click();
+ await page.locator('#mt-query').fill('PC 594');
+ await page.locator('#mt-form button[type=submit]').click();
+ await expect(page.locator('#mt-result')).toContainText('Conditional');
+ await page.locator('[data-tool-target="charges"]').click();
+ await expect(page.locator('#tool-charges')).toBeVisible();
+ await expect(page.locator('#tool-moral-turpitude')).toBeHidden();
+});
