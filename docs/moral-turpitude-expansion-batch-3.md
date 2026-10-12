@@ -6,7 +6,7 @@
 |---|---|---|
 | PC 32 accessory | Conditional | *In re Young* (1989) 49 Cal.3d 257, 264 is attorney discipline; not a direct Castro conviction-impeachment holding. |
 | PC 451 arson | **Yes** | *People v. Miles* (1985) 172 Cal.App.3d 474, 481–482 expressly treats §451 arson as morally turpitudinous for felony impeachment. |
-| PC 273a(a) child endangerment | **No** | **Important negative:** *People v. Sanders* (1992) 10 Cal.App.4th 1268, 1273–1275 expressly holds former §273a(1) does not necessarily involve moral turpitude, despite felony grading. |
+| PC 273a(a) child endangerment | **Fact-dependent** | *People v. Sanders* (1992) 10 Cal.App.4th 1268, 1273–1275 holds the offense is **not necessarily** moral turpitude under its elements because criminal negligence can suffice. Examine whether the **underlying endangerment was intentional abusive conduct**, assess its moral-turpitude character, and require admissible proof under *Wheeler*. Intent alone is not an automatic Yes. |
 | PC 273d(a) injurious child corporal punishment | **Yes** | *Sanders* explicitly distinguishes this affirmative injury offense and cites *People v. Brooks* (1992) 3 Cal.App.4th 669; the direct Brooks opinion and precise reporter pinpoint remain unverified, so the application currently cites Sanders only. |
 | PC 148.5(a) false police report | Conditional | Obvious dishonesty issue but no direct subsection-specific published impeachment authority independently located. |
 | PC 29800(a)(1) felon firearm possession | **Yes** | *People v. Robinson* (2011) 199 Cal.App.4th 707 addresses former §12021(a)(1), predecessor of §29800(a)(1); verify the cited passage and legislative renumbering. |
@@ -35,3 +35,6 @@
 - *People v. Dewey* (1996) 42 Cal.App.4th 216: https://syfert.com/california/cases/42-cal-app-4th-216/people-v-dewey
 
 No changes made to office-policy tiers or custody-credit logic.
+
+## PC 273a refinement
+At the user's request, the lookup now displays **Fact-dependent** for PC §273a(a), directing practitioners to examine whether endangerment was intentional rather than merely criminally negligent. This is a practical underlying-misconduct inquiry and does not overturn *Sanders*' categorical least-elements holding that the offense is **not necessarily** moral turpitude. Evaluate evidence under *Wheeler* and §352.
