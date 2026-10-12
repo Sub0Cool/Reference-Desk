@@ -188,6 +188,18 @@ const officeTierDetails = document.querySelector("#office-tier-details");
 
 const OFFICE_TIER_DATA = window.REFERENCE_DESK_OFFICE_TIER_DATA || [];
 const OFFICE_TIER_ORDER = ["1", "1+", "2", "2+", "3"];
+const OFFICE_TIER_INFO = {
+  "1": 3,
+  "1+": 5,
+  "2": 15,
+  "2+": 29,
+  "3": 29,
+};
+
+function formatOfficeTier(tier) {
+  const label = String(tier);
+  return "Tier " + label + (Object.hasOwn(OFFICE_TIER_INFO, label) ? " (" + OFFICE_TIER_INFO[label] + ")" : "");
+}
 
 function normalizeOfficeTierText(value) {
   return String(value || "")
@@ -310,7 +322,7 @@ function renderOfficeTier(rawValue) {
     .sort((a, b) => OFFICE_TIER_ORDER.indexOf(a) - OFFICE_TIER_ORDER.indexOf(b));
 
   officeTierValue.textContent =
-    tiers.length === 1 ? "Tier " + tiers[0] : "Tiers " + tiers.join(" / ");
+    tiers.map(formatOfficeTier).join(" / ");
   officeTierQuery.textContent = query
     ? query.code + " § " + query.section
     : entries[0].code + " § " + entries[0].section;
@@ -332,7 +344,7 @@ function renderOfficeTier(rawValue) {
 
     const badge = document.createElement("span");
     badge.className = "office-tier-pill";
-    badge.textContent = "Tier " + entry.tier;
+    badge.textContent = formatOfficeTier(entry.tier);
 
     const copy = document.createElement("div");
 
@@ -1307,7 +1319,7 @@ function renderChargeSuggestions(rawQuery) {
     if (entry.tier) {
       const tier = document.createElement("span");
       tier.className = "charge-suggestion-tier";
-      tier.textContent = "Tier " + entry.tier;
+      tier.textContent = formatOfficeTier(entry.tier);
       meta.append(tier);
     }
 
