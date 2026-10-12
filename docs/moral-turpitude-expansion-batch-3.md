@@ -7,7 +7,7 @@
 | PC 32 accessory | Conditional | *In re Young* (1989) 49 Cal.3d 257, 264 is attorney discipline; not a direct Castro conviction-impeachment holding. |
 | PC 451 arson | **Yes** | *People v. Miles* (1985) 172 Cal.App.3d 474, 481–482 expressly treats §451 arson as morally turpitudinous for felony impeachment. |
 | PC 273a(a) child endangerment | **No** | **Important negative:** *People v. Sanders* (1992) 10 Cal.App.4th 1268, 1273–1275 expressly holds former §273a(1) does not necessarily involve moral turpitude, despite felony grading. |
-| PC 273d(a) injurious child corporal punishment | **Yes** | *Sanders* explicitly distinguishes this affirmative injury offense and cites *People v. Brooks* (1992) 3 Cal.App.4th 669; the Brooks source link and precise pinpoint remain subject to independent follow-up. |
+| PC 273d(a) injurious child corporal punishment | **Yes** | *Sanders* explicitly distinguishes this affirmative injury offense and cites *People v. Brooks* (1992) 3 Cal.App.4th 669; the direct Brooks opinion and precise reporter pinpoint remain unverified, so the application currently cites Sanders only. |
 | PC 148.5(a) false police report | Conditional | Obvious dishonesty issue but no direct subsection-specific published impeachment authority independently located. |
 | PC 29800(a)(1) felon firearm possession | **Yes** | *People v. Robinson* (2011) 199 Cal.App.4th 707 addresses former §12021(a)(1), predecessor of §29800(a)(1); verify the cited passage and legislative renumbering. |
 | PC 30605(a) assault-weapon possession | Conditional | 2022 list cites *People v. Gabriel* (2012) 206 Cal.App.4th 450, 458, on former §12280(b). Exact scope not independently inspected yet. |
@@ -21,7 +21,7 @@
 | WIC 10980 welfare fraud | Conditional | Research lead *People v. Brooks* (2017) 3 Cal.5th 1; must match specific subdivision and verified passage rather than labeling all §10980 fraud. |
 
 ## Further checking required prior to merge
-- Verify every new citation URL and pinpoint page, especially the *People v. Brooks* (1992) child-punishment record and *Robinson* (2011) link.
+- Verify every new citation URL and pinpoint page, especially the *People v. Brooks* (1992) child-punishment record (not yet included as a citation) and *Robinson* (2011) link.
 - Independently confirm all 15 entries' relevant statutory versions and any subsequent negative treatment. No complete KeyCite/Shepard's report has been conducted.
 - The **Conditional** entries are explicitly research leads and cannot be represented as completed affirmative findings.
 - Run the GitHub moral-turpitude browser regression and preview on /testing/ prior to merge.
