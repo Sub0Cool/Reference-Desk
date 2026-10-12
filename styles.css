@@ -2746,3 +2746,35 @@ select:focus,
 .mt-authority{display:block;color:var(--microharmon-blue);margin:6px 0;font-size:.8rem}
 .mt-review,.mt-footnote{color:var(--muted)}
 .mt-footnote{margin-top:14px}
+
+/* Clickable office tier sequence reference */
+.office-tier-link {
+  appearance: none;
+  border: 0;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.office-tier-link:hover { opacity: 0.8; }
+.office-tier-link:focus-visible {
+  outline: 3px solid #f0a747;
+  outline-offset: 3px;
+}
+.office-tier-pill.office-tier-link {
+  background: var(--microharmon-blue);
+  color: #ffffff;
+  padding: 5px 7px;
+}
+.office-tier-sequence {
+  margin: 8px 0 12px;
+  padding: 9px 12px;
+  border-left: 3px solid var(--microharmon-blue);
+  background: #ffffff;
+  font-weight: 800;
+  font-size: 0.86rem;
+}

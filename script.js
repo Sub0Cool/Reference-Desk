@@ -183,6 +183,7 @@ const officeTierResult = document.querySelector("#office-tier-result");
 const officeTierQuery = document.querySelector("#office-tier-query");
 const officeTierValue = document.querySelector("#office-tier-value");
 const officeTierSummary = document.querySelector("#office-tier-summary");
+const officeTierSequence = document.querySelector("#office-tier-sequence");
 const officeTierDetailsWrap = document.querySelector("#office-tier-details-wrap");
 const officeTierDetails = document.querySelector("#office-tier-details");
 
@@ -199,6 +200,32 @@ const OFFICE_TIER_INFO = {
 function formatOfficeTier(tier) {
   const label = String(tier);
   return "Tier " + label + (Object.hasOwn(OFFICE_TIER_INFO, label) ? " (" + OFFICE_TIER_INFO[label] + ")" : "");
+}
+
+const OFFICE_TIER_SEQUENCES = {
+  "1": "0-3-7",
+  "1+": "0-5-7-15-29",
+  "2": "7-15-29",
+  "2+": "7-15-29-45-59",
+  "3": "29-45-59",
+};
+
+function showOfficeTierSequence(tier) {
+  const value = OFFICE_TIER_SEQUENCES[String(tier)];
+  if (!value) return;
+  officeTierSequence.textContent = "Tier " + tier + ": " + value;
+  officeTierSequence.hidden = false;
+}
+
+function createOfficeTierButton(tier, className) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = className;
+  button.textContent = formatOfficeTier(tier);
+  button.title = "Show Tier " + tier + " sequence";
+  button.setAttribute("aria-label", "Show sequence for " + formatOfficeTier(tier));
+  button.addEventListener("click", () => showOfficeTierSequence(tier));
+  return button;
 }
 
 function normalizeOfficeTierText(value) {
@@ -301,6 +328,8 @@ function resolveOfficeTierLookup(rawValue) {
 
 function renderOfficeTier(rawValue) {
   officeTierResult.hidden = false;
+  officeTierSequence.hidden = true;
+  officeTierSequence.textContent = "";
   officeTierDetails.replaceChildren();
   officeTierDetailsWrap.hidden = true;
   officeTierDetailsWrap.open = false;
@@ -321,8 +350,11 @@ function renderOfficeTier(rawValue) {
   const tiers = [...new Set(entries.map((entry) => entry.tier))]
     .sort((a, b) => OFFICE_TIER_ORDER.indexOf(a) - OFFICE_TIER_ORDER.indexOf(b));
 
-  officeTierValue.textContent =
-    tiers.map(formatOfficeTier).join(" / ");
+  officeTierValue.replaceChildren();
+  tiers.forEach((tier, index) => {
+    if (index) officeTierValue.append(document.createTextNode(" / "));
+    officeTierValue.append(createOfficeTierButton(tier, "office-tier-link"));
+  });
   officeTierQuery.textContent = query
     ? query.code + " § " + query.section
     : entries[0].code + " § " + entries[0].section;
@@ -342,9 +374,7 @@ function renderOfficeTier(rawValue) {
     const item = document.createElement("div");
     item.className = "office-tier-detail";
 
-    const badge = document.createElement("span");
-    badge.className = "office-tier-pill";
-    badge.textContent = formatOfficeTier(entry.tier);
+    const badge = createOfficeTierButton(entry.tier, "office-tier-pill office-tier-link");
 
     const copy = document.createElement("div");
 
@@ -2382,6 +2412,8 @@ function resetAllReferenceDeskTools() {
   officeTierQuery.textContent = "";
   officeTierValue.textContent = "—";
   officeTierSummary.textContent = "";
+  officeTierSequence.hidden = true;
+  officeTierSequence.textContent = "";
   officeTierDetails.replaceChildren();
   officeTierDetailsWrap.hidden = true;
   officeTierDetailsWrap.open = false;
