@@ -4,6 +4,8 @@ const rangesContainer = document.querySelector("#ranges");
 const rangeTemplate = document.querySelector("#range-template");
 const addRangeButton = document.querySelector("#add-range");
 const resetRangesButton = document.querySelector("#reset-ranges");
+const copyDateRangesButton = document.querySelector("#copy-date-ranges");
+const copyDatesStatus = document.querySelector("#copy-dates-status");
 const grandTotal = document.querySelector("#grand-total");
 const totalNote = document.querySelector("#total-note");
 
@@ -150,6 +152,36 @@ function addRange({ focus = false } = {}) {
 }
 
 addRangeButton.addEventListener("click", () => addRange({ focus: true }));
+
+function displayRangeDate(dateString) {
+  const [year, month, day] = dateString.split("-");
+  return month + "/" + day + "/" + year;
+}
+
+copyDateRangesButton.addEventListener("click", async () => {
+  calculateTotals();
+  const lines = [];
+  [...rangesContainer.children].forEach((row) => {
+    const start = row.querySelector(".start-date").value;
+    const end = row.querySelector(".end-date").value;
+    if (!start || !end || dateToUtc(end) < dateToUtc(start)) return;
+    const days = inclusiveDays(dateToUtc(start), dateToUtc(end));
+    lines.push(displayRangeDate(start) + " – " + displayRangeDate(end) + ": " + days + " days");
+  });
+
+  if (!lines.length) {
+    copyDatesStatus.textContent = "Enter at least one complete, valid date range to copy.";
+    return;
+  }
+
+  const text = ["Date ranges (inclusive):", ...lines, "", "Total unique actual days: " + grandTotal.textContent, "(Overlapping dates counted once.)"].join("\n");
+  try {
+    await navigator.clipboard.writeText(text);
+    copyDatesStatus.textContent = "Dates and total copied!";
+  } catch {
+    copyDatesStatus.textContent = "Could not copy automatically. Check your browser's clipboard permissions.";
+  }
+});
 
 resetRangesButton.addEventListener("click", () => {
   rangesContainer.replaceChildren();
