@@ -342,7 +342,7 @@ window.EXPEDITER_OFFENSE_DATA = [
     section: "20002",
     name: "Hit and run — property damage",
     misdemeanorExposure: {
-      jail: "6 months",
+      jail: "180 days",
       basis: "VC § 20002(c)",
       law: "VEH",
       source: "20002",
