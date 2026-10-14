@@ -1460,10 +1460,33 @@ if (chargeLookup && chargeSuggestions) {
   });
 }
 
+function renderMcdaDivNotice(rawValue, officeTierMatch) {
+  const panel = document.querySelector("#mcda-div-result");
+  const heading = document.querySelector("#mcda-div-heading");
+  const explanation = document.querySelector("#mcda-div-explanation");
+  if (!panel || !heading || !explanation) return;
+  panel.hidden = true;
+
+  const query = officeTierMatch.query || normalizeOfficeTierInput(rawValue);
+  // Only use a definite, exact description if the input resolves to a single section.
+  const title = officeTierMatch.entries.length === 1 ? officeTierMatch.entries[0].title : rawValue;
+  const policy = window.REFERENCE_DESK_MCDA_POLICY;
+  const decision = policy && policy.evaluate(query, title);
+  if (!decision) return;
+
+  heading.textContent = "MCDA Div Ineligible";
+  explanation.textContent = decision.kind === "conditional"
+    ? "Conditional — verify the facts before determining ineligibility. " + decision.reason
+    : decision.reason;
+  panel.classList.toggle("mcda-div-conditional", decision.kind === "conditional");
+  panel.hidden = false;
+}
+
 function renderChargeLookup(rawValue) {
   if (chargeResults) chargeResults.hidden = false;
 
   const officeTierMatch = renderOfficeTier(rawValue);
+  renderMcdaDivNotice(rawValue, officeTierMatch);
   const exposureQuery = officeTierMatch.query || normalizeExposureInput(rawValue);
   if (exposureQuery) {
     renderExposure(findExposureEntry(exposureQuery), exposureQuery);
