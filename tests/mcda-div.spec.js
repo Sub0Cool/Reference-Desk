@@ -36,3 +36,13 @@ test('MCDA conditional active resistance and exact offense exclusions', async ({
   await input.fill('PC 240');await submit.click();
   await expect(page.locator('#mcda-div-result')).toBeHidden();
 });
+
+test('named domestic violence charges display the MCDA notice', async ({page}) => {
+ await page.goto('http://127.0.0.1:8000/');
+ await page.locator('[data-tool-target="charges"]').click();
+ for (const section of ['243(e)(1)','166(c)(1)','273.5(a)','273.6(a)']) {
+  await page.locator('#charge-lookup').fill('PC '+section);
+  await page.locator('#charge-form button[type=submit]').click();
+  await expect(page.locator('#mcda-div-result')).toBeVisible();
+ }
+});
