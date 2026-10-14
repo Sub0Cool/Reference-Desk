@@ -2782,3 +2782,18 @@ select:focus,
 /* Copyable date-range summary */
 .copy-dates-button { margin-left: auto; }
 .copy-dates-status { min-height: 1.2em; font-size: 0.8rem; color: var(--muted); margin: 4px 0 10px; }
+
+
+/* MCDA diversion screening — separate from statute and tier data */
+.mcda-div-result {
+  grid-column: 1 / -1;
+  padding: 14px 16px;
+  background: #f8f5ee;
+  border: 1px solid #c8bba2;
+  border-left: 4px solid #91692c;
+  border-radius: 8px;
+}
+.mcda-div-result[hidden] { display: none !important; }
+.mcda-div-result h3 { margin: 5px 0 7px; font-size: 1.05rem; }
+.mcda-div-result p:last-child { margin: 0; line-height: 1.5; }
+.mcda-div-conditional { border-left-style: dashed; }
