@@ -2911,13 +2911,12 @@ h1 { font-weight: 600; }
   background-color: #f0f3f7;
   background-image: url("assets/legal-books-background.svg");
   background-repeat: no-repeat;
-  background-position: right 12px top 10px;
-  background-size: min(68%, 700px) auto;
+  background-position: right 16px top 20px;
+  background-size: min(43%, 420px) auto;
 }
 @media (max-width: 720px) {
   .counter-card {
-    background-size: 430px auto;
-    background-position: right -180px top 10px;
+    background-image: none;
   }
 }
 /* White panels ensure legal references remain clearly legible. */
