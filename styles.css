@@ -2275,7 +2275,7 @@ h1 {
 }
 
 
-/* MicroHarmon theme experiment */
+/* Reference Desk contemporary theme */
 :root {
   --ink: #334155;
   --muted: #64748b;
@@ -2288,8 +2288,8 @@ h1 {
   --background: #f5f7fa;
   --error: #a72935;
   --shadow: 0 22px 54px rgba(10, 18, 32, 0.12);
-  --microharmon-blue: #102a43;
-  --microharmon-black: #102a43;
+  --reference-navy: #102a43;
+  --reference-heading: #102a43;
   --display-font: "Merriweather", Georgia, "Times New Roman", serif;
   --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
   font-family: var(--body-font);
@@ -2321,7 +2321,7 @@ h3,
 .probation-card h2,
 .bac-card h2 {
   font-family: var(--display-font);
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   letter-spacing: -0.025em;
 }
 
@@ -2331,14 +2331,14 @@ h1 {
 
 .eyebrow,
 .tool-tile-kicker {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-family: var(--display-font);
   font-weight: 800;
   letter-spacing: 0.15em;
 }
 
 .reference-mark {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   background: #edf2f7;
   border: 1px solid #c5d2ef;
   border-radius: 8px;
@@ -2367,18 +2367,18 @@ h1 {
 
 .tool-tile:hover,
 .tool-tile:focus-visible {
-  border-color: var(--microharmon-blue);
+  border-color: var(--reference-navy);
   box-shadow: 0 8px 22px rgba(8, 61, 169, 0.10);
 }
 
 .tool-tile.is-active {
   background: #f7f9fd;
-  border-color: var(--microharmon-blue);
-  box-shadow: inset 0 0 0 1px var(--microharmon-blue);
+  border-color: var(--reference-navy);
+  box-shadow: inset 0 0 0 1px var(--reference-navy);
 }
 
 .tool-tile-icon {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   background: #edf2f7;
   border-radius: 6px;
 }
@@ -2387,8 +2387,8 @@ h1 {
 .add-button,
 .bac-submit-button {
   color: #ffffff;
-  background: var(--microharmon-blue);
-  border-color: var(--microharmon-blue);
+  background: var(--reference-navy);
+  border-color: var(--reference-navy);
 }
 
 .lookup-button:hover,
@@ -2408,11 +2408,11 @@ h1 {
 
 .charge-result-group {
   border-color: #cbd2de;
-  border-top: 3px solid var(--microharmon-blue);
+  border-top: 3px solid var(--reference-navy);
 }
 
 .charge-result-group:first-child {
-  border-top: 3px solid var(--microharmon-blue);
+  border-top: 3px solid var(--reference-navy);
 }
 
 .charge-result-group h3 {
@@ -2426,7 +2426,7 @@ h1 {
 .credit-stat output,
 .exposure-stat strong,
 .probation-stat strong {
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
 }
 
 .exposure-badge,
@@ -2444,7 +2444,7 @@ h1 {
 .charge-scope-note summary,
 .method-dialog-source a,
 .legal-note a {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
 }
 
 input,
@@ -2456,49 +2456,13 @@ select {
 input:focus,
 select:focus,
 .lookup-controls input:focus {
-  border-color: var(--microharmon-blue);
+  border-color: var(--reference-navy);
   box-shadow: 0 0 0 3px rgba(8, 61, 169, 0.12);
 }
 
 .master-reset-button {
   border-radius: 5px;
 }
-
-.microharmon-footer {
-  display: grid;
-  place-items: center;
-  margin-top: 34px;
-  padding-top: 26px;
-  border-top: 2px solid var(--microharmon-blue);
-}
-
-.microharmon-footer img {
-  display: block;
-  width: min(390px, 76vw);
-  height: auto;
-  mix-blend-mode: multiply;
-}
-
-.microharmon-footer p {
-  margin: 11px 0 0;
-  color: #606774;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 640px) {
-  .microharmon-footer {
-    margin-top: 24px;
-    padding-top: 20px;
-  }
-
-  .microharmon-footer img {
-    width: min(320px, 90vw);
-  }
-}
-
 
 /* Office policy tier classification */
 .office-tier-result {
@@ -2508,7 +2472,7 @@ select:focus,
   padding: 14px 16px;
   background: #f7f9fd;
   border: 1px solid #cbd2de;
-  border-left: 4px solid var(--microharmon-blue);
+  border-left: 4px solid var(--reference-navy);
   border-radius: 8px;
 }
 
@@ -2521,7 +2485,7 @@ select:focus,
 
 .office-tier-kicker {
   margin: 0;
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -2530,7 +2494,7 @@ select:focus,
 
 .office-tier-heading h3 {
   margin: 3px 0 0;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-family: var(--display-font);
   font-size: 1.06rem;
   font-weight: 900;
@@ -2549,7 +2513,7 @@ select:focus,
   flex: 0 0 auto;
   padding: 7px 11px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 5px;
   font-family: var(--display-font);
   font-size: 0.92rem;
@@ -2571,7 +2535,7 @@ select:focus,
 
 .office-tier-details-wrap summary {
   padding-top: 8px;
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-size: 0.75rem;
   font-weight: 800;
   cursor: pointer;
@@ -2601,7 +2565,7 @@ select:focus,
   min-width: 58px;
   padding: 5px 7px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 4px;
   font-size: 0.68rem;
   font-weight: 850;
@@ -2610,7 +2574,7 @@ select:focus,
 
 .office-tier-detail strong {
   display: block;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-size: 0.77rem;
 }
 
@@ -2691,7 +2655,7 @@ select:focus,
 
 .charge-suggestion-title {
   display: block;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-size: 0.83rem;
   font-weight: 800;
   line-height: 1.3;
@@ -2711,7 +2675,7 @@ select:focus,
 .charge-suggestion-tier {
   padding: 2px 6px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 4px;
   font-size: 0.66rem;
   font-weight: 850;
@@ -2739,7 +2703,7 @@ select:focus,
 /* California moral-turpitude lookup */
 .mt-citation-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:8px 0}
 .mt-citation-row .mt-authority{margin:0}
-.mt-citation-copy{border:1px solid #bcc7d8;border-radius:5px;background:#fff;color:var(--microharmon-blue);padding:5px 9px;font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
+.mt-citation-copy{border:1px solid #bcc7d8;border-radius:5px;background:#fff;color:var(--reference-navy);padding:5px 9px;font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
 .mt-citation-copy:hover,.mt-citation-copy:focus-visible{background:#eef3ff}
 
 .mt-suggestions{position:relative;z-index:5;max-height:300px;overflow:auto;background:#fff;border:1px solid #bcc7d8;border-radius:7px;margin-top:4px;box-shadow:0 8px 20px #1011141c}
@@ -2749,9 +2713,9 @@ select:focus,
 .mt-result h3{margin:0 0 12px;font-size:1.1rem}
 .mt-analysis{padding:12px 0;border-top:1px solid #d7dce5}
 .mt-analysis h3{font-size:.96rem;margin:0 0 7px}
-.mt-classification{display:inline-block;padding:5px 8px;color:#fff;background:var(--microharmon-blue);border-radius:4px;font-size:.8rem}
+.mt-classification{display:inline-block;padding:5px 8px;color:#fff;background:var(--reference-navy);border-radius:4px;font-size:.8rem}
 .mt-analysis p,.mt-caveat,.mt-review,.mt-footnote{line-height:1.5;font-size:.82rem}
-.mt-authority{display:block;color:var(--microharmon-blue);margin:6px 0;font-size:.8rem}
+.mt-authority{display:block;color:var(--reference-navy);margin:6px 0;font-size:.8rem}
 .mt-review,.mt-footnote{color:var(--muted)}
 .mt-footnote{margin-top:14px}
 
@@ -2774,14 +2738,14 @@ select:focus,
   outline-offset: 3px;
 }
 .office-tier-pill.office-tier-link {
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   color: #ffffff;
   padding: 5px 7px;
 }
 .office-tier-sequence {
   margin: 8px 0 12px;
   padding: 9px 12px;
-  border-left: 3px solid var(--microharmon-blue);
+  border-left: 3px solid var(--reference-navy);
   background: #ffffff;
   font-weight: 800;
   font-size: 0.86rem;
@@ -2857,8 +2821,8 @@ input[type="checkbox"], input[type="radio"] { accent-color: var(--green-dark); }
   --paper: #ffffff;
   --background: #f5f7fa;
   --gold: #daaa51;
-  --microharmon-blue: #102a43;
-  --microharmon-black: #102a43;
+  --reference-navy: #102a43;
+  --reference-heading: #102a43;
   --display-font: "Merriweather", Georgia, "Times New Roman", serif;
   --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
   font-family: var(--body-font);
@@ -2895,3 +2859,23 @@ h1 { font-weight: 600; }
 }
 .total-card { background: linear-gradient(125deg, #102a43, #234967); box-shadow: 0 14px 30px rgba(16,42,67,.18); }
 .charge-result-group, .charge-result-group:first-child { border-top-color: var(--green-dark); }
+
+/* Reference Desk branding: original RD monogram and navy/gold wordmark. */
+.hero { grid-template-columns: 96px minmax(0, 1fr); column-gap: 20px; }
+.reference-mark {
+  display: grid;
+  width: 96px;
+  height: 66px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  place-items: center;
+}
+.reference-mark img { display: block; width: 96px; max-width: 100%; height: auto; }
+#page-title .brand-desk { color: #9b6b20; }
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .reference-mark { width: 96px; height: 66px; }
+  .reference-mark img { width: 96px; }
+}
