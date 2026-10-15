@@ -2905,3 +2905,22 @@ h1 { font-weight: 600; }
   background: #ffffff;
 }
 .tool-tile.is-active { background: #fffaf0; }
+
+/* Decorative legal-library line art sits behind the header, never over search results. */
+.counter-card {
+  background-color: #f0f3f7;
+  background-image: url("assets/legal-books-background.svg");
+  background-repeat: no-repeat;
+  background-position: right 12px top 10px;
+  background-size: min(68%, 700px) auto;
+}
+@media (max-width: 720px) {
+  .counter-card {
+    background-size: 430px auto;
+    background-position: right -180px top 10px;
+  }
+}
+/* White panels ensure legal references remain clearly legible. */
+.tool-tile, .tool-panel, .custody-card, .lookup-card, .exposure-card {
+  background-color: #ffffff;
+}
