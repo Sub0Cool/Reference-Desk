@@ -2860,38 +2860,41 @@ h1 { font-weight: 600; }
 .total-card { background: linear-gradient(125deg, #102a43, #234967); box-shadow: 0 14px 30px rgba(16,42,67,.18); }
 .charge-result-group, .charge-result-group:first-child { border-top-color: var(--green-dark); }
 
-/* Reference Desk branding: original RD monogram and navy/gold wordmark. */
-.hero { grid-template-columns: 96px minmax(0, 1fr); column-gap: 20px; }
+/* Reference Desk header: softer, scalable artwork with transparent background. */
+.hero { grid-template-columns: 80px minmax(0, 1fr); column-gap: 18px; }
 .reference-mark {
   display: grid;
-  width: 96px;
-  height: 66px;
+  width: 80px;
+  height: 58px;
   padding: 0;
   background: transparent;
   border: 0;
   border-radius: 0;
   place-items: center;
 }
-.reference-mark img { display: block; width: 96px; max-width: 100%; height: auto; }
+.reference-mark img {
+  display: block;
+  width: 80px;
+  height: auto;
+  max-width: 100%;
+  opacity: .92;
+}
 #page-title .brand-desk { color: #9b6b20; }
 @media (max-width: 720px) {
   .hero { grid-template-columns: 1fr; }
-  .reference-mark { width: 96px; height: 66px; }
-  .reference-mark img { width: 96px; }
+  .reference-mark { width: 80px; height: 58px; }
+  .reference-mark img { width: 80px; }
 }
 
-
-/* Soft blue-gray workspace background: white tool cards stand apart. */
-.counter-card {
-  background: #f0f3f7;
-}
-.tool-tile,
-.tool-panel,
-.custody-card,
-.lookup-card,
-.exposure-card {
-  background: #ffffff;
-}
-.tool-tile.is-active {
-  background: #fffaf0;
+/* Reuse Charge Lookup control styling for Moral Turpitude. */
+#mt-suggestions {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-top: 0;
 }

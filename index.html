@@ -22,7 +22,7 @@
             Reset all tools
           </button>
           <div class="reference-mark" aria-hidden="true">
-            <img src="assets/reference-desk-monogram.png" alt="" width="128" height="79" decoding="async" />
+            <img src="assets/reference-desk-monogram.svg" alt="" width="80" height="52" decoding="async" />
           </div>
           <div>
             <p class="eyebrow">California criminal-law utilities</p>
@@ -430,11 +430,13 @@
               <p class="exposure-intro">Search a statute or offense name. Results focus on whether the offense necessarily involves moral turpitude under the felony-conviction analysis. Separate conduct may independently support impeachment; unreviewed offenses are never assumed to qualify or not qualify.</p>
               <form id="mt-form" class="lookup-form">
                 <label for="mt-query">Offense or code section</label>
-                <div class="charge-autocomplete">
-                  <input id="mt-query" type="text" role="combobox" aria-autocomplete="list" aria-controls="mt-suggestions" aria-expanded="false" autocomplete="off" placeholder="e.g., PC 459, battery, assault" />
-                  <div id="mt-suggestions" class="mt-suggestions" role="listbox" hidden></div>
+                <div class="lookup-controls">
+                  <div class="charge-autocomplete">
+                    <input id="mt-query" type="text" role="combobox" aria-autocomplete="list" aria-controls="mt-suggestions" aria-expanded="false" autocomplete="off" placeholder="e.g., PC 459, battery, assault" />
+                    <div id="mt-suggestions" class="mt-suggestions" role="listbox" hidden></div>
+                  </div>
+                  <button type="submit" class="lookup-button">Look up moral turpitude</button>
                 </div>
-                <button type="submit">Look up moral turpitude</button>
               </form>
               <div id="mt-result" class="mt-result" aria-live="polite" hidden></div>
               <button id="mt-copy" type="button" hidden>Copy legal analysis</button>
