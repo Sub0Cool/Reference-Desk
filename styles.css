@@ -2879,3 +2879,17 @@ h1 { font-weight: 600; }
   .reference-mark { width: 96px; height: 66px; }
   .reference-mark img { width: 96px; }
 }
+
+
+/* Improve input boundaries without changing card outlines or semantic alerts. */
+input[type="text"],
+input[type="date"],
+input[type="number"],
+input[type="time"],
+input[type="search"],
+input[type="email"],
+input:not([type]),
+select,
+textarea {
+  border: 1px solid #94a8bf;
+}
