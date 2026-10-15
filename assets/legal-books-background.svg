@@ -1,25 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 290" fill="none" aria-hidden="true">
-  <!-- Three restrained California law volumes and a smaller asymmetrical open book. -->
-  <g stroke="#AFC0D4" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" opacity=".53">
-    <path d="M204 35Q207 30 212 30H275Q280 30 282 36V204H204Z"/>
-    <path d="M213 30V204M274 30V204M205 55H281M205 66H281M205 182H281"/>
-    <path d="M288 24Q292 19 298 19H368Q374 19 377 25V204H288Z"/>
-    <path d="M298 20V204M366 20V204M289 45H376M289 57H376M289 184H376"/>
-    <path d="M384 36Q387 31 392 31H466Q472 31 474 37V204H384Z"/>
-    <path d="M395 32V204M462 32V204M385 56H473M385 67H473M385 184H473"/>
-    <!-- Open pages: smaller and deliberately asymmetrical. -->
-    <path d="M113 238Q169 209 238 216Q279 217 298 236Q346 211 409 214Q448 215 494 237"/>
-    <path d="M113 238L114 248Q185 231 240 238Q276 240 298 257Q355 233 415 235Q462 237 495 248L494 237"/>
-    <path d="M298 236V257"/>
-    <path d="M128 232Q185 215 240 224Q278 229 297 247"/>
-    <path d="M139 228Q192 217 241 231Q277 235 297 253"/>
-    <path d="M298 246Q353 220 412 223Q458 227 481 240"/>
-    <path d="M298 253Q359 231 419 233Q457 236 487 245"/>
-    <path d="M114 252Q188 239 242 247L298 265Q369 241 422 243Q468 244 494 256"/>
-  </g>
-  <g fill="#9AACBD" font-family="Georgia, serif" font-size="12" text-anchor="middle" letter-spacing=".35" opacity=".64">
-    <text x="243" y="111">PENAL</text><text x="243" y="126">CODE</text>
-    <text x="332" y="112">EVIDENCE</text>
-    <text x="429" y="111">VEHICLE</text><text x="429" y="126">CODE</text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 420" fill="none" aria-hidden="true">
+<defs>
+ <linearGradient id="blue" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#547A8B"/><stop offset=".55" stop-color="#3F6579"/><stop offset="1" stop-color="#27495E"/></linearGradient>
+ <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#889D83"/><stop offset="1" stop-color="#526F6D"/></linearGradient>
+ <linearGradient id="rose" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#A87969"/><stop offset="1" stop-color="#815D63"/></linearGradient>
+ <linearGradient id="paper" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#FFFAE9"/><stop offset="1" stop-color="#E9DDBF"/></linearGradient>
+ <radialGradient id="wash"><stop stop-color="#EDE3CC" stop-opacity=".62"/><stop offset="1" stop-color="#EDE3CC" stop-opacity="0"/></radialGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<!-- painterly warm light softly feathered into the workspace -->
+<ellipse cx="430" cy="244" rx="266" ry="177" fill="url(#wash)"/>
+<path d="M170 325C231 262 317 280 378 298S556 275 665 322" stroke="#CABD9E" stroke-width="13" opacity=".15" filter="url(#soft)"/>
+<!-- greenery framing reference volumes -->
+<g stroke="#7D977E" stroke-width="2" opacity=".65" stroke-linecap="round">
+<path d="M151 283C187 258 176 198 223 140M175 240C144 208 143 176 155 155M181 211C215 214 231 190 241 172M573 263C595 227 597 194 643 153M603 224C635 230 649 207 661 192"/>
+</g>
+<g opacity=".53">
+<path d="M170 235Q132 233 123 202Q151 197 170 235Z" fill="#859F76"/>
+<path d="M174 214Q190 176 223 180Q211 209 174 214Z" fill="#729485"/>
+<path d="M156 186Q127 178 138 144Q163 151 156 186Z" fill="#93A778"/>
+<path d="M201 169Q195 134 224 120Q232 145 201 169Z" fill="#8BA27D"/>
+<path d="M214 205Q224 179 249 171Q247 201 214 205Z" fill="#819B80"/>
+<path d="M604 217Q618 184 646 181Q637 210 604 217Z" fill="#839F7D"/>
+<path d="M618 194Q610 164 637 144Q651 174 618 194Z" fill="#93A77E"/>
+<path d="M635 229Q657 206 681 213Q669 238 635 229Z" fill="#8F9F73"/>
+</g>
+<!-- three gently painted clothbound law books, gold stamped -->
+<g stroke="#526475" stroke-linejoin="round" stroke-width="2">
+<path d="M257 95Q261 83 273 83L348 81Q355 84 355 93L353 294L252 294Z" fill="url(#blue)" opacity=".87"/>
+<path d="M363 75Q368 67 377 67L451 64Q460 66 460 76L463 297H358Z" fill="url(#green)" opacity=".85"/>
+<path d="M470 105Q472 92 482 92L558 94Q570 99 571 109L565 297H464Z" fill="url(#rose)" opacity=".86"/>
+<path d="M266 90L262 292M345 88L346 291M372 73L369 294M453 72L456 296M477 103L473 294M562 104L560 295" stroke="#EFF0DE" stroke-opacity=".42" stroke-width="2"/>
+</g>
+<g stroke="#D5BC7F" stroke-width="2.1" opacity=".82">
+<path d="M258 120H351M258 130H351M258 258H351M258 268H351"/>
+<path d="M363 105H458M363 115H458M363 262H458M363 273H458"/>
+<path d="M469 130H567M469 140H567M467 261H565M467 273H565"/>
+<path d="M284 240Q303 231 324 240M394 244Q414 232 433 244M493 243Q518 229 541 243" stroke-width="1.7"/>
+</g>
+<g fill="#F7E4AF" opacity=".91" font-family="Georgia,serif" text-anchor="middle" font-size="15" letter-spacing=".7">
+<text x="305" y="172">PENAL</text><text x="305" y="191">CODE</text>
+<text x="412" y="170">VEHICLE</text><text x="412" y="189">CODE</text>
+<text x="517" y="184">EVIDENCE</text>
+</g>
+<!-- an asymmetrical open volume, naturally angled like a watercolor picture-book -->
+<g stroke="#A3A39B" stroke-width="1.5" stroke-linejoin="round">
+<path d="M181 320Q264 280 351 304Q380 309 393 329Q453 292 540 299Q595 305 634 333L629 354Q500 326 396 367Q288 323 181 345Z" fill="#C8B99A" opacity=".65"/>
+<path d="M188 314Q283 279 356 300Q381 306 395 324Q461 286 543 295Q595 303 624 323L622 345Q506 320 395 359Q300 324 187 340Z" fill="url(#paper)"/>
+<path d="M395 324L395 358" stroke="#A7A18F" stroke-width="2.3"/>
+<path d="M200 316Q294 290 350 309Q374 316 389 333M214 320Q300 298 353 318Q372 326 391 341M230 323Q305 307 351 327M402 335Q471 302 537 310Q584 315 613 329M405 344Q477 317 539 324Q576 328 608 338M416 350Q480 328 543 335" stroke="#BDB59C" opacity=".63" stroke-width="1.3"/>
+<path d="M185 340Q295 328 395 365Q508 325 627 351" stroke="#9C927F" stroke-width="2" opacity=".75"/>
+</g>
 </svg>
