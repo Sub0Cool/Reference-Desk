@@ -2905,3 +2905,20 @@ h1 { font-weight: 600; }
   background: #ffffff;
 }
 .tool-tile.is-active { background: #fffaf0; }
+
+/* Decorative legal-reference volumes: confined to the upper-right workspace.
+   All text and tool cards remain on their existing solid backgrounds. */
+.counter-card {
+  background-color: #f0f3f7;
+  background-image: url("assets/reference-desk-legal-books.svg");
+  background-position: right -12px top 12px;
+  background-repeat: no-repeat;
+  background-size: min(760px, 76%) auto;
+}
+
+/* Narrow screens should favor the search controls over background artwork. */
+@media (max-width: 720px) {
+  .counter-card {
+    background-image: none;
+  }
+}
