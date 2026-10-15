@@ -1068,6 +1068,39 @@ window.EXPEDITER_OFFENSE_DATA = [
   },
   {
     code: "PC",
+    section: "591.5",
+    name: "Interference with a wireless communication device",
+    misdemeanorExposure: {
+      jail: "6 months",
+      basis: "PC §§ 591.5 & 19",
+      law: "PEN",
+      source: "591.5",
+      note: "PC § 591.5 declares this offense a misdemeanor without a separate jail maximum; the general six-month limit in PC § 19 applies."
+    },
+    metadata: {
+      provenance: "Added to Reference Desk after statute review",
+      authorities: [
+        {
+          "type": "statute",
+          "law": "PEN",
+          "section": "591.5",
+          "label": "PC § 591.5"
+        },
+        {
+          "type": "statute",
+          "law": "PEN",
+          "section": "19",
+          "label": "PC § 19"
+        }
+      ],
+      verification: {
+        status: "verified against current California statutory text",
+        checkedThrough: "2026-10-15"
+      }
+    }
+  },
+  {
+    code: "PC",
     section: "594",
     name: "Vandalism",
     misdemeanorExposure: {
