@@ -2893,3 +2893,18 @@ select,
 textarea {
   border: 1px solid #94a8bf;
 }
+
+/* Soft blue-gray workspace background: white tool cards stand apart. */
+.counter-card {
+  background: #f0f3f7;
+}
+.tool-tile,
+.tool-panel,
+.custody-card,
+.lookup-card,
+.exposure-card {
+  background: #ffffff;
+}
+.tool-tile.is-active {
+  background: #fffaf0;
+}
