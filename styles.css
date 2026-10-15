@@ -2271,21 +2271,21 @@ h1 {
 
 /* MicroHarmon theme experiment */
 :root {
-  --ink: #101114;
-  --muted: #5e6673;
-  --green: #083da9;
-  --green-dark: #101114;
-  --mint: #e8eefb;
-  --mint-light: #f4f6fa;
-  --line: #cfd5df;
+  --ink: #334155;
+  --muted: #64748b;
+  --green: #234967;
+  --green-dark: #102a43;
+  --mint: #e7edf3;
+  --mint-light: #f5f7fa;
+  --line: #dce3ea;
   --paper: #ffffff;
-  --background: #eef1f5;
+  --background: #f5f7fa;
   --error: #a72935;
   --shadow: 0 22px 54px rgba(10, 18, 32, 0.12);
-  --microharmon-blue: #083da9;
-  --microharmon-black: #101114;
-  --display-font: Eurostile, "Microgramma D Extended", "Arial Black", "Arial Narrow Bold", Arial, sans-serif;
-  --body-font: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --microharmon-blue: #102a43;
+  --microharmon-black: #102a43;
+  --display-font: "Merriweather", Georgia, "Times New Roman", serif;
+  --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
   font-family: var(--body-font);
 }
 
@@ -2320,7 +2320,7 @@ h3,
 }
 
 h1 {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .eyebrow,
@@ -2333,7 +2333,7 @@ h1 {
 
 .reference-mark {
   color: var(--microharmon-blue);
-  background: #eef3ff;
+  background: #edf2f7;
   border: 1px solid #c5d2ef;
   border-radius: 8px;
 }
@@ -2373,7 +2373,7 @@ h1 {
 
 .tool-tile-icon {
   color: var(--microharmon-blue);
-  background: #e9effc;
+  background: #edf2f7;
   border-radius: 6px;
 }
 
@@ -2391,12 +2391,12 @@ h1 {
 .add-button:focus-visible,
 .bac-submit-button:hover,
 .bac-submit-button:focus-visible {
-  background: #062f83;
-  border-color: #062f83;
+  background: #234967;
+  border-color: #234967;
 }
 
 .total-card {
-  background: linear-gradient(135deg, #101114 0%, #083da9 100%);
+  background: linear-gradient(135deg, #102a43 0%, #102a43 100%);
   box-shadow: 0 14px 30px rgba(8, 61, 169, 0.18);
 }
 
@@ -2838,3 +2838,54 @@ summary:focus-visible, a:focus-visible {
   outline-offset: 3px;
 }
 input[type="checkbox"], input[type="radio"] { accent-color: var(--green-dark); }
+
+/* Complete overrides for the previous experimental theme. */
+:root {
+  --ink: #334155;
+  --muted: #64748b;
+  --green: #234967;
+  --green-dark: #102a43;
+  --mint: #e7edf3;
+  --mint-light: #f5f7fa;
+  --line: #dce3ea;
+  --paper: #ffffff;
+  --background: #f5f7fa;
+  --gold: #daaa51;
+  --microharmon-blue: #102a43;
+  --microharmon-black: #102a43;
+  --display-font: "Merriweather", Georgia, "Times New Roman", serif;
+  --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--body-font);
+}
+h1, h2, h3, .tool-tile strong,
+.tool-summary h2, .active-tool-heading h2,
+.charge-result-group h3, .custody-card h2,
+.lookup-card h2, .exposure-card h2,
+.probation-card h2, .bac-card h2 {
+  font-family: var(--display-font);
+  color: var(--green-dark);
+}
+h1 { font-weight: 600; }
+.eyebrow, .tool-tile-kicker { color: var(--green-dark); font-family: var(--body-font); }
+.reference-mark, .tool-tile-icon { color: var(--green-dark); background: #edf2f7; border-color: var(--line); }
+.tool-tile.is-active {
+  background: #fffaf0;
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+.tool-tile.is-active .tool-tile-icon { background: #ffefce; }
+.tool-tile.is-active .tool-tile-arrow { color: #8d641d; }
+.tool-tile:hover, .tool-tile:focus-visible { border-color: var(--gold); }
+.lookup-button, .add-button, .bac-submit-button, .bac-mode-button.is-active {
+  color: white;
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+}
+.lookup-button:hover, .lookup-button:focus-visible,
+.add-button:hover, .add-button:focus-visible,
+.bac-submit-button:hover, .bac-submit-button:focus-visible {
+  background: #234967;
+  border-color: #234967;
+}
+.total-card { background: linear-gradient(125deg, #102a43, #234967); box-shadow: 0 14px 30px rgba(16,42,67,.18); }
+.charge-result-group, .charge-result-group:first-child { border-top-color: var(--green-dark); }
