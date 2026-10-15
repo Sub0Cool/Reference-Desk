@@ -2905,3 +2905,30 @@ h1 { font-weight: 600; }
   background: #ffffff;
 }
 .tool-tile.is-active { background: #fffaf0; }
+
+/* Decorative legal-library line art sits behind the header, never over search results. */
+.counter-card {
+  background-color: #f0f3f7;
+  background-image: url("assets/reference-desk-storybook.webp");
+  background-repeat: no-repeat;
+  background-position: right 12px top 14px;
+  background-size: min(40%, 420px) auto;
+}
+@media (max-width: 720px) {
+  .counter-card {
+    background-image: none;
+  }
+}
+/* White panels ensure legal references remain clearly legible. */
+.tool-tile, .tool-panel, .custody-card, .lookup-card, .exposure-card {
+  background-color: #ffffff;
+}
+
+/* Preserve breathing room around the original painted book illustration. */
+@media (min-width: 900px) {
+  .hero .intro { max-width: 530px; }
+  .hero { min-height: 195px; }
+}
+@media (max-width: 900px) {
+  .counter-card { background-image: none; }
+}
