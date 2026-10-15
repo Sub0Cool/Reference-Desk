@@ -2881,19 +2881,6 @@ h1 { font-weight: 600; }
 }
 
 
-/* Improve input boundaries without changing card outlines or semantic alerts. */
-input[type="text"],
-input[type="date"],
-input[type="number"],
-input[type="time"],
-input[type="search"],
-input[type="email"],
-input:not([type]),
-select,
-textarea {
-  border: 1px solid #94a8bf;
-}
-
 /* Soft blue-gray workspace background: white tool cards stand apart. */
 .counter-card {
   background: #f0f3f7;
