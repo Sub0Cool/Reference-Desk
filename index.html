@@ -8,6 +8,9 @@
       content="California criminal-law quick-reference tools for custody credits, charge information, and Penal Code section 29805."
     />
     <title>Reference Desk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -19,15 +22,11 @@
             Reset all tools
           </button>
           <div class="reference-mark" aria-hidden="true">
-            <svg viewBox="0 0 64 64" role="img">
-              <path d="M13 14h27a7 7 0 0 1 7 7v28H20a7 7 0 0 0-7 7V14Z"></path>
-              <path d="M20 49h31V21a7 7 0 0 0-7-7H20"></path>
-              <path d="M24 24h15M24 31h15M24 38h11"></path>
-            </svg>
+            <img src="assets/reference-desk-monogram.svg" alt="" width="80" height="52" decoding="async" />
           </div>
           <div>
             <p class="eyebrow">California criminal-law utilities</p>
-            <h1 id="page-title">Reference Desk</h1>
+            <h1 id="page-title">Reference <span class="brand-desk">Desk</span></h1>
             <p class="intro">
               Quick-reference tools for custody credits, calendar dates, misdemeanor exposure, probation,
               firearm-prohibition checks, and blood alcohol estimation.
@@ -431,11 +430,13 @@
               <p class="exposure-intro">Search a statute or offense name. Results focus on whether the offense necessarily involves moral turpitude under the felony-conviction analysis. Separate conduct may independently support impeachment; unreviewed offenses are never assumed to qualify or not qualify.</p>
               <form id="mt-form" class="lookup-form">
                 <label for="mt-query">Offense or code section</label>
-                <div class="charge-autocomplete">
-                  <input id="mt-query" type="text" role="combobox" aria-autocomplete="list" aria-controls="mt-suggestions" aria-expanded="false" autocomplete="off" placeholder="e.g., PC 459, battery, assault" />
-                  <div id="mt-suggestions" class="mt-suggestions" role="listbox" hidden></div>
+                <div class="lookup-controls">
+                  <div class="charge-autocomplete">
+                    <input id="mt-query" type="text" role="combobox" aria-autocomplete="list" aria-controls="mt-suggestions" aria-expanded="false" autocomplete="off" placeholder="e.g., PC 459, battery, assault" />
+                    <div id="mt-suggestions" class="mt-suggestions" role="listbox" hidden></div>
+                  </div>
+                  <button type="submit" class="lookup-button">Look up moral turpitude</button>
                 </div>
-                <button type="submit">Look up moral turpitude</button>
               </form>
               <div id="mt-result" class="mt-result" aria-live="polite" hidden></div>
               <button id="mt-copy" type="button" hidden>Copy legal analysis</button>
@@ -722,13 +723,7 @@
           </div>
         </section>
 
-        <footer class="microharmon-footer" aria-label="MicroHarmon branding">
-          <img
-            src="assets/microharmon-logo.jpg"
-            alt="MicroHarmon — Where small bugs become beautiful features."
-          />
-        </footer>
-      </section>
+        </section>
     </main>
 
     <template id="range-template">

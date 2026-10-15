@@ -1,14 +1,16 @@
 :root {
   color-scheme: light;
-  --ink: #1f2a3a;
-  --muted: #687180;
-  --green: #3f5873;
-  --green-dark: #273d57;
-  --mint: #e8e2d5;
-  --mint-light: #f7f4ed;
-  --line: #d9d5cc;
-  --paper: #fffdf8;
-  --background: #edf0f3;
+  --ink: #334155;
+  --muted: #64748b;
+  --green: #234967;
+  --green-dark: #102a43;
+  --mint: #e7edf3;
+  --mint-light: #f5f7fa;
+  --line: #dce3ea;
+  --paper: #ffffff;
+  --background: #f5f7fa;
+  --gold: #daaa51;
+  --heading-font: "Merriweather", Georgia, "Times New Roman", serif;
   --error: #8a3945;
   --shadow: 0 24px 70px rgba(31, 42, 58, 0.14);
   font-family:
@@ -19,6 +21,12 @@
 * {
   box-sizing: border-box;
 }
+
+/* Respect the HTML hidden attribute even on grid and flex components. */
+[hidden] {
+  display: none !important;
+}
+
 
 body {
   min-width: 320px;
@@ -99,7 +107,7 @@ button {
 h1 {
   max-width: 700px;
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(2rem, 5vw, 3.6rem);
   font-weight: 500;
   line-height: 1.02;
@@ -339,7 +347,7 @@ h1 {
 
 #grand-total {
   flex: none;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(3rem, 8vw, 5rem);
   line-height: 0.85;
 }
@@ -471,7 +479,7 @@ h1 {
 
 .custody-card h2 {
   margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   font-weight: 500;
 }
@@ -543,7 +551,7 @@ h1 {
   display: block;
   margin-top: 8px;
   color: var(--green-dark);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: 2.15rem;
   line-height: 1;
 }
@@ -590,7 +598,7 @@ h1 {
 
 .lookup-card h2 {
   margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   font-weight: 500;
 }
@@ -781,7 +789,7 @@ h1 {
 .charge-result-group h3 {
   margin: 0;
   color: var(--green-dark);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -802,7 +810,7 @@ h1 {
 
 .exposure-card h2 {
   margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   font-weight: 500;
 }
@@ -941,7 +949,7 @@ h1 {
 
 .tool-summary h2 {
   margin: 3px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.4rem, 3vw, 2rem);
   font-weight: 500;
 }
@@ -1014,7 +1022,7 @@ h1 {
 
 .probation-card h2 {
   margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   font-weight: 500;
 }
@@ -1226,7 +1234,7 @@ h1 {
 
 .tool-tile strong {
   display: block;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: 1.2rem;
   font-weight: 600;
   line-height: 1.15;
@@ -1268,7 +1276,7 @@ h1 {
 
 .active-tool-heading h2 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.45rem, 3vw, 2rem);
   font-weight: 500;
   text-align: right;
@@ -1324,7 +1332,7 @@ h1 {
 
 .bac-card h2 {
   margin: 4px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(1.65rem, 3vw, 2.25rem);
   font-weight: 500;
 }
@@ -1437,7 +1445,7 @@ h1 {
   display: block;
   margin-top: 5px;
   color: var(--green-dark);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 500;
 }
@@ -1537,7 +1545,7 @@ h1 {
 
 .drink-list-heading h3 {
   margin: 3px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: 1.25rem;
   font-weight: 500;
 }
@@ -1593,7 +1601,7 @@ h1 {
 
 .method-dialog h2 {
   margin: 4px 34px 0 0;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-weight: 500;
 }
 
@@ -2073,7 +2081,7 @@ h1 {
 .charge-result-group h3 {
   margin-bottom: 2px;
   color: var(--green-dark);
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--heading-font);
   font-size: 1.18rem;
   font-weight: 700;
   line-height: 1.2;
@@ -2267,23 +2275,23 @@ h1 {
 }
 
 
-/* MicroHarmon theme experiment */
+/* Reference Desk contemporary theme */
 :root {
-  --ink: #101114;
-  --muted: #5e6673;
-  --green: #083da9;
-  --green-dark: #101114;
-  --mint: #e8eefb;
-  --mint-light: #f4f6fa;
-  --line: #cfd5df;
+  --ink: #334155;
+  --muted: #64748b;
+  --green: #234967;
+  --green-dark: #102a43;
+  --mint: #e7edf3;
+  --mint-light: #f5f7fa;
+  --line: #dce3ea;
   --paper: #ffffff;
-  --background: #eef1f5;
+  --background: #f5f7fa;
   --error: #a72935;
   --shadow: 0 22px 54px rgba(10, 18, 32, 0.12);
-  --microharmon-blue: #083da9;
-  --microharmon-black: #101114;
-  --display-font: Eurostile, "Microgramma D Extended", "Arial Black", "Arial Narrow Bold", Arial, sans-serif;
-  --body-font: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --reference-navy: #102a43;
+  --reference-heading: #102a43;
+  --display-font: "Merriweather", Georgia, "Times New Roman", serif;
+  --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
   font-family: var(--body-font);
 }
 
@@ -2313,25 +2321,25 @@ h3,
 .probation-card h2,
 .bac-card h2 {
   font-family: var(--display-font);
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   letter-spacing: -0.025em;
 }
 
 h1 {
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .eyebrow,
 .tool-tile-kicker {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-family: var(--display-font);
   font-weight: 800;
   letter-spacing: 0.15em;
 }
 
 .reference-mark {
-  color: var(--microharmon-blue);
-  background: #eef3ff;
+  color: var(--reference-navy);
+  background: #edf2f7;
   border: 1px solid #c5d2ef;
   border-radius: 8px;
 }
@@ -2359,19 +2367,19 @@ h1 {
 
 .tool-tile:hover,
 .tool-tile:focus-visible {
-  border-color: var(--microharmon-blue);
+  border-color: var(--reference-navy);
   box-shadow: 0 8px 22px rgba(8, 61, 169, 0.10);
 }
 
 .tool-tile.is-active {
   background: #f7f9fd;
-  border-color: var(--microharmon-blue);
-  box-shadow: inset 0 0 0 1px var(--microharmon-blue);
+  border-color: var(--reference-navy);
+  box-shadow: inset 0 0 0 1px var(--reference-navy);
 }
 
 .tool-tile-icon {
-  color: var(--microharmon-blue);
-  background: #e9effc;
+  color: var(--reference-navy);
+  background: #edf2f7;
   border-radius: 6px;
 }
 
@@ -2379,8 +2387,8 @@ h1 {
 .add-button,
 .bac-submit-button {
   color: #ffffff;
-  background: var(--microharmon-blue);
-  border-color: var(--microharmon-blue);
+  background: var(--reference-navy);
+  border-color: var(--reference-navy);
 }
 
 .lookup-button:hover,
@@ -2389,22 +2397,22 @@ h1 {
 .add-button:focus-visible,
 .bac-submit-button:hover,
 .bac-submit-button:focus-visible {
-  background: #062f83;
-  border-color: #062f83;
+  background: #234967;
+  border-color: #234967;
 }
 
 .total-card {
-  background: linear-gradient(135deg, #101114 0%, #083da9 100%);
+  background: linear-gradient(135deg, #102a43 0%, #102a43 100%);
   box-shadow: 0 14px 30px rgba(8, 61, 169, 0.18);
 }
 
 .charge-result-group {
   border-color: #cbd2de;
-  border-top: 3px solid var(--microharmon-blue);
+  border-top: 3px solid var(--reference-navy);
 }
 
 .charge-result-group:first-child {
-  border-top: 3px solid var(--microharmon-blue);
+  border-top: 3px solid var(--reference-navy);
 }
 
 .charge-result-group h3 {
@@ -2418,7 +2426,7 @@ h1 {
 .credit-stat output,
 .exposure-stat strong,
 .probation-stat strong {
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
 }
 
 .exposure-badge,
@@ -2436,7 +2444,7 @@ h1 {
 .charge-scope-note summary,
 .method-dialog-source a,
 .legal-note a {
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
 }
 
 input,
@@ -2448,49 +2456,13 @@ select {
 input:focus,
 select:focus,
 .lookup-controls input:focus {
-  border-color: var(--microharmon-blue);
+  border-color: var(--reference-navy);
   box-shadow: 0 0 0 3px rgba(8, 61, 169, 0.12);
 }
 
 .master-reset-button {
   border-radius: 5px;
 }
-
-.microharmon-footer {
-  display: grid;
-  place-items: center;
-  margin-top: 34px;
-  padding-top: 26px;
-  border-top: 2px solid var(--microharmon-blue);
-}
-
-.microharmon-footer img {
-  display: block;
-  width: min(390px, 76vw);
-  height: auto;
-  mix-blend-mode: multiply;
-}
-
-.microharmon-footer p {
-  margin: 11px 0 0;
-  color: #606774;
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
-}
-
-@media (max-width: 640px) {
-  .microharmon-footer {
-    margin-top: 24px;
-    padding-top: 20px;
-  }
-
-  .microharmon-footer img {
-    width: min(320px, 90vw);
-  }
-}
-
 
 /* Office policy tier classification */
 .office-tier-result {
@@ -2500,7 +2472,7 @@ select:focus,
   padding: 14px 16px;
   background: #f7f9fd;
   border: 1px solid #cbd2de;
-  border-left: 4px solid var(--microharmon-blue);
+  border-left: 4px solid var(--reference-navy);
   border-radius: 8px;
 }
 
@@ -2513,7 +2485,7 @@ select:focus,
 
 .office-tier-kicker {
   margin: 0;
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-size: 0.62rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -2522,7 +2494,7 @@ select:focus,
 
 .office-tier-heading h3 {
   margin: 3px 0 0;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-family: var(--display-font);
   font-size: 1.06rem;
   font-weight: 900;
@@ -2541,7 +2513,7 @@ select:focus,
   flex: 0 0 auto;
   padding: 7px 11px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 5px;
   font-family: var(--display-font);
   font-size: 0.92rem;
@@ -2563,7 +2535,7 @@ select:focus,
 
 .office-tier-details-wrap summary {
   padding-top: 8px;
-  color: var(--microharmon-blue);
+  color: var(--reference-navy);
   font-size: 0.75rem;
   font-weight: 800;
   cursor: pointer;
@@ -2593,7 +2565,7 @@ select:focus,
   min-width: 58px;
   padding: 5px 7px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 4px;
   font-size: 0.68rem;
   font-weight: 850;
@@ -2602,7 +2574,7 @@ select:focus,
 
 .office-tier-detail strong {
   display: block;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-size: 0.77rem;
 }
 
@@ -2683,7 +2655,7 @@ select:focus,
 
 .charge-suggestion-title {
   display: block;
-  color: var(--microharmon-black);
+  color: var(--reference-heading);
   font-size: 0.83rem;
   font-weight: 800;
   line-height: 1.3;
@@ -2703,7 +2675,7 @@ select:focus,
 .charge-suggestion-tier {
   padding: 2px 6px;
   color: #ffffff;
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   border-radius: 4px;
   font-size: 0.66rem;
   font-weight: 850;
@@ -2731,7 +2703,7 @@ select:focus,
 /* California moral-turpitude lookup */
 .mt-citation-row{display:flex;align-items:center;flex-wrap:wrap;gap:6px 12px;margin:8px 0}
 .mt-citation-row .mt-authority{margin:0}
-.mt-citation-copy{border:1px solid #bcc7d8;border-radius:5px;background:#fff;color:var(--microharmon-blue);padding:5px 9px;font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
+.mt-citation-copy{border:1px solid #bcc7d8;border-radius:5px;background:#fff;color:var(--reference-navy);padding:5px 9px;font:inherit;font-size:.74rem;font-weight:800;cursor:pointer}
 .mt-citation-copy:hover,.mt-citation-copy:focus-visible{background:#eef3ff}
 
 .mt-suggestions{position:relative;z-index:5;max-height:300px;overflow:auto;background:#fff;border:1px solid #bcc7d8;border-radius:7px;margin-top:4px;box-shadow:0 8px 20px #1011141c}
@@ -2741,9 +2713,9 @@ select:focus,
 .mt-result h3{margin:0 0 12px;font-size:1.1rem}
 .mt-analysis{padding:12px 0;border-top:1px solid #d7dce5}
 .mt-analysis h3{font-size:.96rem;margin:0 0 7px}
-.mt-classification{display:inline-block;padding:5px 8px;color:#fff;background:var(--microharmon-blue);border-radius:4px;font-size:.8rem}
+.mt-classification{display:inline-block;padding:5px 8px;color:#fff;background:var(--reference-navy);border-radius:4px;font-size:.8rem}
 .mt-analysis p,.mt-caveat,.mt-review,.mt-footnote{line-height:1.5;font-size:.82rem}
-.mt-authority{display:block;color:var(--microharmon-blue);margin:6px 0;font-size:.8rem}
+.mt-authority{display:block;color:var(--reference-navy);margin:6px 0;font-size:.8rem}
 .mt-review,.mt-footnote{color:var(--muted)}
 .mt-footnote{margin-top:14px}
 
@@ -2766,14 +2738,14 @@ select:focus,
   outline-offset: 3px;
 }
 .office-tier-pill.office-tier-link {
-  background: var(--microharmon-blue);
+  background: var(--reference-navy);
   color: #ffffff;
   padding: 5px 7px;
 }
 .office-tier-sequence {
   margin: 8px 0 12px;
   padding: 9px 12px;
-  border-left: 3px solid var(--microharmon-blue);
+  border-left: 3px solid var(--reference-navy);
   background: #ffffff;
   font-weight: 800;
   font-size: 0.86rem;
@@ -2797,3 +2769,139 @@ select:focus,
 .mcda-div-result h3 { margin: 5px 0 7px; font-size: 1.05rem; }
 .mcda-div-result p:last-child { margin: 0; line-height: 1.5; }
 .mcda-div-conditional { border-left-style: dashed; }
+
+
+/* Contemporary Reference Desk theme: navy actions, gold selections.
+   Semantic warning / eligibility / danger colors above remain untouched. */
+body {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(224, 234, 244, .78), transparent 28rem),
+    radial-gradient(circle at 90% 92%, rgba(234, 239, 246, .60), transparent 30rem),
+    var(--background);
+}
+.counter-card { background: #ffffff; border-color: var(--line); }
+.custody-card, .lookup-card, .exposure-card, .tool-panel, .tool-tile {
+  background: #ffffff;
+}
+.reference-mark, .tool-tile-icon { background: #edf2f7; }
+h1, h2, .tool-tile strong { color: var(--green-dark); }
+.tool-tile.is-active {
+  background: #f5f7fa;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(218, 170, 81, .20);
+}
+.tool-tile.is-active .tool-tile-icon {
+  color: var(--green-dark);
+  background: #fff3dd;
+}
+.tool-tile.is-active .tool-tile-arrow { color: #99701f; }
+.tool-tile:hover, .tool-tile:focus-visible { border-color: var(--gold); }
+.lookup-button, .bac-mode-button.is-active {
+  color: #ffffff;
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+}
+.lookup-button:hover, .lookup-button:focus-visible { background: #234967; }
+button:focus-visible, input:focus-visible, select:focus-visible,
+summary:focus-visible, a:focus-visible {
+  outline: 2px solid #a77720;
+  outline-offset: 3px;
+}
+input[type="checkbox"], input[type="radio"] { accent-color: var(--green-dark); }
+
+/* Complete overrides for the previous experimental theme. */
+:root {
+  --ink: #334155;
+  --muted: #64748b;
+  --green: #234967;
+  --green-dark: #102a43;
+  --mint: #e7edf3;
+  --mint-light: #f5f7fa;
+  --line: #dce3ea;
+  --paper: #ffffff;
+  --background: #f5f7fa;
+  --gold: #daaa51;
+  --reference-navy: #102a43;
+  --reference-heading: #102a43;
+  --display-font: "Merriweather", Georgia, "Times New Roman", serif;
+  --body-font: Inter, ui-sans-serif, system-ui, sans-serif;
+  font-family: var(--body-font);
+}
+h1, h2, h3, .tool-tile strong,
+.tool-summary h2, .active-tool-heading h2,
+.charge-result-group h3, .custody-card h2,
+.lookup-card h2, .exposure-card h2,
+.probation-card h2, .bac-card h2 {
+  font-family: var(--display-font);
+  color: var(--green-dark);
+}
+h1 { font-weight: 600; }
+.eyebrow, .tool-tile-kicker { color: var(--green-dark); font-family: var(--body-font); }
+.reference-mark, .tool-tile-icon { color: var(--green-dark); background: #edf2f7; border-color: var(--line); }
+.tool-tile.is-active {
+  background: #fffaf0;
+  border-color: var(--gold);
+  box-shadow: inset 0 0 0 1px var(--gold);
+}
+.tool-tile.is-active .tool-tile-icon { background: #ffefce; }
+.tool-tile.is-active .tool-tile-arrow { color: #8d641d; }
+.tool-tile:hover, .tool-tile:focus-visible { border-color: var(--gold); }
+.lookup-button, .add-button, .bac-submit-button, .bac-mode-button.is-active {
+  color: white;
+  background: var(--green-dark);
+  border-color: var(--green-dark);
+}
+.lookup-button:hover, .lookup-button:focus-visible,
+.add-button:hover, .add-button:focus-visible,
+.bac-submit-button:hover, .bac-submit-button:focus-visible {
+  background: #234967;
+  border-color: #234967;
+}
+.total-card { background: linear-gradient(125deg, #102a43, #234967); box-shadow: 0 14px 30px rgba(16,42,67,.18); }
+.charge-result-group, .charge-result-group:first-child { border-top-color: var(--green-dark); }
+
+/* Reference Desk header: softer, scalable artwork with transparent background. */
+.hero { grid-template-columns: 80px minmax(0, 1fr); column-gap: 18px; }
+.reference-mark {
+  display: grid;
+  width: 80px;
+  height: 58px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  place-items: center;
+}
+.reference-mark img {
+  display: block;
+  width: 80px;
+  height: auto;
+  max-width: 100%;
+  opacity: .92;
+}
+#page-title .brand-desk { color: #9b6b20; }
+@media (max-width: 720px) {
+  .hero { grid-template-columns: 1fr; }
+  .reference-mark { width: 80px; height: 58px; }
+  .reference-mark img { width: 80px; }
+}
+
+/* Reuse Charge Lookup control styling for Moral Turpitude. */
+#mt-suggestions {
+  position: absolute;
+  z-index: 40;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-top: 0;
+}
+
+/* Keep the approved soft blue-gray workspace and white tool cards. */
+.counter-card { background: #f0f3f7; }
+.tool-tile, .tool-panel, .custody-card, .lookup-card, .exposure-card {
+  background: #ffffff;
+}
+.tool-tile.is-active { background: #fffaf0; }
