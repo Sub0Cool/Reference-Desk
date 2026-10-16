@@ -1,0 +1,57 @@
+
+/* DUI office offer calculator, using Reference Desk's existing navy/gold palette. */
+.dui-offer-card { max-width: 100%; color: var(--ink); }
+.dui-offer-card h2 { font-family: var(--display-font); font-size: clamp(1.5rem, 3vw, 2rem); margin: 4px 0 10px; color: var(--green-dark); }
+.dui-offer-card h3 { font-family: var(--display-font); color: var(--green-dark); font-size: 1.12rem; margin: 20px 0 12px; }
+.dui-offer-intro { max-width: 760px; margin: 0 0 20px; line-height: 1.6; }
+.dui-offer-fieldset { margin: 18px 0; padding: 20px; background: #fff; border: 1px solid var(--line); border-radius: 14px; min-width: 0; }
+.dui-offer-fieldset legend { color: var(--green-dark); font-weight: 800; padding: 0 7px; }
+.dui-offer-reading-grid, .dui-offer-factor-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.dui-offer-reading-grid label, .dui-offer-select-label { display: flex; flex-direction: column; gap: 8px; font-weight: 700; color: var(--green-dark); }
+.dui-offer-reading-grid input, .dui-offer-select-label input, .dui-offer-select-label select { width: 100%; min-width: 0; min-height: 46px; padding: 10px 12px; border: 1px solid #acb8c6; border-radius: 9px; background: #fff; color: var(--ink); font: inherit; }
+.dui-offer-reading-grid input { font-variant-numeric: tabular-nums; }
+.dui-offer-select-label small, .dui-offer-muted { color: var(--muted); font-size: .86rem; font-weight: 400; line-height: 1.5; }
+.dui-offer-fieldset > .dui-offer-muted { margin: 12px 0 0; }
+.dui-offer-checks { display: grid; gap: 14px; margin-top: 20px; }
+.dui-offer-check { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; line-height: 1.45; cursor: pointer; }
+.dui-offer-check input { width: 19px; height: 19px; accent-color: var(--green-dark); }
+.dui-offer-check strong { margin-left: auto; color: var(--green-dark); font-size: .86rem; }
+.dui-offer-details { margin: 6px 0 0 30px; }
+.dui-offer-details summary { color: #315d80; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; font-size: .85rem; }
+.dui-offer-details p { padding: 10px 12px; background: #f5f7fa; border-left: 3px solid var(--gold); border-radius: 5px; line-height: 1.55; }
+.dui-offer-actions { display: flex; justify-content: flex-end; }
+.dui-offer-clear { border: 1px solid #b6c3d0; border-radius: 9px; background: #fff; padding: 10px 16px; color: var(--green-dark); font: inherit; font-weight: 700; cursor: pointer; }
+.dui-offer-clear:hover { background: #f0f3f7; }
+.dui-offer-empty { padding: 20px; text-align: center; color: var(--muted); background: #f5f7fa; border-radius: 12px; }
+.dui-offer-error { padding: 12px 15px; border-radius: 10px; color: #8a261f; background: #fff3f0; border: 1px solid #ecc3bc; }
+.dui-offer-result-grid, .dui-offer-scenario-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.dui-offer-result-card { display: flex; flex-direction: column; gap: 10px; padding: 19px; background: #f5f7fa; border: 1px solid var(--line); border-radius: 13px; }
+.dui-offer-result-card > span { font-size: .8rem; font-weight: 800; color: var(--green-dark); text-transform: uppercase; letter-spacing: .04em; }
+.dui-offer-result-card > strong { color: var(--green-dark); font-size: clamp(1.8rem, 3.8vw, 2.5rem); font-variant-numeric: tabular-nums; }
+.dui-offer-result-card > small { color: var(--muted); line-height: 1.4; }
+.dui-offer-result-highlight { background: #fffaf0; border-color: #d6b777; }
+.dui-offer-scenario-grid > div { display: flex; flex-direction: column; gap: 7px; padding: 15px; border: 1px solid var(--line); border-radius: 10px; }
+.dui-offer-scenario-grid span { color: var(--muted); font-size: .84rem; }
+.dui-offer-scenario-grid strong { color: var(--green-dark); font-size: 1.2rem; }
+.dui-offer-scenario-grid output { font-variant-numeric: tabular-nums; font-weight: 700; }
+.dui-offer-breakdown { border-top: 1px solid var(--line); margin-top: 20px; }
+.dui-offer-breakdown ul { padding-left: 22px; line-height: 1.7; }
+.dui-offer-iid { margin-top: 14px; padding: 12px 14px; background: #f5f7fa; border-radius: 9px; font-weight: 700; color: var(--green-dark); }
+.dui-offer-legal-note { margin-top: 24px; }
+@media (max-width: 670px) {
+  .dui-offer-reading-grid, .dui-offer-factor-grid, .dui-offer-result-grid, .dui-offer-scenario-grid { grid-template-columns: 1fr; }
+  .dui-offer-fieldset { padding: 14px; }
+  .dui-offer-check strong { margin-left: 0; }
+}
+
+/* Optional BAC readings beyond the first two. */
+.dui-offer-extra-readings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 16px; }
+.dui-offer-extra-row { display: flex; align-items: flex-end; gap: 8px; min-width: 0; }
+.dui-offer-extra-label { display: flex; flex-direction: column; flex: 1; min-width: 0; gap: 8px; font-weight: 700; color: var(--green-dark); }
+.dui-offer-extra-input { width: 100%; min-width: 0; min-height: 46px; padding: 10px 12px; border: 1px solid #acb8c6; border-radius: 9px; background: #fff; color: var(--ink); font: inherit; font-variant-numeric: tabular-nums; }
+.dui-offer-add-reading { margin-top: 16px; border: 1px solid var(--green-dark); border-radius: 9px; padding: 10px 16px; font: inherit; font-weight: 700; cursor: pointer; background: #fff; color: var(--green-dark); }
+.dui-offer-add-reading:hover, .dui-offer-add-reading:focus-visible { background: #edf2f7; }
+.dui-offer-remove-reading { min-height: 46px; border: 1px solid #b6c3d0; border-radius: 9px; background: #fff; padding: 8px 10px; color: var(--green-dark); font: inherit; font-size: .85rem; cursor: pointer; }
+.dui-offer-remove-reading:hover, .dui-offer-remove-reading:focus-visible { background: #f0f3f7; }
+.dui-offer-readings-used { color: var(--muted); line-height: 1.5; font-size: .86rem; margin: 12px 0 0; }
+@media (max-width: 670px) { .dui-offer-extra-readings { grid-template-columns: 1fr; } }

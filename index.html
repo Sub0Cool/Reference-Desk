@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Merriweather:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dui-offer.css" />
   </head>
   <body>
     <main class="page-shell">
@@ -29,7 +30,7 @@
             <h1 id="page-title">Reference <span class="brand-desk">Desk</span></h1>
             <p class="intro">
               Quick-reference tools for custody credits, calendar dates, misdemeanor exposure, probation,
-              firearm-prohibition checks, and blood alcohol estimation.
+              firearm-prohibition checks, blood alcohol estimation, and DUI office offers.
             </p>
           </div>
         </header>
@@ -80,6 +81,18 @@
               <span class="tool-tile-kicker">Evidence</span>
               <strong>Moral Turpitude Lookup</strong>
               <small>California witness impeachment: convictions and misconduct.</small>
+            </span>
+            <span class="tool-tile-arrow" aria-hidden="true">→</span>
+          </button>
+
+          <button class="tool-tile" type="button" data-tool-target="dui-offer" aria-pressed="false">
+            <span class="tool-tile-icon" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M7 8h18M10 8l2 5-3 12h14l-3-12 2-5M12 18h8M14 22h4"></path><path d="M16 4v4"></path></svg>
+            </span>
+            <span class="tool-tile-copy">
+              <span class="tool-tile-kicker">DUI offers</span>
+              <strong>DUI Offer Calculator</strong>
+              <small>Compare BAC readings, apply aggravators, and calculate early resolution offers.</small>
             </span>
             <span class="tool-tile-arrow" aria-hidden="true">→</span>
           </button>
@@ -441,6 +454,105 @@
               <div id="mt-result" class="mt-result" aria-live="polite" hidden></div>
               <button id="mt-copy" type="button" hidden>Copy legal analysis</button>
               <p class="mt-footnote">California criminal impeachment only. A researched classification is not an admissibility ruling. Evidence Code § 352, applicable hearsay rules, historical statutory text, and later cases must be considered.</p>
+            </section>
+          </div>
+        </section>
+
+        <section class="tool-panel tool-view" id="tool-dui-offer" data-tool-view="dui-offer" hidden>
+          <div class="tool-panel-body">
+            <section class="dui-offer-card" aria-labelledby="dui-offer-title">
+              <p class="eyebrow">Office offer worksheet · not statutory exposure</p>
+              <h2 id="dui-offer-title">DUI Offer Calculator</h2>
+              <p class="dui-offer-intro">Enter as many BAC results as needed, then select the applicable aggravating factors. The lower and higher readings are identified automatically. The higher total is used to calculate the early resolution offer.</p>
+
+              <form id="dui-offer-form" novalidate>
+                <fieldset class="dui-offer-fieldset">
+                  <legend>1. BAC readings</legend>
+                  <div class="dui-offer-reading-grid">
+                    <label for="dui-offer-reading-1">BAC reading 1 <span class="dui-offer-muted">(required)</span>
+                      <input type="number" id="dui-offer-reading-1" min="0" max="1" step="0.001" inputmode="decimal" placeholder="e.g., 0.165" required />
+                    </label>
+                    <label for="dui-offer-reading-2">BAC reading 2 <span class="dui-offer-muted">(optional)</span>
+                      <input type="number" id="dui-offer-reading-2" min="0" max="1" step="0.001" inputmode="decimal" placeholder="e.g., 0.172" />
+                    </label>
+                  </div>
+                  <div id="dui-offer-extra-readings" class="dui-offer-extra-readings"></div>
+                  <button type="button" id="dui-offer-add-reading" class="dui-offer-add-reading">+ Add BAC reading</button>
+                  <p class="dui-offer-muted">Values are BAC readings such as 0.165, not percentages like 16.5. Only one reading is required. Blank optional readings are ignored.</p>
+                </fieldset>
+
+                <fieldset class="dui-offer-fieldset">
+                  <legend>2. Aggravating factors</legend>
+                  <div class="dui-offer-factor-grid">
+                    <label class="dui-offer-select-label" for="dui-offer-collision">Collision
+                      <select id="dui-offer-collision">
+                        <option value="none">None</option>
+                        <option value="property">Property damage only (+5 days)</option>
+                        <option value="property-hit-run">Property damage + hit and run (+20 days)</option>
+                        <option value="person">Collision with person (+10 days)</option>
+                        <option value="person-hit-run">Collision with person + hit and run (+25 days, IID)</option>
+                      </select>
+                    </label>
+                    <label class="dui-offer-select-label" for="dui-offer-passengers">Minor passengers
+                      <select id="dui-offer-passengers">
+                        <option value="none">None</option>
+                        <option value="single-over-five">One minor passenger over age 5 (+10 days, IID)</option>
+                        <option value="multiple-or-under-five">Multiple minors or any minor under age 5 (+15 days, IID)</option>
+                      </select>
+                    </label>
+                    <label class="dui-offer-select-label" for="dui-offer-priors">Stale prior DUIs within 15 years
+                      <input id="dui-offer-priors" type="number" min="0" max="30" step="1" value="0" inputmode="numeric" />
+                      <small>+5 days per prior</small>
+                    </label>
+                  </div>
+                  <div class="dui-offer-checks">
+                    <label class="dui-offer-check"><input id="dui-offer-refusal" type="checkbox" /> Chemical test refusal <strong>+10 days · IID</strong></label>
+                    <div class="dui-offer-danger">
+                      <label class="dui-offer-check"><input id="dui-offer-dangerous" type="checkbox" /> Dangerous driving <strong>+5 days</strong></label>
+                      <details class="dui-offer-details">
+                        <summary>Dangerous driving — see qualifying conduct</summary>
+                        <p>Driving 30mph over speed limit, wrong way driving, extreme lane deviation, pre-stop evasion, running multiple red lights, and/or near collision.</p>
+                      </details>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <div class="dui-offer-actions">
+                  <button type="button" id="dui-offer-clear" class="dui-offer-clear">Clear calculator</button>
+                </div>
+              </form>
+
+              <p id="dui-offer-error" class="dui-offer-error" role="alert" hidden></p>
+              <p id="dui-offer-prompt" class="dui-offer-empty">Enter at least one BAC reading to see the proposed offer.</p>
+
+              <section id="dui-offer-results" class="dui-offer-results" aria-live="polite" hidden>
+                <div class="dui-offer-result-grid">
+                  <div class="dui-offer-result-card">
+                    <span>Maximum offer exposure (higher BAC)</span>
+                    <strong id="dui-offer-max">—</strong>
+                    <small id="dui-offer-max-detail"></small>
+                  </div>
+                  <div class="dui-offer-result-card dui-offer-result-highlight">
+                    <span>Early resolution offer</span>
+                    <strong id="dui-offer-early">—</strong>
+                    <small>25% of maximum, rounded down; 1 day when the unrounded 25% is 5 days or less (including a 0-day maximum).</small>
+                  </div>
+                </div>
+                <h3>Lower and higher BAC scenarios</h3>
+                <div class="dui-offer-scenario-grid">
+                  <div><span>Lower BAC reading</span><strong id="dui-offer-low-reading">—</strong><output id="dui-offer-low-days">—</output></div>
+                  <div><span>Higher BAC reading</span><strong id="dui-offer-high-reading">—</strong><output id="dui-offer-high-days">—</output></div>
+                </div>
+                <p id="dui-offer-readings-used" class="dui-offer-readings-used"></p>
+                <div class="dui-offer-breakdown">
+                  <h3>Calculation breakdown</h3>
+                  <ul id="dui-offer-breakdown-list"></ul>
+                  <p id="dui-offer-iid" class="dui-offer-iid"></p>
+                  <p id="dui-offer-zero-note" class="dui-offer-muted" hidden>Office rule: even with a maximum of 0 days, the early-resolution offer is 1 day.</p>
+                </div>
+              </section>
+
+              <aside class="legal-note dui-offer-legal-note"><strong>Office policy only:</strong> These numbers follow the provided DUI offer grid and are not statutory sentencing exposure, required custody, or a legal determination. “IID” is flagged only where the entered grid calls for it. Fractional early-resolution offers above the 5-day threshold are rounded down to whole days; a maximum of 0 days produces a 1-day early offer.</aside>
             </section>
           </div>
         </section>
@@ -830,5 +942,6 @@
     <script src="data/mcda-div-policy.js"></script>
     <script src="script.js"></script>
     <script src="moral-turpitude.js"></script>
+    <script src="dui-offer.js?v=20261016-multi-bac"></script>
   </body>
 </html>

@@ -1624,6 +1624,7 @@ const toolTitles = {
   charges: "Charge Lookup",
   "moral-turpitude": "Moral Turpitude Lookup",
   bac: "Blood Alcohol Estimator",
+  "dui-offer": "DUI Offer Calculator",
 };
 
 function showTool(toolName) {
@@ -2508,6 +2509,7 @@ function resetAllReferenceDeskTools() {
   maximumWarning.hidden = true;
   maximumCalculation.replaceChildren();
 
+  if (window.ReferenceDeskDuiOffer?.reset) window.ReferenceDeskDuiOffer.reset();
   if (methodDialog && methodDialog.open) methodDialog.close();
 }
 
