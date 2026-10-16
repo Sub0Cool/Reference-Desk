@@ -56,3 +56,26 @@ test("invalid readings and stale prior counts rejected", () => {
   assert.throws(() => calculate({readings: [0.140], stalePriors: 2.5}));
   assert.throws(() => calculate({readings: [0.140], collision: "invalid"}));
 });
+
+test("three or more BAC readings use the minimum and maximum, irrespective of order", () => {
+  const result = calculate({
+    readings: [0.240, 0.130, 0.300, 0.180, 0.100],
+    collision: "property-hit-run"
+  });
+  assert.equal(result.readingCount, 5);
+  assert.deepEqual(result.sortedReadings, [0.100, 0.130, 0.180, 0.240, 0.300]);
+  assert.equal(result.lowReading, 0.100);
+  assert.equal(result.highReading, 0.300);
+  assert.equal(result.lowTotal, 20);
+  assert.equal(result.maxTotal, 35);
+  assert.equal(result.quarter, 8.75);
+  assert.equal(result.early, 8);
+});
+test("optional blank BAC readings are ignored", () => {
+  const result = calculate({ readings: [0.200, "", null, 0.100, ""] });
+  assert.equal(result.readingCount, 2);
+  assert.equal(result.lowReading, 0.100);
+  assert.equal(result.highReading, 0.200);
+  assert.equal(result.maxTotal, 10);
+  assert.equal(result.early, 1);
+});

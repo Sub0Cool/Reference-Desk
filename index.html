@@ -463,7 +463,7 @@
             <section class="dui-offer-card" aria-labelledby="dui-offer-title">
               <p class="eyebrow">Office offer worksheet · not statutory exposure</p>
               <h2 id="dui-offer-title">DUI Offer Calculator</h2>
-              <p class="dui-offer-intro">Enter one or two BAC results, then select the applicable aggravating factors. The lower and higher readings are identified automatically. The higher total is used to calculate the early resolution offer.</p>
+              <p class="dui-offer-intro">Enter as many BAC results as needed, then select the applicable aggravating factors. The lower and higher readings are identified automatically. The higher total is used to calculate the early resolution offer.</p>
 
               <form id="dui-offer-form" novalidate>
                 <fieldset class="dui-offer-fieldset">
@@ -476,7 +476,9 @@
                       <input type="number" id="dui-offer-reading-2" min="0" max="1" step="0.001" inputmode="decimal" placeholder="e.g., 0.172" />
                     </label>
                   </div>
-                  <p class="dui-offer-muted">Values are BAC readings such as 0.165, not percentages like 16.5. A second result is optional.</p>
+                  <div id="dui-offer-extra-readings" class="dui-offer-extra-readings"></div>
+                  <button type="button" id="dui-offer-add-reading" class="dui-offer-add-reading">+ Add BAC reading</button>
+                  <p class="dui-offer-muted">Values are BAC readings such as 0.165, not percentages like 16.5. Only one reading is required. Blank optional readings are ignored.</p>
                 </fieldset>
 
                 <fieldset class="dui-offer-fieldset">
@@ -541,6 +543,7 @@
                   <div><span>Lower BAC reading</span><strong id="dui-offer-low-reading">—</strong><output id="dui-offer-low-days">—</output></div>
                   <div><span>Higher BAC reading</span><strong id="dui-offer-high-reading">—</strong><output id="dui-offer-high-days">—</output></div>
                 </div>
+                <p id="dui-offer-readings-used" class="dui-offer-readings-used"></p>
                 <div class="dui-offer-breakdown">
                   <h3>Calculation breakdown</h3>
                   <ul id="dui-offer-breakdown-list"></ul>
@@ -939,6 +942,6 @@
     <script src="data/mcda-div-policy.js"></script>
     <script src="script.js"></script>
     <script src="moral-turpitude.js"></script>
-    <script src="dui-offer.js"></script>
+    <script src="dui-offer.js?v=20261016-multi-bac"></script>
   </body>
 </html>
