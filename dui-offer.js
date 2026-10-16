@@ -53,7 +53,9 @@
     const lowTotal = lowBacDays + factorDays;
     const maxTotal = highBacDays + factorDays;
     const quarter = maxTotal * 0.25;
-    const early = quarter <= 5 ? 1 : quarter;
+    // Compare against the unrounded 25% threshold, then round down
+    // offers above five days. A zero-day maximum still yields one day.
+    const early = quarter <= 5 ? 1 : Math.floor(quarter);
     return {
       lowReading, highReading, lowBacDays, highBacDays,
       factorDays, lowTotal, maxTotal, early,
@@ -124,7 +126,9 @@
       ...result.factors.map(factor => factor.label + ": +" + days(factor.days)),
       "Total aggravators: +" + days(result.factorDays),
       "Early resolution: 25% × " + days(result.maxTotal) + " = " + days(result.quarter) +
-        (result.quarter <= 5 ? "; 1-day offer under the requested minimum rule." : ".")
+        (result.quarter <= 5
+          ? "; 1-day offer under the office's threshold rule."
+          : "; rounded down to " + days(result.early) + ".")
     ];
     el("dui-offer-breakdown-list").replaceChildren(...rows.map(text => {
       const li = document.createElement("li");

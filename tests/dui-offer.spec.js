@@ -19,14 +19,14 @@ test("readings are auto-sorted and high exposure determines offer", () => {
   assert.equal(result.highReading, 0.301);
   assert.equal(result.lowTotal, 20);
   assert.equal(result.maxTotal, 30);
-  assert.equal(result.early, 7.5);
+  assert.equal(result.early, 7);
   assert.equal(result.iid, true);
 });
 test("collision and passenger choices cannot be double counted", () => {
   const result = calculate({readings: [0.130], collision: "person-hit-run", passengers: "multiple-or-under-five", stalePriors: 2, dangerous: true});
   assert.equal(result.factorDays, 55);
   assert.equal(result.maxTotal, 55);
-  assert.equal(result.early, 13.75);
+  assert.equal(result.early, 13);
   assert.equal(result.iid, true);
 });
 test("single reading, one-day floor and no IID", () => {
@@ -36,8 +36,19 @@ test("single reading, one-day floor and no IID", () => {
   assert.equal(result.early, 1);
   assert.equal(result.iid, false);
 });
-test("literal zero-max office rule currently produces one day", () => {
+test("confirmed zero-max office rule produces one day", () => {
   assert.equal(calculate({readings: [0.100]}).early, 1);
+});
+test("early resolution keeps the 5-day threshold before rounding down", () => {
+  const threshold = calculate({readings: [0.130], stalePriors: 4});
+  assert.equal(threshold.maxTotal, 20);
+  assert.equal(threshold.quarter, 5);
+  assert.equal(threshold.early, 1);
+
+  const fractional = calculate({readings: [0.130], stalePriors: 5});
+  assert.equal(fractional.maxTotal, 25);
+  assert.equal(fractional.quarter, 6.25);
+  assert.equal(fractional.early, 6);
 });
 test("invalid readings and stale prior counts rejected", () => {
   assert.throws(() => calculate({readings: [1.2]}));
